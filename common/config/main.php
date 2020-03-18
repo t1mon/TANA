@@ -18,8 +18,23 @@ return [
             // message source
             // 'downloadAction' => 'gridview/export/download',
             // 'i18n' => []
+        ],
+        'exchange' => [
+            'class' => \carono\exchange1c\ExchangeModule::class,
+            'groupClass' => \shop\Exchange_1C\Group::class,
+            'auth' => function ($username, $password) {
+                if($user = \shop\entities\User\User::findByUsername($username)){
+                    if($user->validatePassword($password)){
+                        return $user;
+                    }
+                }
+                return false;
+            },
+            'bootstrapUrlRule' => false,
+            'debug' => false
         ]
     ],
+
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache',

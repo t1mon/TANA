@@ -2,8 +2,8 @@
 
 namespace common\bootstrap;
 
-use Elasticsearch\Client;
-use Elasticsearch\ClientBuilder;
+//use Elasticsearch\Client;
+//use Elasticsearch\ClientBuilder;
 use League\Flysystem\Adapter\Ftp;
 use League\Flysystem\Filesystem;
 use shop\cart\Cart;
@@ -55,9 +55,9 @@ class SetUp implements BootstrapInterface
     {
         $container = \Yii::$container;
 
-        $container->setSingleton(Client::class, function () {
-            return ClientBuilder::create()->build();
-        });
+//        $container->setSingleton(Client::class, function () {
+//            return ClientBuilder::create()->build();
+//        });
 
         $container->setSingleton(MailerInterface::class, function () use ($app) {
             return $app->mailer;

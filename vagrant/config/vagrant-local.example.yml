@@ -1,5 +1,5 @@
 # Your personal GitHub token
-github_token: <your-personal-github-token>
+github_token: 127c8dcd12442f6e38470a6cbd94aa159464f50a
 # Read more: https://github.com/blog/1509-personal-api-tokens
 # You can generate it here: https://github.com/settings/tokens
 
@@ -10,7 +10,7 @@ timezone: Europe/London
 box_check_update: false
 
 # Virtual machine name
-machine_name: shop
+machine_name: tana
 
 # Virtual machine IP
 ip: 192.168.83.145

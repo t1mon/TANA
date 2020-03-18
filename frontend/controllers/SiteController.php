@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use Faker\Factory;
 use shop\entities\User\User;
+use shop\Exchange_1C\Category_Model;
 use shop\forms\manage\Shop\Product\PhotosForm;
 use shop\forms\manage\Shop\Product\PhotosFormConsole;
 use shop\forms\SubscribeForm;
@@ -81,6 +82,11 @@ class SiteController extends Controller
         $faker = Factory::create();
         $var = 26879;
         echo ( $var % 2 ) ? 'не четное' : 'четное';
+        $category = new Category_Model();
+        $category->name = 'Testing';
+        $category->parent_id = 5;
+        $category->accounting_id = 'rtyrytrrtyrytr';
+        $category->save();
     }
 
   /*  public function afterAction($action, $result)

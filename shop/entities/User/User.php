@@ -10,6 +10,7 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
+use yii\web\IdentityInterface;
 
 /**
  * User model
@@ -32,7 +33,7 @@ use yii\db\ActiveRecord;
  * @property Network[] $networks
  * @property WishlistItem[] $wishlistItems
  */
-class User extends ActiveRecord implements AggregateRoot
+class User extends ActiveRecord implements AggregateRoot, IdentityInterface
 {
     use EventTrait;
 
@@ -301,5 +302,29 @@ class User extends ActiveRecord implements AggregateRoot
     {
 
         return preg_replace('/[^\d]/', '', $phone);
+    }
+
+    public static function findIdentity($id)
+    {
+        return static::findOne($id);
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        return static::findOne(['access_token' => $token]);
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getAuthKey()
+    {
+        return $this->authKey;
+    }
+    public function validateAuthKey($authKey)
+    {
+        return $this->authKey === $authKey;
     }
 }

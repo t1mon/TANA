@@ -32,7 +32,7 @@ return [
         'catalog' => 'shop/catalog/index',
         'page/<slug:[\w\-]+>' => 'page/view',
 //        '<catalog:\w+>' => 'shop/catalog/search',
-
+        ['class' => 'frontend\urls\ExchangeUrlRule'],
         ['class' => 'frontend\urls\ProductUrlRule' ],
         //'<catalog:\w+>/page/<page:\d+>' => 'shop/catalog/index',
         ['class' => 'frontend\urls\CategoryUrlRule'],

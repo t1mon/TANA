@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2e388583e6f50a53daf06b1d6153e849",
+    "content-hash": "d64762522fb7cb0800a47e3c8b61c786",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -95,7 +95,7 @@
             "version": "3.3.11",
             "source": {
                 "type": "git",
-                "url": "https://github.com/RobinHerbots/Inputmask.git",
+                "url": "git@github.com:RobinHerbots/Inputmask.git",
                 "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
             },
             "dist": {
@@ -279,6 +279,102 @@
                 "oauth2"
             ],
             "time": "2018-12-04T00:29:32+00:00"
+        },
+        {
+            "name": "carono/commerceml",
+            "version": "0.2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/carono/php-commerceml.git",
+                "reference": "9d357db9912ab680bc3932ba7c77a6dbb53c8e42"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/carono/php-commerceml/zipball/9d357db9912ab680bc3932ba7c77a6dbb53c8e42",
+                "reference": "9d357db9912ab680bc3932ba7c77a6dbb53c8e42",
+                "shasum": ""
+            },
+            "require": {
+                "ext-simplexml": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Zenwalker\\CommerceML\\": "src/",
+                    "Zenwalker\\CommerceML\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maxim Poletaev",
+                    "email": "zenwalker2@gmail.com",
+                    "homepage": "http://zenwalker.ru"
+                },
+                {
+                    "name": "Aleksandr Kasyanov",
+                    "email": "info@carono.ru",
+                    "homepage": "http://carono.ru"
+                }
+            ],
+            "description": "Library for parsing CommerceML files",
+            "homepage": "https://github.com/zenwalker/php-commerceml",
+            "keywords": [
+                "1c",
+                "commerceml"
+            ],
+            "time": "2019-06-24T13:49:20+00:00"
+        },
+        {
+            "name": "carono/yii2-1c-exchange",
+            "version": "0.2.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/carono/yii2-1c-exchange.git",
+                "reference": "4c46806c198ac123261b9a5b1447abe906b2b02a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/carono/yii2-1c-exchange/zipball/4c46806c198ac123261b9a5b1447abe906b2b02a",
+                "reference": "4c46806c198ac123261b9a5b1447abe906b2b02a",
+                "shasum": ""
+            },
+            "require": {
+                "carono/commerceml": "^0.2.3",
+                "php": ">=5.6",
+                "yiisoft/yii2": "^2.0"
+            },
+            "require-dev": {
+                "yiidoc/yii2-redactor": "^2.0"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "bootstrap": "carono\\exchange1c\\Bootstrap"
+            },
+            "autoload": {
+                "psr-4": {
+                    "carono\\exchange1c\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aleksandr Kasyanov",
+                    "email": "info@carono.ru",
+                    "homepage": "http://carono.ru"
+                }
+            ],
+            "description": "Yii2 module for the exchange of goods and documents from 1C",
+            "time": "2019-05-08T16:26:25+00:00"
         },
         {
             "name": "cebe/markdown",
@@ -486,61 +582,6 @@
             "description": "Super-simple, minimum abstraction MailChimp API v3 wrapper",
             "homepage": "https://github.com/drewm/mailchimp-api",
             "time": "2019-08-06T09:24:58+00:00"
-        },
-        {
-            "name": "elasticsearch/elasticsearch",
-            "version": "v5.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/elastic/elasticsearch-php.git",
-                "reference": "48b8a90e2b97b4d69ce42851c1b9e59f8054661a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/48b8a90e2b97b4d69ce42851c1b9e59f8054661a",
-                "reference": "48b8a90e2b97b4d69ce42851c1b9e59f8054661a",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/ringphp": "~1.0",
-                "php": "^5.6|^7.0",
-                "psr/log": "~1.0"
-            },
-            "require-dev": {
-                "cpliakas/git-wrapper": "~1.0",
-                "doctrine/inflector": "^1.1",
-                "mockery/mockery": "0.9.4",
-                "phpunit/phpunit": "^4.7|^5.4",
-                "sami/sami": "~3.2",
-                "symfony/finder": "^2.8",
-                "symfony/yaml": "^2.8"
-            },
-            "suggest": {
-                "ext-curl": "*",
-                "monolog/monolog": "Allows for client-level logging and tracing"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Elasticsearch\\": "src/Elasticsearch/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Zachary Tong"
-                }
-            ],
-            "description": "PHP Client for Elasticsearch",
-            "keywords": [
-                "client",
-                "elasticsearch",
-                "search"
-            ],
-            "time": "2019-07-18T15:11:30+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -957,109 +998,6 @@
                 "url"
             ],
             "time": "2019-07-01T23:21:34+00:00"
-        },
-        {
-            "name": "guzzlehttp/ringphp",
-            "version": "1.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/RingPHP.git",
-                "reference": "5e2a174052995663dd68e6b5ad838afd47dd615b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/RingPHP/zipball/5e2a174052995663dd68e6b5ad838afd47dd615b",
-                "reference": "5e2a174052995663dd68e6b5ad838afd47dd615b",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/streams": "~3.0",
-                "php": ">=5.4.0",
-                "react/promise": "~2.0"
-            },
-            "require-dev": {
-                "ext-curl": "*",
-                "phpunit/phpunit": "~4.0"
-            },
-            "suggest": {
-                "ext-curl": "Guzzle will use specific adapters if cURL is present"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\Ring\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                }
-            ],
-            "description": "Provides a simple API and specification that abstracts away the details of HTTP into a single PHP function.",
-            "abandoned": true,
-            "time": "2018-07-31T13:22:33+00:00"
-        },
-        {
-            "name": "guzzlehttp/streams",
-            "version": "3.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/streams.git",
-                "reference": "47aaa48e27dae43d39fc1cea0ccf0d84ac1a2ba5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/streams/zipball/47aaa48e27dae43d39fc1cea0ccf0d84ac1a2ba5",
-                "reference": "47aaa48e27dae43d39fc1cea0ccf0d84ac1a2ba5",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\Stream\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                }
-            ],
-            "description": "Provides a simple abstraction over streams of data",
-            "homepage": "http://guzzlephp.org/",
-            "keywords": [
-                "Guzzle",
-                "stream"
-            ],
-            "abandoned": true,
-            "time": "2014-10-12T19:18:40+00:00"
         },
         {
             "name": "himiklab/yii2-recaptcha-widget",
@@ -2590,16 +2528,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.64",
+            "version": "1.0.66",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "d13c43dbd4b791f815215959105a008515d1a2e0"
+                "reference": "021569195e15f8209b1c4bebb78bd66aa4f08c21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/d13c43dbd4b791f815215959105a008515d1a2e0",
-                "reference": "d13c43dbd4b791f815215959105a008515d1a2e0",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/021569195e15f8209b1c4bebb78bd66aa4f08c21",
+                "reference": "021569195e15f8209b1c4bebb78bd66aa4f08c21",
                 "shasum": ""
             },
             "require": {
@@ -2670,7 +2608,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2020-02-05T18:14:17+00:00"
+            "time": "2020-03-17T18:58:12+00:00"
         },
         {
             "name": "masterexploder/phpthumb",
@@ -2985,53 +2923,6 @@
             "time": "2016-08-06T14:39:51+00:00"
         },
         {
-            "name": "psr/log",
-            "version": "1.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/log.git",
-                "reference": "446d54b4cb6bf489fc9d75f55843658e6f25d801"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/446d54b4cb6bf489fc9d75f55843658e6f25d801",
-                "reference": "446d54b4cb6bf489fc9d75f55843658e6f25d801",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Log\\": "Psr/Log/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for logging libraries",
-            "homepage": "https://github.com/php-fig/log",
-            "keywords": [
-                "log",
-                "psr",
-                "psr-3"
-            ],
-            "time": "2019-11-01T11:05:21+00:00"
-        },
-        {
             "name": "ralouphie/getallheaders",
             "version": "3.0.3",
             "source": {
@@ -3070,52 +2961,6 @@
             ],
             "description": "A polyfill for getallheaders.",
             "time": "2019-03-08T08:55:37+00:00"
-        },
-        {
-            "name": "react/promise",
-            "version": "v2.7.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/promise.git",
-                "reference": "31ffa96f8d2ed0341a57848cbb84d88b89dd664d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/31ffa96f8d2ed0341a57848cbb84d88b89dd664d",
-                "reference": "31ffa96f8d2ed0341a57848cbb84d88b89dd664d",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.8"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "React\\Promise\\": "src/"
-                },
-                "files": [
-                    "src/functions_include.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jan Sorgalla",
-                    "email": "jsorgalla@gmail.com"
-                }
-            ],
-            "description": "A lightweight implementation of CommonJS Promises/A for PHP",
-            "keywords": [
-                "promise",
-                "promises"
-            ],
-            "time": "2019-01-07T21:25:54+00:00"
         },
         {
             "name": "rmrevin/yii2-fontawesome",
@@ -3209,16 +3054,16 @@
         },
         {
             "name": "studio-42/elfinder",
-            "version": "2.1.53",
+            "version": "2.1.55",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Studio-42/elFinder.git",
-                "reference": "bff6f1a3eb651f2b1e1b2f94a343aa9edc5d725a"
+                "reference": "7d7174dbadbadc19b1178ded8b62fbff738df877"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Studio-42/elFinder/zipball/bff6f1a3eb651f2b1e1b2f94a343aa9edc5d725a",
-                "reference": "bff6f1a3eb651f2b1e1b2f94a343aa9edc5d725a",
+                "url": "https://api.github.com/repos/Studio-42/elFinder/zipball/7d7174dbadbadc19b1178ded8b62fbff738df877",
+                "reference": "7d7174dbadbadc19b1178ded8b62fbff738df877",
                 "shasum": ""
             },
             "require": {
@@ -3263,7 +3108,7 @@
             ],
             "description": "File manager for web",
             "homepage": "http://elfinder.org",
-            "time": "2020-01-25T14:09:50+00:00"
+            "time": "2020-03-18T11:37:50+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -4035,24 +3880,25 @@
         },
         {
             "name": "yiisoft/yii2-redis",
-            "version": "2.0.11",
+            "version": "2.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-redis.git",
-                "reference": "92f2926296996c78f2441fc81e357a6e3b349e5e"
+                "reference": "28d0034f8b5a0734863affa4eaf9a76ec9b8bb85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-redis/zipball/92f2926296996c78f2441fc81e357a6e3b349e5e",
-                "reference": "92f2926296996c78f2441fc81e357a6e3b349e5e",
+                "url": "https://api.github.com/repos/yiisoft/yii2-redis/zipball/28d0034f8b5a0734863affa4eaf9a76ec9b8bb85",
+                "reference": "28d0034f8b5a0734863affa4eaf9a76ec9b8bb85",
                 "shasum": ""
             },
             "require": {
-                "yiisoft/yii2": "~2.0.14"
+                "ext-openssl": "*",
+                "yiisoft/yii2": "~2.0.16"
             },
             "require-dev": {
                 "phpunit/phpunit": "<7",
-                "yiisoft/yii2-dev": "~2.0.14"
+                "yiisoft/yii2-dev": "~2.0.16"
             },
             "type": "yii2-extension",
             "extra": {
@@ -4083,7 +3929,7 @@
                 "session",
                 "yii2"
             ],
-            "time": "2019-11-05T14:58:47+00:00"
+            "time": "2020-03-13T07:25:25+00:00"
         },
         {
             "name": "yiisoft/yii2-swiftmailer",
@@ -4139,16 +3985,16 @@
     "packages-dev": [
         {
             "name": "behat/gherkin",
-            "version": "v4.6.1",
+            "version": "v4.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Gherkin.git",
-                "reference": "25bdcaf37898b4a939fa3031d5d753ced97e4759"
+                "reference": "51ac4500c4dc30cbaaabcd2f25694299df666a31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/25bdcaf37898b4a939fa3031d5d753ced97e4759",
-                "reference": "25bdcaf37898b4a939fa3031d5d753ced97e4759",
+                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/51ac4500c4dc30cbaaabcd2f25694299df666a31",
+                "reference": "51ac4500c4dc30cbaaabcd2f25694299df666a31",
                 "shasum": ""
             },
             "require": {
@@ -4194,7 +4040,7 @@
                 "gherkin",
                 "parser"
             ],
-            "time": "2020-02-27T11:29:57+00:00"
+            "time": "2020-03-17T14:03:26+00:00"
         },
         {
             "name": "bower-asset/typeahead.js",
@@ -4989,16 +4835,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "v1.10.2",
+            "version": "v1.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "b4400efc9d206e83138e2bb97ed7f5b14b831cd9"
+                "reference": "451c3cd1418cf640de218914901e51b064abb093"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/b4400efc9d206e83138e2bb97ed7f5b14b831cd9",
-                "reference": "b4400efc9d206e83138e2bb97ed7f5b14b831cd9",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/451c3cd1418cf640de218914901e51b064abb093",
+                "reference": "451c3cd1418cf640de218914901e51b064abb093",
                 "shasum": ""
             },
             "require": {
@@ -5048,7 +4894,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2020-01-20T15:57:02+00:00"
+            "time": "2020-03-05T15:02:03+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",

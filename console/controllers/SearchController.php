@@ -3,17 +3,19 @@
 namespace console\controllers;
 
 use shop\entities\Shop\Product\Product;
-use shop\services\search\ProductIndexer;
+//use shop\services\search\ProductIndexer;
 use yii\console\Controller;
 
 class SearchController extends Controller
 {
     private $indexer;
 
-    public function __construct($id, $module, ProductIndexer $indexer, $config = [])
+    public function __construct($id, $module,
+                                //ProductIndexer $indexer,
+                                $config = [])
     {
         parent::__construct($id, $module, $config);
-        $this->indexer = $indexer;
+        //$this->indexer = $indexer;
     }
 
     public function actionReindex(): void
