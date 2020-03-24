@@ -22,6 +22,9 @@ return [
         'exchange' => [
             'class' => \carono\exchange1c\ExchangeModule::class,
             'groupClass' => \shop\Exchange_1C\Group::class,
+            'productClass' => \shop\Exchange_1C\Product::class,
+            //'offerClass' => \shop\Exchange_1C\Offer::class,
+            'on afterProductSync' => [\shop\Exchange_1C\Product::class, 'afterUpdateProductTest'],
             'auth' => function ($username, $password) {
                 if($user = \shop\entities\User\User::findByUsername($username)){
                     if($user->validatePassword($password)){

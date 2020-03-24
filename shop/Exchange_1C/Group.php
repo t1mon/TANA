@@ -7,9 +7,10 @@
  */
 namespace shop\Exchange_1C;
 
-
 use carono\exchange1c\interfaces\GroupInterface;
 use yii\db\ActiveRecord;
+use shop\Exchange_1C\Model\CategoryModel1C;
+
 
 class Group extends ActiveRecord implements GroupInterface
 {
@@ -23,10 +24,6 @@ class Group extends ActiveRecord implements GroupInterface
     public $accounting_id;
 
 
-    public static function tableName(): string
-    {
-        return '{{%shop_categories_1c}}';
-    }
     public static function getIdFieldName1c()
     {
         return 'accounting_id';
@@ -59,8 +56,8 @@ class Group extends ActiveRecord implements GroupInterface
     public static function createByML(\Zenwalker\CommerceML\Model\Group $group)
     {
 
-        if (!$model = Category_Model::findOne(['accounting_id' => $group->id])) {
-            $model = new Category_Model();
+        if (!$model = CategoryModel1C::findOne(['accounting_id' => $group->id])) {
+            $model = new CategoryModel1C();
             $model->accounting_id = $group->id;
         }
         $model->name = $group->name;

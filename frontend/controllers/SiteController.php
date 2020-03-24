@@ -82,11 +82,12 @@ class SiteController extends Controller
         $faker = Factory::create();
         $var = 26879;
         echo ( $var % 2 ) ? 'не четное' : 'четное';
-        $category = new Category_Model();
-        $category->name = 'Testing';
-        $category->parent_id = 5;
-        $category->accounting_id = 'rtyrytrrtyrytr';
-        $category->save();
+//        $category = new Category_Model();
+//        $category->name = 'Testing';
+//        $category->parent_id = 5;
+//        $category->accounting_id = 'rtyrytrrtyrytr';
+//        $category->save();
+//        file_put_contents(\Yii::getAlias('@frontend').'/runtime/test.log','test');
     }
 
   /*  public function afterAction($action, $result)

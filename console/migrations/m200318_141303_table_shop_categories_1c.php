@@ -15,10 +15,11 @@ class m200318_141303_table_shop_categories_1c extends Migration
             'id' => $this->primaryKey(),
             'name' => $this->string(),
             'parent_id' => $this->integer(),
-            'accounting_id' => $this->string()
+            'accounting_id' => $this->string()->notNull()->unique()
         ], $tableOptions);
 
-
+        $this->createIndex('{{%idx-shop_categories_1c_accounting_id}}', '{{%shop_categories_1c}}', 'accounting_id', true);
+        //$this->addForeignKey('{{%fk-shop_categories_1c_accounting_id}}','{{%shop_categories_1c}}','id','{{%shop_categories}}','id','CASCADE');
     }
 
     public function down()

@@ -4,12 +4,12 @@ namespace frontend\urls;
 
 use shop\readModels\Shop\ProductReadRepository;
 use yii\base\InvalidParamException;
-use yii\base\Object;
+use yii\base\BaseObject;
 use yii\caching\Cache;
 use yii\web\UrlNormalizerRedirectException;
 use yii\web\UrlRuleInterface;
 
-class ProductUrlRule extends Object implements UrlRuleInterface
+class ProductUrlRule extends BaseObject implements UrlRuleInterface
 {
     public $prefix = 'catalog';
     private $repository;
