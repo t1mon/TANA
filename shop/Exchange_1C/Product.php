@@ -6,6 +6,9 @@ namespace shop\Exchange_1C;
 
 use carono\exchange1c\interfaces\ProductInterface;
 use shop\Exchange_1C\Model\CategoryModel1C;
+use shop\Exchange_1C\Model\PropertyModel;
+use shop\Exchange_1C\Model\PropertyValueModel;
+use shop\Exchange_1C\Model\PvProductPropertyModel;
 use shop\Exchange_1C\Model\PvProductRequisiteModel;
 use shop\Exchange_1C\Model\RequisiteModel;
 use yii\db\ActiveRecord;
@@ -30,7 +33,19 @@ class Product extends ActiveRecord implements ProductInterface
 
     public function setProperty1c($property)
     {
-
+        $propertyModel = PropertyModel::findOne(['accounting_id' => $property->id]);
+        $propertyValue = $property->getValueModel();
+        if ($propertyAccountingId = (string)$propertyValue->ИдЗначения) {
+            $value = PropertyValueModel::findOne(['accounting_id' => $propertyAccountingId]);
+            if (!PvProductPropertyModel::findOne(['value' => $value->name])){
+                $PvProductProperty = new PvProductPropertyModel();
+                $PvProductProperty->product_id = $this->id;
+                $PvProductProperty->property_id = $propertyModel->id;
+                $PvProductProperty->property_value_id = $value->id;
+                $PvProductProperty->value =  $value->name;
+                $PvProductProperty->save();
+            }
+        }
     }
 
     public function addImage1c($path, $caption)
@@ -45,25 +60,19 @@ class Product extends ActiveRecord implements ProductInterface
 
     public static function createProperties1c($properties)
     {
-
-
-
-//        foreach ($properties as $property) {
-////            $propertyModel = Property::createByMl($property);
-//           // file_put_contents(\Yii::getAlias('@frontend').'/runtime/test.log', $property->value."\n",FILE_APPEND);
-//           foreach ($property->getAvailableValues() as $value) {
-//
-////               // if (!$propertyValue = PropertyValue::findOne(['accounting_id' => $value->id])) {
-////                    //$propertyValue = new PropertyValue();
-////                    //$propertyValue->name = (string)$value->Значение;
-////                    //$propertyValue->property_id = $propertyModel->id;
-////                    //$propertyValue->accounting_id = (string)$value->ИдЗначения;
-////                    //$propertyValue->save();
-////                  //  unset($propertyValue);
-////               // }
-//                file_put_contents(\Yii::getAlias('@frontend').'/runtime/test.log', (string)$value->Значение.(string)$value->ИдЗначения."\n",FILE_APPEND);
-//            }
-//       }
+        foreach ($properties as $property) {
+            $propertyModel = PropertyModel::createByMl($property);
+            foreach ($property->getAvailableValues() as $value) {
+                    if (!$propertyValue = PropertyValueModel::findOne(['accounting_id' => (string)$value->ИдЗначения])) {
+                        $propertyValue = new PropertyValueModel();
+                        $propertyValue->name = (string)$value->Значение;
+                        $propertyValue->property_id = $propertyModel->id;
+                        $propertyValue->accounting_id = (string)$value->ИдЗначения;
+                        $propertyValue->save();
+                        unset($propertyValue);
+                    }
+            }
+        }
     }
 
     public function getOffer1c($offer)
@@ -101,7 +110,6 @@ class Product extends ActiveRecord implements ProductInterface
         $requisiteProduct->requisite_id = $requisite->id;
         $requisiteProduct->value = $value;
         $requisiteProduct->save();
-       //file_put_contents(\Yii::getAlias('@frontend').'/runtime/test.log',"ID: $this->id __ $requisite->id __ $value\n",FILE_APPEND);
     }
 
     public function setRaw1cData($cml, $product)
@@ -113,10 +121,10 @@ class Product extends ActiveRecord implements ProductInterface
 
     public function afterUpdateProductTest()
     {
-        $products = Product::find()->all();
-        foreach ($products as $product) {
-            file_put_contents(\Yii::getAlias('@frontend') . '/runtime/test.log', $product->name . "\n", FILE_APPEND);
-        }
+//        $products = Product::find()->all();
+//        foreach ($products as $product) {
+//            file_put_contents(\Yii::getAlias('@frontend') . '/runtime/test.log', $product->name . "\n", FILE_APPEND);
+//        }
     }
 
     public function transactions()
