@@ -17,4 +17,11 @@ class PropertyValueModel extends ActiveRecord
     {
         return '{{%shop_property_value_1c}}';
     }
+
+    public function transactions():array
+    {
+        return [
+            self::SCENARIO_DEFAULT => self::OP_ALL,
+        ];
+    }
 }

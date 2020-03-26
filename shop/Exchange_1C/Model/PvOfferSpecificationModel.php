@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: dmitri
- * Date: 25/03/2020
- * Time: 18:22
+ * Date: 26/03/2020
+ * Time: 18:48
  */
 
 namespace shop\Exchange_1C\Model;
@@ -11,11 +11,11 @@ namespace shop\Exchange_1C\Model;
 
 use yii\db\ActiveRecord;
 
-class PvProductPropertyModel extends ActiveRecord
+class PvOfferSpecificationModel extends ActiveRecord
 {
     public static function tableName(): string
     {
-        return '{{%shop_pv_product_property_1c}}';
+        return '{{%shop_pv_offer_specification_1c}}';
     }
 
     public function transactions():array

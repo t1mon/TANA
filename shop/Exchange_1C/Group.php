@@ -71,4 +71,11 @@ class Group extends ActiveRecord implements GroupInterface
         $model->save();
         return $model;
     }
+
+    public function transactions():array
+    {
+        return [
+            self::SCENARIO_DEFAULT => self::OP_ALL,
+        ];
+    }
 }

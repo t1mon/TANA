@@ -55,7 +55,7 @@ class Product extends ActiveRecord implements ProductInterface
 
     public function getGroup1c()
     {
-
+        return $this->hasOne(CategoryModel1C::class, ['id' => 'group_id']);
     }
 
     public static function createProperties1c($properties)
@@ -78,10 +78,10 @@ class Product extends ActiveRecord implements ProductInterface
     public function getOffer1c($offer)
     {
         $offerModel = Offer::createByMl($offer);
-//        $offerModel->product_id = $this->id;
-//        if ($offerModel->getDirtyAttributes()) {
-//            $offerModel->save();
-//        }
+        $offerModel->product_id = $this->id;
+        if ($offerModel->getDirtyAttributes()) {
+            $offerModel->save();
+        }
         return $offerModel;
     }
 
@@ -115,16 +115,6 @@ class Product extends ActiveRecord implements ProductInterface
     public function setRaw1cData($cml, $product)
     {
 
-    }
-
-
-
-    public function afterUpdateProductTest()
-    {
-//        $products = Product::find()->all();
-//        foreach ($products as $product) {
-//            file_put_contents(\Yii::getAlias('@frontend') . '/runtime/test.log', $product->name . "\n", FILE_APPEND);
-//        }
     }
 
     public function transactions()
