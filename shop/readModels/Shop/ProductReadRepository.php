@@ -93,7 +93,7 @@ class ProductReadRepository
 
     public function getCategory($id)
     {
-        return Product::findOne($id)->category->name;
+        return Product::findOne($id)->category->slug;
     }
 
     private function getProvider(ActiveQuery $query): ActiveDataProvider

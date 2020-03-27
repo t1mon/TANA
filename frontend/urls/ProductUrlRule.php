@@ -56,7 +56,7 @@ class ProductUrlRule extends BaseObject implements UrlRuleInterface
                 if (!$product = $this->repository->find($id)) {
                     return null;
                 }
-                return $this->prefix . '/'.$product->category->name.'/' .$product->slug;
+                return $this->prefix . '/'.$product->category->slug.'/' .$product->slug;
             });
             return $url;
         }
