@@ -37,6 +37,10 @@ class PropertyModel extends ActiveRecord
         return $propertyModel;
     }
 
+    public function getProperties()
+    {
+        return $this->hasMany(PropertyValueModel::class,['property_id' => 'id']);
+    }
     public function transactions():array
     {
         return [

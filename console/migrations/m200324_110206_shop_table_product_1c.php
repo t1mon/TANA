@@ -20,6 +20,7 @@ class m200324_110206_shop_table_product_1c extends Migration
             'group_id' => $this->integer(),
             'catalog_id' => $this->integer(),
             'is_active' => $this->boolean(),
+            'remnant' => $this->integer()->defaultValue(null),
             'created_at' => $this->timestamp(),
             'updated_at' => $this->integer()->defaultValue(null)
         ], $tableOptions);

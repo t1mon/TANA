@@ -9,6 +9,7 @@
 namespace shop\Exchange_1C\Model;
 
 
+use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 
 class PropertyValueModel extends ActiveRecord

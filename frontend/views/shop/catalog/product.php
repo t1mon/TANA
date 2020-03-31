@@ -43,6 +43,7 @@ $reviews_count =$product->getActiveReviewCount($reviews);
                         <div class="col-sm-6 large-detail animate fadeInLeft" data-wow-delay="0.4s">
                             <div class="images-slider">
                                 <ul class="slides">
+                                    <?php if ($product->mainPhoto): ?>
                                 <?php foreach ($product->photos as $i => $photo): ?>
 
                                    <li data-thumb="<?= $photo->getThumbFileUrl('file', 'thumb') ?>">
@@ -50,6 +51,11 @@ $reviews_count =$product->getActiveReviewCount($reviews);
                                     </li>
 
                                 <?php endforeach; ?>
+                                    <?php else:?>
+                                        <li data-thumb="<?= Url::to(['@web/image/new-item-1.jpg']) ?>">
+                                            <a class="popup-link" href="<?= Url::to(['@web/image/new-item-1.jpg']) ?>"><img class="img-responsive zoom_05" data-zoom-image="<?= Url::to(['@web/image/new-item-1.jpg']) ?>" src="<?= Url::to(['@web/image/new-item-1.jpg']) ?>"  alt="<?= Html::encode($product->name) ?>"></a>
+                                        </li>
+                                    <?php endif; ?>
                                 </ul>
                             </div>
                         </div>
@@ -160,14 +166,7 @@ $reviews_count =$product->getActiveReviewCount($reviews);
                                             </script>
 
                                             <!-- Put this div tag to the place, where the Like block will be -->
-                                            <div id="vk_like"></div>
-                                            <script type="text/javascript">
-                                                VK.Widgets.Like("vk_like", {
-                                                    type: "button",
-                                                    image:"<?= $product->mainPhoto->getThumbFileUrl('file','catalog_origin') ?>",
-                                                    url: "<?= Url::to(['/shop/catalog', 'id' => $product->id])?>"
-                                                });
-                                            </script>
+
                                         </li>
                                     </ul>
                                 </div>

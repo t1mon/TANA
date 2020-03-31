@@ -69,6 +69,9 @@ class Product extends ActiveRecord implements ProductInterface
                         $propertyValue->property_id = $propertyModel->id;
                         $propertyValue->accounting_id = (string)$value->ИдЗначения;
                         $propertyValue->save();
+                        if ($property->name == "Торговая марка"){
+                            file_put_contents(\Yii::getAlias('@frontend') . '/runtime/test.log', "VALUE---Загружено свойство".(string)$value->Значения . "\n", FILE_APPEND);
+                        }
                         unset($propertyValue);
                     }
             }
@@ -115,6 +118,21 @@ class Product extends ActiveRecord implements ProductInterface
     public function setRaw1cData($cml, $product)
     {
 
+    }
+
+    public function getOffers()
+    {
+        return $this->hasMany(Offer::class, ['product_id' => 'id']);
+    }
+
+    public function getPropertyTM()
+    {
+        $properties = PropertyModel::find()->all();
+        foreach ($properties as $property){
+            if ($property->name == 'Торговая марка'){
+                return $property->id;
+            }
+        }
     }
 
     public function transactions()

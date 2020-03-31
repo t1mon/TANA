@@ -7,6 +7,10 @@ use yii\db\ActiveRecord;
 
 class PvOfferPriceModel extends ActiveRecord
 {
+    public function getPrice()
+    {
+        return $this->hasOne(PriceModel::class, ['price_id' => 'id']);
+    }
 
     public static function tableName(): string
     {
