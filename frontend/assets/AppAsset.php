@@ -14,7 +14,7 @@ class AppAsset extends AssetBundle
     public $css = [
         '//fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic',
         '//fonts.googleapis.com/css?family=Montserrat:400,700',
-        '//cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.4.1/jquery.jgrowl.min.css',
+        '//cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.4.7/jquery.jgrowl.min.css',
         //'//cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css',
         'css/font-awesome.min.css',
         'css/main.css',
@@ -28,7 +28,7 @@ class AppAsset extends AssetBundle
         //'//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js',
         //'js/jqueryMy.js',
         //'js/jquery-1.11.3.js',
-        '//cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.4.1/jquery.jgrowl.min.js',
+        '//cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.4.7/jquery.jgrowl.min.js',
         'js/jquery.elevatezoom.js',
         //'js/modernizr.js',
         'js/bootstrap.min.js',

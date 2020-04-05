@@ -54,7 +54,7 @@ class JgrowlWidget extends \yii\bootstrap\Widget
         parent::init();
         $session = \Yii::$app->session;
         $flashes = $session->getAllFlashes();
-       print_r($flashes);
+       //print_r($flashes);
         foreach ($flashes as $type => $data) {
             if (isset($this->alertTypes[$type])) {
                 $data = (array) $data;
