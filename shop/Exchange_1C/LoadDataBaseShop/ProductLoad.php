@@ -61,6 +61,8 @@ class ProductLoad
         self::loadProduct();
         self::loadModification();
 
+        self::activateProduct();
+
     }
 
 
@@ -87,23 +89,21 @@ class ProductLoad
             foreach ($product->offers as $offer){
                 $remnant+= $offer->remnant;
             }
-            $product->updateAttributes(['remnant' => $remnant]);
-            if ($remnant === null){$remnant = 0;}
-
-            if ($remnant > 0 )
-                {
-                    $product->updateAttributes(['is_active' => 1]);
-                    \shop\entities\Shop\Product\Product::findOne(['id' => $product->id])->updateAttributes(['quantity' => $remnant,'status' => 1]);
-                }
-            else
-                {
-                    $product->updateAttributes(['is_active' => 0]);
-                    \shop\entities\Shop\Product\Product::findOne(['id' => $product->id])->updateAttributes(['quantity' => $remnant,'status' => 0]);
-                }
+            $isActive = $remnant > 0 ?  1 : 0;
+            $product->updateAttributes(['remnant' => $remnant,'is_active' => $isActive]);
+        }
+    }
+    public static function activateProduct()
+    {
+        $products = Product::find()->all();
+        foreach ($products as $product){
+            $product->is_active ?
+                \shop\entities\Shop\Product\Product::findOne(['id' => $product->id])->updateAttributes(['quantity' => $product->remnant,'status' => 1])
+                :
+                \shop\entities\Shop\Product\Product::findOne(['id' => $product->id])->updateAttributes(['quantity' => $product->remnant,'status' => 0]);
 
         }
     }
-
     public static function loadBrand()
     {
         /* Хардкордно закодировано свойство, по которому загружаем бренды (условие работы имеенно с магазином ТАНА )*/

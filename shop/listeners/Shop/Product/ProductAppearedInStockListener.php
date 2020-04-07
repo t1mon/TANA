@@ -29,7 +29,8 @@ class ProductAppearedInStockListener
             foreach ($this->users->getAllByProductInWishList($event->product->id) as $user) {
                 if ($user->isActive()) {
                     try {
-                        $this->sendEmailNotification($user, $event->product);
+                        //$this->sendEmailNotification($user, $event->product);
+                        file_put_contents(\Yii::getAlias('@frontend') . '/runtime/sendEmailNotification.log', "Предложение загружено" . "\n", FILE_APPEND);
                     } catch (\Exception $e) {
                         $this->errorHandler->handleException($e);
                     }

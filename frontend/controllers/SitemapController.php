@@ -116,7 +116,7 @@ class SitemapController extends Controller
 
     public function actionShopCategories(): Response
     {
-        return $this->renderSitemap('sitemap-blog-categories', function () {
+        return $this->renderSitemap('sitemap-shop-categories', function () {
             return $this->sitemap->generateMap(array_map(function (ShopCategory $category) {
                 return new MapItem(
                     Url::to(['/shop/catalog/category', 'id' => $category->id], true),

@@ -14,317 +14,244 @@ use yii\widgets\Breadcrumbs;
 use shop\entities\Shop\Category;
 
 AppAsset::register($this);
-//\frontend\assets\FontAwesomeAsset::register($this);
 \frontend\widgets\JgrowlWidget::widget();
 ?>
 <?php $this->beginPage() ?>
-
 <!DOCTYPE html>
 <html lang="ru-RU">
 <head>
-    <!--Google analytics-->
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-111095563-1', 'auto'); //ТУТ МЕНЯТЬ НОМЕР НА СВОЙ
-        ga('require', 'displayfeatures');
-        ga('send', 'pageview');
-
-        /* Accurate bounce rate by time */
-        if (!document.referrer ||
-            document.referrer.split('/')[2].indexOf(location.hostname) != 0)
-            setTimeout(function(){
-                ga('send', 'event', 'Новый посетитель', location.pathname);
-            }, 15000);</script>
-
-    <!--Google analytics-->
-<meta charset="<?= Yii::$app->charset ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="yandex-verification" content="5a09ace581bf0355" />
-    <meta name="google-site-verification" content="iOAJxOaiXvTY-De4ash5bJOIDAbaVrG5033k9y7Ij1o" />
+    <meta charset="<?= Yii::$app->charset ?>">
     <?= Html::csrfMetaTags() ?>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title><?= Html::encode($this->title) ?></title>
     <link href="<?= Html::encode(Url::canonical()) ?>" rel="canonical"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php Yii::$app->view->registerLinkTag(['rel' => 'shortcut icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/favicon.ico')]);?>
-    <!-- <link rel="shortcut icon" href="<?= Yii::getAlias('@web/favicon.ico') ?>" type="image/x-icon"/>
-    <link rel="icon" href="<?= Yii::getAlias('@web/favicon.ico') ?>" type="image/x-icon"/> -->
-
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript" >
-        (function (d, w, c) {
-            (w[c] = w[c] || []).push(function() {
-                try {
-                    w.yaCounter46982373 = new Ya.Metrika({
-                        id:46982373,
-                        clickmap:true,
-                        trackLinks:true,
-                        accurateTrackBounce:true,
-                        webvisor:true
-                    });
-                } catch(e) { }
-            });
-
-            var n = d.getElementsByTagName("script")[0],
-                s = d.createElement("script"),
-                f = function () { n.parentNode.insertBefore(s, n); };
-            s.type = "text/javascript";
-            s.async = true;
-            s.src = "https://mc.yandex.ru/metrika/watch.js";
-
-            if (w.opera == "[object Opera]") {
-                d.addEventListener("DOMContentLoaded", f, false);
-            } else { f(); }
-        })(document, window, "yandex_metrika_callbacks");
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/46982373" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
-    <!-- pozvonim-->
-    <!--<script crossorigin="anonymous" async type="text/javascript" src="//api.pozvonim.com/widget/callback/v3/6ec34d3f2c2b1ff57be222c4315105fb/connect" id="check-code-pozvonim" charset="UTF-8"></script>-->
-    <!--pozvonim End-->
-    <script type="text/javascript">(window.Image ? (new Image()) : document.createElement('img')).src = 'https://vk.com/rtrg?p=VK-RTRG-221769-4a4DJ';</script>
     <?php $this->head() ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
-<!-- LOADER ===========================================-->
 
-<!--<div id="loader">
-  <div class="loader">
-    <div class="position-center-center"> <img src="/image/logo-dark-new.png" alt="">
-      
-      <p class="font-playfair text-center">Загрузка...</p>
-      <div class="loading">
-      	<div class="ball"></div>
-        <div class="ball"></div>
-        <div class="ball"></div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<!-- Page Wrap -->
-<div id="wrap">
-
-  <!-- Header -->
-  <header class="header-style-2 header-style-3">
-    <!-- Top Bar -->
-    <div class="top-bar">
-      <div class="container">
-        <!-- Language -->
-        <!--<div class="language"> <a href="#." class="active">EN</a> <a href="#.">FR</a> <a href="#.">GE</a> </div>-->
-          <i  style="font-size: 1.3em" class="fa fa-phone" aria-hidden="true"> <a href="tel:+78462151665"><b>8(846)215-16-65,</b></a><a href="tel:+79270061701"><b> +7(927)006-17-01</b></a></i>
-          <!--<i class="fa fa-clock-o" aria-hidden="true">24/7</i>-->
-
-
-          <div class="top-links">
-            <ul>
-                <?php if (Yii::$app->user->isGuest): ?>
-                    <li><a href="<?= Html::encode(Url::to(['/auth/auth/login'])) ?>">ВОЙТИ</a></li>
-                    <li><a href="<?= Html::encode(Url::to(['/auth/signup/request'])) ?>">РЕГИСТРАЦИЯ</a></li>
-                <?php else: ?>
-                    <li><a href="<?= Html::encode(Url::to(['/cabinet/default/index'])) ?>">ПРОФИЛЬ</a></li>
-                    <li><a href="<?= Html::encode(Url::to(['/auth/auth/logout'])) ?>" data-method="post">ВЫЙТИ</a></li>
-                <?php endif; ?>
-                <li><a href="<?= Html::encode(Url::to(['/cabinet/wishlist/index'])) ?>" id="wishlist-total"
-                       title="Wish List"><i class="fa fa-heart"></i> <span class="hidden-xs hidden-sm hidden-md">Мои Желания</span></a>
-                </li>
-                <li><a href="<?= Url::to(['/shop/cart/index']) ?>" title="Корзина"><i
-                                class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">Корзина</span></a>
-                </li>
-               <!-- <li><a href="/index.php?route=checkout/checkout" title="Checkout"><i
-                                class="fa fa-share"></i> <span class="hidden-xs hidden-sm hidden-md">Checkout</span></a>
-                </li> -->
-                <!--<li class="font-montserrat">CURRENCY:
-                    <select class="selectpicker">
-                        <option>USD</option>
-                        <option>EURO</option>
-                    </select>
-                </li>-->
-            </ul>
-          <!-- Social Icons -->
-          <ul class="social_icons">
-            <li class="facebook"><a href="<?=Url::to('https://vk.com/mebelstyle.online')?> " target="_blank"><i class="fa fa-vk"></i> </a></li>
-            <!--<li class="twitter"><a href="#."><i class="fa fa-twitter"></i> </a></li>
-            <li class="dribbble"><a href="#."><i class="fa fa-instagram"></i> </a></li> -->
-           <!-- <li class="googleplus"><a href="#."><i class="fa fa-google-plus"></i> </a></li>
-            <li class="linkedin"><a href="#."><i class="fa fa-linkedin"></i> </a></li> -->
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Logo -->
-    <div class="sticky">
+<?=$content?>
+<footer class="footer-area pt-100 pb-70">
     <div class="container">
-        <div class="logo"> <a href="<?= Url::home() ?>"><img src="<?= Yii::getAlias('@web/image/logo-dark-new.png') ?>" alt="<?=$this->title?>"></a> </div>
-
-        <!-- Nav -->
-      <!-- Nav -->
-        <nav class="webimenu">
-          <!-- MENU BUTTON RESPONSIVE -->
-          <div class="menu-toggle"> <i class="fa fa-bars"> </i> </div>
-          <ul class="ownmenu">
-              <li class="active"><a href="<?=Url::to(['/site/index'])?>">Главная</a></li>
-              <li class="active"><a href="<?=Url::to(['/shop/catalog/index'])?>">Каталог</a></li>
-              <li class="active"><a href="<?=Url::to(['/blog/post/index'])?>">Блог</a></li>
-              <li class="active"><a href="<?=Url::to(['/page/delivery'])?>">Доставка/Оплата</a></li>
-              <li class="active"><a href="<?=Url::to(['/contact/index'])?>">Контакты</a></li>
-              <li><a href="tel:+79270061701"><i class="fa fa-phone" aria-hidden="true"></i><b> +7(927)006-17-01</b></a> </li>
-
-          <!--======= Shopping Cart =========-->
-              <?= CartWidget::widget() ?>
-          <!--======= SEARCH ICON =========-->
-                  <li class="search-nav sub-menu">
-                      <a href="#."><i class="fa fa-search"></i></a>
-                    <ul class="dropdown">
-                      <li class="row">
-                          <?= Html::beginForm(['/shop/catalog/search'], 'get') ?>
-                        <div class="col-sm-4 no-padding">
-                            <?php
-                            $items = \yii\helpers\ArrayHelper::map(Category::find()->where(['<>','id',1])->all(),'id','name');
-                            ?>
-                            <?= Html::dropDownList('category', 'null', $items,['class'=>'selectpicker','prompt'=>'Выберите категорию...','onchange'=>'location ="/shop/catalog/search?category="+this.value;']);?>
-                        </div>
-                        <div class="col-sm-8 no-padding">
-                          <input type="search" name="text" class="form-control" placeholder="Поиск...">
-                          <button type="submit"> <i class="fa fa-search"></i> </button>
-                        </div>
-                          <?= Html::endForm() ?>
-                      </li>
-                    </ul>
-                  </li>
-        </ul>
-      </nav>
-    </div>
-    </div>
-  </header>
-  <!-- Header End -->
-    <div class="content">
-    <!--======= SUB BANNER =========-->
-<?php if (Yii::$app->controller->id != 'site'):?>
-    <section class="sub-banner animate fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
-        <div class="container">
-            <h1><?=isset($this->params['breadcrumbs']) ? \shop\helpers\TitleHelper::getTitleProductCategory($this->params['breadcrumbs']): ''?></h1>
-            <!-- Breadcrumb -->
-            <?= Breadcrumbs::widget([
-                'tag' => 'ol',
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]) ?>
-        </div>
-    </section>
-<?php endif; ?>
-<!---
-<div class="container">
         <div class="row">
-            <?= Alert::widget() ?>
+            <div class="col-lg-2 col-md-4 col-sm-4">
+                <div class="copyright mb-30">
+                    <div class="footer-logo">
+                        <a href="index.html">
+                            <img alt="" src="img/logo/logo.png">
+                        </a>
+                    </div>
+                    <p>© 2019 <a href="#">Flone</a>.<br> All Rights Reserved</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4">
+                <div class="footer-widget mb-30 ml-30">
+                    <div class="footer-title">
+                        <h3>ABOUT US</h3>
+                    </div>
+                    <div class="footer-list">
+                        <ul>
+                            <li><a href="about.html">About us</a></li>
+                            <li><a href="#">Store location</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="#">Orders tracking</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4">
+                <div class="footer-widget mb-30 ml-50">
+                    <div class="footer-title">
+                        <h3>USEFUL LINKS</h3>
+                    </div>
+                    <div class="footer-list">
+                        <ul>
+                            <li><a href="#">Returns</a></li>
+                            <li><a href="#">Support Policy</a></li>
+                            <li><a href="#">Size guide</a></li>
+                            <li><a href="#">FAQs</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-6">
+                <div class="footer-widget mb-30 ml-75">
+                    <div class="footer-title">
+                        <h3>FOLLOW US</h3>
+                    </div>
+                    <div class="footer-list">
+                        <ul>
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Twitter</a></li>
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">Youtube</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="footer-widget mb-30 ml-70">
+                    <div class="footer-title">
+                        <h3>SUBSCRIBE</h3>
+                    </div>
+                    <div class="subscribe-style">
+                        <p>Get E-mail updates about our latest shop and special offers.</p>
+                        <div class="subscribe-form">
+                            <form class="validate" novalidate="" target="_blank" name="mc-embedded-subscribe-form" method="post" action="http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef">
+                                <div class="mc-form">
+                                    <input class="email" type="email" required="" placeholder="Enter your email here.." name="EMAIL" value="">
+                                    <div class="mc-news" aria-hidden="true">
+                                        <input type="text" value="" tabindex="-1" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef">
+                                    </div>
+                                    <div class="clear">
+                                        <input class="button" type="submit" name="subscribe" value="Subscribe">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-</div>
---->
-
-    <?= $content ?>
-
     </div>
-
-  <!--======= Footer =========-->
-  <footer>
-    <div class="container">
-      <div class="text-center"> <a href="#."><img src="/image/logo.png" alt=""></a><br>
-        <img class="margin-t-40" src="/image/hammer.png" alt="">
-        <p class="intro-small margin-t-40">Мебельный ОНЛАЙН магазин в Самаре MEBEL-STYLE. Мы знаем, какую мебель вы предпочитаете.</p>
-      </div>
-      
-      <!--  Footer Links -->
-      <div class="footer-link row">
-        <div class="col-md-6">
-          <ul>
-            
-            <!--  INFOMATION -->
-            <li class="col-sm-6">
-              <h5>ИНФОРМАЦИЯ</h5>
-              <ul class="f-links">
-                <li><a href="<?= Html::encode(Url::to(['/contact/index'])) ?>">КОНТАКТЫ</a></li>
-                <li><a href="#.">ИНФОРМАЦИЯ О ДОСТАВКЕ</a></li>
-                <li><a href="#.">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a></li>
-              </ul>
-            </li>
-            
-            <!-- MY ACCOUNT -->
-            <li class="col-sm-6">
-              <h5>ПРОФИЛЬ</h5>
-              <ul class="f-links">
-                <li><a href="<?= Html::encode(Url::to(['/cabinet/default/index'])) ?>">МОЙ ПРОФИЛЬ</a></li>
-                <li><a href="<?= Html::encode(Url::to(['/auth/auth/login'])) ?>"> ВОЙТИ</a></li>
-                <li><a href="<?= Html::encode(Url::to(['/shop/cart/index'])) ?>"> МОЯ КОРЗИНА</a></li>
-                <li><a href="<?= Html::encode(Url::to(['/cabinet/wishlist/index']))?>"> МОЙ ЖЕЛАНИЯ</a></li>
-                <li><a href="<?= Html::encode(Url::to(['/shop/checkout/index']))?>"> ОФОРМИТЬ ЗАКАЗ</a></li>
-              </ul>
-            </li>
-          </ul>
+</footer>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-5 col-sm-12 col-xs-12">
+                        <div class="tab-content quickview-big-img">
+                            <div id="pro-1" class="tab-pane fade show active">
+                                <img src="img/product/quickview-l1.jpg" alt="">
+                            </div>
+                            <div id="pro-2" class="tab-pane fade">
+                                <img src="img/product/quickview-l2.jpg" alt="">
+                            </div>
+                            <div id="pro-3" class="tab-pane fade">
+                                <img src="img/product/quickview-l3.jpg" alt="">
+                            </div>
+                            <div id="pro-4" class="tab-pane fade">
+                                <img src="img/product/quickview-l2.jpg" alt="">
+                            </div>
+                        </div>
+                        <!-- Thumbnail Large Image End -->
+                        <!-- Thumbnail Image End -->
+                        <div class="quickview-wrap mt-15">
+                            <div class="quickview-slide-active owl-carousel nav nav-style-1" role="tablist">
+                                <a class="active" data-toggle="tab" href="#pro-1"><img src="img/product/quickview-s1.jpg" alt=""></a>
+                                <a data-toggle="tab" href="#pro-2"><img src="img/product/quickview-s2.jpg" alt=""></a>
+                                <a data-toggle="tab" href="#pro-3"><img src="img/product/quickview-s3.jpg" alt=""></a>
+                                <a data-toggle="tab" href="#pro-4"><img src="img/product/quickview-s2.jpg" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-12 col-xs-12">
+                        <div class="product-details-content quickview-content">
+                            <h2>Products Name Here</h2>
+                            <div class="product-details-price">
+                                <span>$18.00 </span>
+                                <span class="old">$20.00 </span>
+                            </div>
+                            <div class="pro-details-rating-wrap">
+                                <div class="pro-details-rating">
+                                    <i class="fa fa-star-o yellow"></i>
+                                    <i class="fa fa-star-o yellow"></i>
+                                    <i class="fa fa-star-o yellow"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                </div>
+                                <span>3 Reviews</span>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisic elit eiusm tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim venialo quis nostrud exercitation ullamco</p>
+                            <div class="pro-details-list">
+                                <ul>
+                                    <li>- 0.5 mm Dail</li>
+                                    <li>- Inspired vector icons</li>
+                                    <li>- Very modern style  </li>
+                                </ul>
+                            </div>
+                            <div class="pro-details-size-color">
+                                <div class="pro-details-color-wrap">
+                                    <span>Color</span>
+                                    <div class="pro-details-color-content">
+                                        <ul>
+                                            <li class="blue"></li>
+                                            <li class="maroon active"></li>
+                                            <li class="gray"></li>
+                                            <li class="green"></li>
+                                            <li class="yellow"></li>
+                                            <li class="white"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="pro-details-size">
+                                    <span>Size</span>
+                                    <div class="pro-details-size-content">
+                                        <ul>
+                                            <li><a href="#">s</a></li>
+                                            <li><a href="#">m</a></li>
+                                            <li><a href="#">l</a></li>
+                                            <li><a href="#">xl</a></li>
+                                            <li><a href="#">xxl</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pro-details-quality">
+                                <div class="cart-plus-minus">
+                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="2">
+                                </div>
+                                <div class="pro-details-cart btn-hover">
+                                    <a href="#">Add To Cart</a>
+                                </div>
+                                <div class="pro-details-wishlist">
+                                    <a href="#"><i class="fa fa-heart-o"></i></a>
+                                </div>
+                                <div class="pro-details-compare">
+                                    <a href="#"><i class="pe-7s-shuffle"></i></a>
+                                </div>
+                            </div>
+                            <div class="pro-details-meta">
+                                <span>Categories :</span>
+                                <ul>
+                                    <li><a href="#">Minimal,</a></li>
+                                    <li><a href="#">Furniture,</a></li>
+                                    <li><a href="#">Electronic</a></li>
+                                </ul>
+                            </div>
+                            <div class="pro-details-meta">
+                                <span>Tag :</span>
+                                <ul>
+                                    <li><a href="#">Fashion, </a></li>
+                                    <li><a href="#">Furniture,</a></li>
+                                    <li><a href="#">Electronic</a></li>
+                                </ul>
+                            </div>
+                            <div class="pro-details-social">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <!-- Second Row -->
-        <div class="col-md-6">
-          <ul class="row">
-              <li class="col-sm-12">
-                  <h5>НАША ГРУППА ВК</h5>
-                  <script type="text/javascript" src="//vk.com/js/api/openapi.js?151"></script>
-
-                  <!-- VK Widget -->
-                  <div id="vk_groups"></div>
-                  <script type="text/javascript">
-                      VK.Widgets.Group("vk_groups", {mode: 2, width: "auto", height:"auto"}, 132528657);
-                  </script>
-              </li>
-            
-            <!-- TWITTER -->
-           <!-- <li class="col-sm-6">
-              <h5>TWITTER</h5>
-              <p>Check out new work on my @Behance portfolio: "BCreative_Multipurpose Theme" http://on.be.net/1zOOfBQ </p>
-            </li> -->
-            
-            <!-- FLICKR PHOTO -->
-           <!-- <li class="col-sm-6">
-              <h5>FLICKR PHOTO</h5>
-              <ul class="flicker">
-                <li><a href="#."><img src="/image/flicker-1.jpg" alt=""></a></li>
-                <li><a href="#."><img src="/image/flicker-2.jpg" alt=""></a></li>
-                <li><a href="#."><img src="/image/flicker-3.jpg" alt=""></a></li>
-                <li><a href="#."><img src="/image/flicker-4.jpg" alt=""></a></li>
-                <li><a href="#."><img src="/image/flicker-5.jpg" alt=""></a></li>
-                <li><a href="#."><img src="/image/flicker-6.jpg" alt=""></a></li>
-              </ul>
-            </li> -->
-          </ul>
-        </div>
-      </div>
-      
-      <!-- Rights -->
-      <div class="rights">
-          <p>© <?=date('Y')?> MEBEL-STYLE <?=Yii::powered()?> <a href="https://incweb.ru" target="_blank">Разработка IncWeb</a></p>
-      </div>
     </div>
-  </footer>  
-  <!-- GO TO TOP --> 
-  	<a href="#" class="cd-top"><i class="fa fa-angle-up"></i></a> 
-  <!-- GO TO TOP End -->
 </div>
-<!--EnvyBoxWidget-->
-<link rel="stylesheet" href="https://cdn.envybox.io/widget/cbk.css">
-<script type="text/javascript" src="https://cdn.envybox.io/widget/cbk.js?wcb_code=bee93ba5a71f30a9a5f28a223c5cc964" charset="UTF-8" async></script>
-<!-- Wrap End -->
+<!-- Modal end -->
 <?php $this->endBody() ?>
 </body>
 </html>
 <?php $this->endPage() ?>
-
-

@@ -8,7 +8,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-frontend',
-    'name'=>'MEBEL-STYLE: Онлайн магазин мебели в Самаре',
+    'name'=>'ТАНА ТРИКОТАЖ И ЧУЛОЧНО-НОСОЧНЫЕ ИЗДЕЛИЯ',
     'basePath' => dirname(__DIR__),
     'bootstrap' => [
         'log',

@@ -38,12 +38,12 @@ $url = Url::to(['product', 'id' =>$product->id]);
                         <!-- Rating Stars -->
                             <!--<li class="stars">
                                 <?php
-                                echo \kartik\widgets\StarRating::widget([
-                                    'name' => Html::encode($product->name),
-                                    'value' => $product->rating,
-                                    'disabled' => true,
-                                    'pluginOptions' => ['size'=>'md','displayOnly' => true]
-                                ]);
+//                                echo \kartik\widgets\StarRating::widget([
+//                                    'name' => Html::encode($product->name),
+//                                    'value' => $product->rating,
+//                                    'disabled' => true,
+//                                    'pluginOptions' => ['size'=>'md','displayOnly' => true]
+//                                ]);
                                 ?>
                             </li>
                     </ul> -->

@@ -122,12 +122,12 @@ class SetUp implements BootstrapInterface
                 ProductAppearedInStock::class => [ProductAppearedInStockListener::class],
                 ProductDraft::class => [ProductDraftListener::class],
                 EntityPersisted::class => [
-                    ProductSearchPersistListener::class,
-                    CategoryPersistenceListener::class,
-                ],
+                    //ProductSearchPersistListener::class,
+                   // CategoryPersistenceListener::class,
+               ],
                 EntityRemoved::class => [
-                    ProductSearchRemoveListener::class,
-                    CategoryPersistenceListener::class,
+                   // ProductSearchRemoveListener::class,
+                    //CategoryPersistenceListener::class,
                 ],
             ]);
         });

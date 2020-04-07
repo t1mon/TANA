@@ -1,0 +1,15 @@
+.widget-category-catalog a {
+    margin-left: 0 !important;
+    font-weight: 500 !important;
+}
+
+.widget-category-catalog .active {
+    color: #a749ff;
+    font-weight: bold !important;
+}
+.widget-category-catalog {
+    border-radius: 5px;
+    padding: 20px 10px 10px 20px;
+    background-color: #f7f7f7;
+    margin-bottom: 20px;
+}

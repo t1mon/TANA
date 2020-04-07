@@ -4,11 +4,11 @@
 /* @var $content string */
 
 use frontend\widgets\Shop\CategoriesWidget;
-
+use yii\widgets\Menu;
 ?>
-<?php $this->beginContent('@frontend/views/layouts/main.php') ?>
+<?php $this->beginContent('@frontend/views/layouts/mainOther.php') ?>
 <?php if (Yii::$app->controller->action->id == 'index'):?>
-<?php $this->title = 'Каталог мебели - каталог товаров и цены в Самаре';
+    <?php $this->title = 'Каталог мебели - каталог товаров и цены в Самаре';
     $this->registerMetaTag([
         'name' => 'keywords',
         'content' => 'мебель каталог товаров цены, мебель официальный каталог,мебель Самара каталог, мебель Самара каталог товаров цены'
@@ -21,114 +21,145 @@ use frontend\widgets\Shop\CategoriesWidget;
     ?>
 
 <?php endif;?>
-<section class="section-p-30px pages-in">
+
+
+
+<div class="shop-area pt-95 pb-100">
     <div class="container">
-        <div class="row">
+        <div class="row flex-row-reverse">
 
+            <?=$content?>
 
-
-            <!--======= SIDE BAR =========-->
-            <div class="col-sm-3 animate fadeInLeft" data-wow-delay="0.2s">
-                <div class="side-bar">
-                    <span style="font-size: 1.5em; font-weight: bold;">Фильтр</span>
-                    <div class="dropdown visible-xs hidden-sm hidden-md hidden-lg">
-                        <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-dark" data-target="#" href="#">
-                            Категории <span class="caret"></span>
-                        </a>
-                        <?= \frontend\widgets\Shop\CategoryWidgetPhone::widget([
-                            'active' => $this->params['active_category'] ?? null
-                        ])?>
+            <div class="col-lg-3">
+                <div class="sidebar-style mr-30">
+                    <div class="sidebar-widget">
+                        <h4 class="pro-sidebar-title">Search </h4>
+                        <div class="pro-sidebar-search mb-50 mt-25">
+                            <form class="pro-sidebar-search-form" action="#">
+                                <input type="text" placeholder="Search here...">
+                                <button>
+                                    <i class="pe-7s-search"></i>
+                                </button>
+                            </form>
+                        </div>
                     </div>
-                    <!-- HEADING -->
-                    <div class="heading hidden-xs visible-sm visible-md visible-lg">
-                        <span>КАТЕГОРИИ</span>
-
-                    <!-- CATEGORIES -->
-
-                        <?= CategoriesWidget::widget([
-                            'active' => $this->params['active_category'] ?? null
-                        ]) ?>
+                    <div class="sidebar-widget">
+                        <h4 class="pro-sidebar-title">Категории </h4>
+                        <div class="sidebar-widget-list mt-30">
+                            <?= CategoriesWidget::widget([
+                                'active' => $this->params['active_category'] ?? null
+                            ]) ?>
+                            <ul>
+                                <li>
+                                    <div class="sidebar-widget-list-left">
+                                        <input type="checkbox"> <a href="#">On Sale <span>4</span> </a>
+                                        <span class="checkmark"></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sidebar-widget-list-left">
+                                        <input type="checkbox" value=""> <a href="#">New <span>4</span></a>
+                                        <span class="checkmark"></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sidebar-widget-list-left">
+                                        <input type="checkbox" value=""> <a href="#">In Stock <span>4</span> </a>
+                                        <span class="checkmark"></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <?= $content ?>
-
-        </div>
-    </div>
-</section>
-<!-- HTML-код модального окна -->
-<div id="consultationModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <!-- Заголовок модального окна -->
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <span class="modal-title"></span>
-            </div>
-            <!-- Основное содержимое модального окна -->
-            <div class="modal-body">
-                <div class="avatar"><a target="_blank" href="https://vk.com/agibalova163"><img class="media-object img-circle" src="/image/avatar-11.png" align="left" alt=""></a>
-                    <em>Здравствуйте! Меня зовут Анастасия. Я готова перезвонить вам, и проконсультировать вас по возникшему вопросу. Просто заполните обязательные поля снизу и я вам позвоню.  </em>
-                </div>
-
-                        <!--======= FORM  =========-->
-                        <form role="form" id="consultation_form" class="contact-form" method="post" onsubmit="return false">
-                            <div class="row">
-                                <div class="col-md-12">
-                                                <input class="form-control" name="name" id="name_consultation" placeholder="*ИМЯ" type="text">
-                                                <input class="form-control " name="phone" id="phone_consultation" placeholder="*ТЕЛЕФОН" type="text">
-                                                <textarea class="form-control" name="message" id="message_consultation" rows="5" placeholder="Комментарий - Можете указать удобное для вас время звонка!"></textarea>
-                                </div>
+                    <div class="sidebar-widget mt-45">
+                        <h4 class="pro-sidebar-title">Filter By Price </h4>
+                        <div class="price-filter mt-10">
+                            <div class="price-slider-amount">
+                                <input type="text" id="amount" name="price"  placeholder="Add Your Price" />
                             </div>
-                        </form>
-
-
+                            <div id="slider-range"></div>
+                        </div>
+                    </div>
+                    <div class="sidebar-widget mt-50">
+                        <h4 class="pro-sidebar-title">Colour </h4>
+                        <div class="sidebar-widget-list mt-20">
+                            <ul>
+                                <li>
+                                    <div class="sidebar-widget-list-left">
+                                        <input type="checkbox" value=""> <a href="#">Green <span>4</span> </a>
+                                        <span class="checkmark"></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sidebar-widget-list-left">
+                                        <input type="checkbox" value=""> <a href="#">Cream <span>4</span> </a>
+                                        <span class="checkmark"></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sidebar-widget-list-left">
+                                        <input type="checkbox" value=""> <a href="#">Blue <span>4</span> </a>
+                                        <span class="checkmark"></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sidebar-widget-list-left">
+                                        <input type="checkbox" value=""> <a href="#">Black <span>4</span> </a>
+                                        <span class="checkmark"></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="sidebar-widget mt-40">
+                        <h4 class="pro-sidebar-title">Size </h4>
+                        <div class="sidebar-widget-list mt-20">
+                            <ul>
+                                <li>
+                                    <div class="sidebar-widget-list-left">
+                                        <input type="checkbox" value=""> <a href="#">XL</a>
+                                        <span class="checkmark"></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sidebar-widget-list-left">
+                                        <input type="checkbox" value=""> <a href="#">L</a>
+                                        <span class="checkmark"></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sidebar-widget-list-left">
+                                        <input type="checkbox" value=""> <a href="#">SM</a>
+                                        <span class="checkmark"></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sidebar-widget-list-left">
+                                        <input type="checkbox" value=""> <a href="#">XXL</a>
+                                        <span class="checkmark"></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="sidebar-widget mt-50">
+                        <h4 class="pro-sidebar-title">Tag </h4>
+                        <div class="sidebar-widget-tag mt-25">
+                            <ul>
+                                <li><a href="#">Clothing</a></li>
+                                <li><a href="#">Accessories</a></li>
+                                <li><a href="#">For Men</a></li>
+                                <li><a href="#">Women</a></li>
+                                <li><a href="#">Fashion</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- Футер модального окна -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-dark" data-dismiss="modal">Отменить покупку</button>
-                <button id="submit_consultation" type="button" class="btn btn-consultation">Купить</button>
-            </div>
+
         </div>
     </div>
 </div>
 
-<?php
-$script = <<<JS
-$("#price-range").noUiSlider({
-    range: {
-      'min': [ 0 ],
-      'max': [ 1000 ]
-    },
-    start: [80, 940],
-        connect:true,
-        serialization:{
-            lower: [
-        $.Link({
-          target: $("#price-min")
-        })
-      ],
-      upper: [
-        $.Link({
-          target: $("#price-max")
-        })
-      ],
-      format: {
-      // Set formatting
-        decimals: 2,
-        prefix: '$'
-      }
-        }
-  });
 
-JS;
-
-$this->registerJs($script,yii\web\View::POS_READY);
-?>
 <?php $this->endContent() ?>
-
-
-
-
-
