@@ -41,16 +41,16 @@ class CategoryReadRepository
 
     public function getTreeWithSubsOf(Category $category = null): array
     {
-        $query = Category::find()->andWhere(['>', 'depth', 0])->orderBy('lft');
+        $query = Category::find()->andWhere(['>', 'depth', 1])->orderBy('lft');
 
         if ($category) {
-            $criteria = ['or', ['depth' => 1]];
+            $criteria = ['or', ['depth' => 2]];
             foreach (ArrayHelper::merge([$category], $category->getParents()->all()) as $item) {
                 $criteria[] = ['and', ['>', 'lft', $item->lft], ['<', 'rgt', $item->rgt], ['depth' => $item->depth + 1]];
             }
             $query->andWhere($criteria);
         } else {
-            $query->andWhere(['depth' => 1]);
+            $query->andWhere(['depth' => 2]);
         }
             $counts = $query->count();
         return array_map(function (Category $category) use ($counts) {

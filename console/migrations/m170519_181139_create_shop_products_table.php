@@ -21,7 +21,7 @@ class m170519_181139_create_shop_products_table extends Migration
             'meta_json' => $this->text(),
         ], $tableOptions);
 
-        $this->createIndex('{{%idx-shop_products-code}}', '{{%shop_products}}', 'code', true);
+        //$this->createIndex('{{%idx-shop_products-code}}', '{{%shop_products}}', 'code', true);
         
         $this->createIndex('{{%idx-shop_products-category_id}}', '{{%shop_products}}', 'category_id');
         $this->createIndex('{{%idx-shop_products-brand_id}}', '{{%shop_products}}', 'brand_id');

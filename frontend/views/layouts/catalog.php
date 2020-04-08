@@ -23,7 +23,6 @@ use yii\widgets\Menu;
 <?php endif;?>
 
 
-
 <div class="shop-area pt-95 pb-100">
     <div class="container">
         <div class="row flex-row-reverse">

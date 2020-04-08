@@ -7029,22 +7029,22 @@ a.default-btn {
     .pro-pagination-style ul li a:hover {
       background-color: #a749ff;
       color: #fff; }
-  .pro-pagination-style ul li a.active {
+  .pro-pagination-style ul li.active a {
     background-color: #a749ff;
     color: #fff;
     -webkit-box-shadow: none;
     box-shadow: none; }
-    .pro-pagination-style ul li a.active:hover {
+    .pro-pagination-style ul li.active a:hover {
       background-color: #333; }
-  .pro-pagination-style ul li a.prev,
-  .pro-pagination-style ul li a.next {
+  .pro-pagination-style ul li.prev a,
+  .pro-pagination-style ul li.next a {
     background-color: #f6f6f6;
     color: #a749ff;
     font-size: 17px;
     -webkit-box-shadow: none;
     box-shadow: none; }
-    .pro-pagination-style ul li a.prev:hover,
-    .pro-pagination-style ul li a.next:hover {
+    .pro-pagination-style ul li.prev a:hover,
+    .pro-pagination-style ul li.next a:hover {
       background-color: #a749ff;
       color: #fff; }
 

@@ -45,7 +45,9 @@
         "himiklab/yii2-recaptcha-widget" : "*",
         "kartik-v/yii2-grid": "dev-master",
         "carono/yii2-1c-exchange": "^0.2.9",
-        "yiisoft/yii2-bootstrap4": "^2.0"
+        "yiisoft/yii2-bootstrap4": "^2.0",
+        "wokster/yii2-nested-sets-tree-behavior": "*",
+        "2amigos/yii2-transliterator-helper": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

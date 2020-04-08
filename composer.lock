@@ -4,8 +4,51 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "186b02380d43eb60af8cc6d42fc37d40",
+    "content-hash": "9174d39d769506e52d80d74cb3943d23",
     "packages": [
+        {
+            "name": "2amigos/yii2-transliterator-helper",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/2amigos/yii2-transliterator-helper.git",
+                "reference": "d43b5b58b55ef79bcaf092e70eaa30f458417dd5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/2amigos/yii2-transliterator-helper/zipball/d43b5b58b55ef79bcaf092e70eaa30f458417dd5",
+                "reference": "d43b5b58b55ef79bcaf092e70eaa30f458417dd5",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "dosamigos\\transliterator\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Antonio Ramirez",
+                    "email": "ramirez.cobos@gmail.com",
+                    "homepage": "http://2amigos.us"
+                }
+            ],
+            "description": "Transliterator Helper for Yii2.",
+            "keywords": [
+                "extension",
+                "helper",
+                "transliterator",
+                "yii"
+            ],
+            "time": "2017-06-20T15:23:26+00:00"
+        },
         {
             "name": "almasaeed2010/adminlte",
             "version": "v2.4.18",
@@ -478,6 +521,46 @@
                 "yii"
             ],
             "time": "2013-12-10T17:49:58+00:00"
+        },
+        {
+            "name": "creocoder/yii2-nested-sets",
+            "version": "0.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/creocoder/yii2-nested-sets.git",
+                "reference": "cb8635a459b6246e5a144f096b992dcc30cf9954"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/creocoder/yii2-nested-sets/zipball/cb8635a459b6246e5a144f096b992dcc30cf9954",
+                "reference": "cb8635a459b6246e5a144f096b992dcc30cf9954",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "creocoder\\nestedsets\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Kochetov",
+                    "email": "creocoder@gmail.com"
+                }
+            ],
+            "description": "The nested sets behavior for the Yii framework",
+            "keywords": [
+                "nested sets",
+                "yii2"
+            ],
+            "time": "2015-01-27T10:53:51+00:00"
         },
         {
             "name": "dmstr/yii2-adminlte-asset",
@@ -3419,6 +3502,52 @@
                 "validate"
             ],
             "time": "2020-02-14T12:15:55+00:00"
+        },
+        {
+            "name": "wokster/yii2-nested-sets-tree-behavior",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wokster/yii2-nested-sets-tree-behavior.git",
+                "reference": "fd9e4d1f39986772a0fe384396be3230d70ec3c2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wokster/yii2-nested-sets-tree-behavior/zipball/fd9e4d1f39986772a0fe384396be3230d70ec3c2",
+                "reference": "fd9e4d1f39986772a0fe384396be3230d70ec3c2",
+                "shasum": ""
+            },
+            "require": {
+                "creocoder/yii2-nested-sets": "^0.9.0",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "wokster\\treebehavior\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maksym Tymofeiev",
+                    "email": "wokster@list.ru"
+                }
+            ],
+            "description": "NestedSetsTreeBehavior for build array from creocoder nested sets behavior and fancytree widget",
+            "keywords": [
+                "Behavior",
+                "array",
+                "creocoder",
+                "extension",
+                "fancytree",
+                "nested sets",
+                "yii2"
+            ],
+            "time": "2017-07-27T17:03:14+00:00"
         },
         {
             "name": "yii-cms/yii2-robokassa",

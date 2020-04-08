@@ -10,6 +10,8 @@ use shop\Exchange_1C\Model\PropertyModel;
 use shop\Exchange_1C\Model\PropertyValueModel;
 use shop\Exchange_1C\Model\PvProductPropertyModel;
 use shop\Exchange_1C\Model\PvProductRequisiteModel;
+use shop\Exchange_1C\Model\queue\OfferQueue1C;
+use shop\Exchange_1C\Model\queue\ProductQueue1C;
 use shop\Exchange_1C\Model\RequisiteModel;
 use yii\db\ActiveRecord;
 
@@ -84,7 +86,9 @@ class Product extends ActiveRecord implements ProductInterface
         $offerModel->product_id = $this->id;
         if ($offerModel->getDirtyAttributes()) {
             $offerModel->save();
+            //\Yii::$app->queue->push(new OfferQueue1C($offerModel));
         }
+        //file_put_contents(\Yii::getAlias('@frontend') . '/runtime/offer.log', serialize($data). "\n", FILE_APPEND);
         return $offerModel;
     }
 
@@ -98,6 +102,8 @@ class Product extends ActiveRecord implements ProductInterface
         $model->description = (string)$product->Описание;
         $model->article = (string)$product->Артикул;
         $model->save();
+        //\Yii::$app->queue->push(new ProductQueue1C($model));
+        //file_put_contents(\Yii::getAlias('@frontend') . '/runtime/product.log', serialize($data). "\n", FILE_APPEND);
         return $model;
 
     }

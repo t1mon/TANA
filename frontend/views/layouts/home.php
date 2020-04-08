@@ -1088,7 +1088,10 @@ $this->registerMetaTag([
         </div>
         <div id="menu" class="text-left clickable-menu-style">
             <ul>
+            <?php //if ($this->beginCache('category_widget_home', ['duration' => 0])) : ?>
                 <?=\frontend\widgets\Shop\CategoriesWidgetHome::widget()?>
+            <?php //$this->endCache();?>
+            <?php //endif;?>
                 <li>
                     <a href="index.html">home</a>
                     <ul>

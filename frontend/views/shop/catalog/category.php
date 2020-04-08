@@ -20,24 +20,8 @@ $this->params['breadcrumbs'][] = $category->name;
 
 $this->params['active_category'] = $category;
 ?>
-<div class="col-sm-9 animate fadeInUp" data-wow-delay="0.2s">
-<!--<h1><?= Html::encode($category->getHeadingTile()) ?></h1>-->
-
-<?php /*= $this->render('_subcategories', [
-    'category' => $category
-]) */?>
-
-
 
 <?= $this->render('_list', [
     'dataProvider' => $dataProvider
 ]) ?>
-    <?php if (trim($category->description)): ?>
-        <!--<div class="panel panel-default">
-            <div class="panel-body"> -->
-        <?=$category->description?>
-        <!--  </div>
-      </div> -->
-    <?php endif; ?>
-</div>
 

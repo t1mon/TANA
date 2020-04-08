@@ -31,7 +31,6 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-
 <?=$content?>
 <footer class="footer-area pt-100 pb-70">
     <div class="container">

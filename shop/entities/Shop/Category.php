@@ -6,6 +6,7 @@ use paulzi\nestedsets\NestedSetsBehavior;
 use shop\entities\behaviors\MetaBehavior;
 use shop\entities\Meta;
 use shop\entities\Shop\queries\CategoryQuery;
+use wokster\treebehavior\NestedSetsTreeBehavior;
 use yii\db\ActiveRecord;
 
 /**
@@ -70,6 +71,13 @@ class Category extends ActiveRecord
         return [
             MetaBehavior::className(),
             NestedSetsBehavior::className(),
+            NestedSetsTreeBehavior::className(),
+            'slug' => [
+                'class' => 'shop\entities\behaviors\SlugBehavior',
+                'in_attribute' => 'name',
+                'out_attribute' => 'slug',
+                'translit' => true
+                ],
         ];
     }
 

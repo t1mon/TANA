@@ -10,25 +10,41 @@ use yii\helpers\Html;
 
 class CategoriesWidgetHome extends Widget
 {
-    /** @var Category|null */
-    public $active;
+    public $tpl;
+    public $tree;
+    public $menuHtml;
 
-    private $categories;
-
-    public function __construct(CategoryReadRepository $categories, $config = [])
-    {
-        parent::__construct($config);
-        $this->categories = $categories;
-    }
 
     public function run(): string
     {
         $categories = Category::find()->andWhere(['>', 'depth', 0])->orderBy('lft')->andWhere(['depth' => 1])->all();
+//        $this->tree = Category::findOne(1)->tree();
+//        $this->menuHtml = $this->getMenuHtml($this->tree[0]['children']);
+        //echo  $test[0]['children'][0]['id'];
+
+
 
         return $this->render('categories-home', [
             'categories' => $categories,'home'=>$this
         ]);
 
+        //return $this->menuHtml;
+    }
+
+    protected function getMenuHtml($tree)
+    {
+        $str = '';
+        foreach ($tree as $category=>$item){
+            $str .= $this->catToTemplate($item);
+        }
+        return $str;
+    }
+
+    protected function catToTemplate($category)
+    {
+        ob_start();
+        include __DIR__ . '/menu_tpl/' . 'menu.php';
+        return ob_get_clean();
     }
 
     public function cate($category)
