@@ -58,6 +58,7 @@ class ProductLoad
 
         self::loadBrand();
         self::loadCharacteristic();
+        self::work();
         //self::loadProduct();
         //self::loadModification();
 
@@ -79,28 +80,11 @@ class ProductLoad
 
     /* Работа с Магазином */
 
-    public static function updateRemnant()
+    public static function work()
     {
-        $products = Product::find()->all();
+        $products = Product::find()->each();
         foreach ($products as $product){
-            $remnant = 0;
-            foreach ($product->offers as $offer){
-                $remnant+= $offer->remnant;
-            }
-            $product->updateAttributes(['remnant' => $remnant]);
-            if ($remnant === null){$remnant = 0;}
-
-            if ($remnant > 0 )
-            {
-                $product->updateAttributes(['is_active' => 1]);
-                \shop\entities\Shop\Product\Product::findOne(['id' => $product->id])->updateAttributes(['quantity' => $remnant,'status' => 1]);
-            }
-            else
-            {
-                $product->updateAttributes(['is_active' => 0]);
-                \shop\entities\Shop\Product\Product::findOne(['id' => $product->id])->updateAttributes(['quantity' => $remnant,'status' => 0]);
-            }
-
+            self::updateRemnant($product);
         }
     }
 
@@ -111,15 +95,6 @@ class ProductLoad
         $property = PropertyModel::find()->andWhere(['name' => 'Торговая марка'])->one();
         foreach ($property->properties as $value)
         {
-//            $brands = Brand::find()->andWhere(['name' => $value->name])->one();
-//            if (!$brands) {
-//                try {
-//                    $brand = Brand::create($value->name, Inflector::slug($value->name), new Meta('', '', ''));
-//                    $brand->save();
-//                } catch (\DomainException $e) {
-//                    \Yii::$app->errorHandler->logException($e);
-//                }
-//            }
             $brands = Brand::find()->andWhere(['name' => $value->name])->one();
             if (!$brands) {
                 $data [] = [
@@ -135,25 +110,45 @@ class ProductLoad
     public static function loadCharacteristic()
     {
         $data = [];
-        $characteristics = SpecificationModel::find()->all();
+        $characteristics = SpecificationModel::find()->each();
         foreach ($characteristics as $c){
-//            if (!Characteristic::find()->andWhere(['name' => $c->name])->one()) {
-//                $characteristic = Characteristic::create(
-//                    $c->name,
-//                    Characteristic::TYPE_STRING,
-//                    0,
-//                    '',
-//                    [],
-//                    0
-//                );
-//                $characteristic->save();
-//            }
             if (!Characteristic::find()->andWhere(['name' => $c->name])->one()) {
                 $data [] = [$c->name, Characteristic::TYPE_STRING, 0, '', json_encode([]), 0];
             }
         }
         \Yii::$app->db->createCommand()->batchInsert('shop_characteristics', ['name', 'type', 'required','default','variants_json','sort'], $data)->execute();
     }
+
+   public static function updateRemnant(Product $product)
+   {
+           $remnant = 0;
+           foreach ($product->offers as $offer){
+               $remnant+= (int)$offer->remnant;
+           }
+           $active = $remnant > 0 ? 1 : 0;
+           $product->updateAttributes(['remnant' => $remnant, 'is_active'=>$active]);
+           unset($product);
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public static function loadProduct()
     {

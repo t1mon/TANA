@@ -153,7 +153,6 @@ class Product extends ActiveRecord implements ProductInterface
                 return $property->id;
             }
         }
-        unset($properties);
     }
 
     public function transactions()
