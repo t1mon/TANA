@@ -32,11 +32,11 @@ class ProductLoad
     public function afterProductSync()
     {
         //$product = Product::find()->orderBy('id DESC')->one();
-      /* $products = Product::find()->orderBy('id ASC')->all();
-       foreach ($products as $product) {
-           $category = $product->group1c->id;
-           file_put_contents(\Yii::getAlias('@frontend') . '/runtime/test.log', $product->name ." : ". $category . "\n", FILE_APPEND);
-       } */
+        /* $products = Product::find()->orderBy('id ASC')->all();
+         foreach ($products as $product) {
+             $category = $product->group1c->id;
+             file_put_contents(\Yii::getAlias('@frontend') . '/runtime/test.log', $product->name ." : ". $category . "\n", FILE_APPEND);
+         } */
 //        $form = new ProductCreateForm();
 //        $form->code = $product->article;
 //        $form->name = $product->name;
@@ -54,14 +54,12 @@ class ProductLoad
     public function afterOfferSync()
     {
 
-        self::updateRemnant();
+        //self::updateRemnant();
 
         self::loadBrand();
         self::loadCharacteristic();
-        self::loadProduct();
-        self::loadModification();
-
-        self::activateProduct();
+        //self::loadProduct();
+        //self::loadModification();
 
     }
 
@@ -79,7 +77,7 @@ class ProductLoad
         //file_put_contents(\Yii::getAlias('@frontend') . '/runtime/test.log', "_______Файд загружен на сервер" . "\n", FILE_APPEND);
     }
 
-   /* Работа с Магазином */
+    /* Работа с Магазином */
 
     public static function updateRemnant()
     {
@@ -89,55 +87,72 @@ class ProductLoad
             foreach ($product->offers as $offer){
                 $remnant+= $offer->remnant;
             }
-            $isActive = $remnant > 0 ?  1 : 0;
-            $product->updateAttributes(['remnant' => $remnant,'is_active' => $isActive]);
-        }
-    }
-    public static function activateProduct()
-    {
-        $products = Product::find()->all();
-        foreach ($products as $product){
-            $product->is_active ?
-                \shop\entities\Shop\Product\Product::findOne(['id' => $product->id])->updateAttributes(['quantity' => $product->remnant,'status' => 1])
-                :
-                \shop\entities\Shop\Product\Product::findOne(['id' => $product->id])->updateAttributes(['quantity' => $product->remnant,'status' => 0]);
+            $product->updateAttributes(['remnant' => $remnant]);
+            if ($remnant === null){$remnant = 0;}
+
+            if ($remnant > 0 )
+            {
+                $product->updateAttributes(['is_active' => 1]);
+                \shop\entities\Shop\Product\Product::findOne(['id' => $product->id])->updateAttributes(['quantity' => $remnant,'status' => 1]);
+            }
+            else
+            {
+                $product->updateAttributes(['is_active' => 0]);
+                \shop\entities\Shop\Product\Product::findOne(['id' => $product->id])->updateAttributes(['quantity' => $remnant,'status' => 0]);
+            }
 
         }
     }
+
     public static function loadBrand()
     {
         /* Хардкордно закодировано свойство, по которому загружаем бренды (условие работы имеенно с магазином ТАНА )*/
+        $data = array();
         $property = PropertyModel::find()->andWhere(['name' => 'Торговая марка'])->one();
         foreach ($property->properties as $value)
         {
+//            $brands = Brand::find()->andWhere(['name' => $value->name])->one();
+//            if (!$brands) {
+//                try {
+//                    $brand = Brand::create($value->name, Inflector::slug($value->name), new Meta('', '', ''));
+//                    $brand->save();
+//                } catch (\DomainException $e) {
+//                    \Yii::$app->errorHandler->logException($e);
+//                }
+//            }
             $brands = Brand::find()->andWhere(['name' => $value->name])->one();
             if (!$brands) {
-                try {
-                    $brand = Brand::create($value->name, Inflector::slug($value->name), new Meta('', '', ''));
-                    $brand->save();
-                } catch (\DomainException $e) {
-                    \Yii::$app->errorHandler->logException($e);
-                }
+                $data [] = [
+                    $value->name,
+                    Inflector::slug($value->name),
+                    json_encode( new Meta('', '', ''))
+                ];
             }
         }
+        \Yii::$app->db->createCommand()->batchInsert('shop_brands', ['name', 'slug', 'meta_json'], $data)->execute();
     }
 
     public static function loadCharacteristic()
     {
+        $data = [];
         $characteristics = SpecificationModel::find()->all();
         foreach ($characteristics as $c){
+//            if (!Characteristic::find()->andWhere(['name' => $c->name])->one()) {
+//                $characteristic = Characteristic::create(
+//                    $c->name,
+//                    Characteristic::TYPE_STRING,
+//                    0,
+//                    '',
+//                    [],
+//                    0
+//                );
+//                $characteristic->save();
+//            }
             if (!Characteristic::find()->andWhere(['name' => $c->name])->one()) {
-                $characteristic = Characteristic::create(
-                    $c->name,
-                    Characteristic::TYPE_STRING,
-                    0,
-                    '',
-                    [],
-                    0
-                );
-                $characteristic->save();
+                $data [] = [$c->name, Characteristic::TYPE_STRING, 0, '', json_encode([]), 0];
             }
         }
+        \Yii::$app->db->createCommand()->batchInsert('shop_characteristics', ['name', 'type', 'required','default','variants_json','sort'], $data)->execute();
     }
 
     public static function loadProduct()
@@ -174,27 +189,27 @@ class ProductLoad
     {
         $products = Product::find()->all();
         foreach ($products as $product){
-                if ($offers = $product->offers){
-                    foreach ($offers as $offer)
-                    {
-                        if ($offer->remnant) {
-                            $priceId = PvOfferPriceModel::find()->andWhere(['offer_id' => $offer->id])->one()['price_id'];
-                            $price = PriceModel::findOne(['id' => $priceId]);
-                            if (!$modification = Modification::find()->andWhere(['code' => $offer->accounting_id])->one()) {
-                                $modification = Modification::create(
-                                    $offer->accounting_id,
-                                    $offer->name,
-                                    $price['value'],
-                                    $offer->remnant
-                                );
-                                $modification->product_id = $product->id;
-                            }
-                            $modification->updateAttributes(['quantity' => $offer->remnant]);
-                            $modification->save();
+            if ($offers = $product->offers){
+                foreach ($offers as $offer)
+                {
+                    if ($offer->remnant) {
+                        $priceId = PvOfferPriceModel::find()->andWhere(['offer_id' => $offer->id])->one()['price_id'];
+                        $price = PriceModel::findOne(['id' => $priceId]);
+                        if (!$modification = Modification::find()->andWhere(['code' => $offer->accounting_id])->one()) {
+                            $modification = Modification::create(
+                                $offer->accounting_id,
+                                $offer->name,
+                                $price['value'],
+                                $offer->remnant
+                            );
+                            $modification->product_id = $product->id;
                         }
-                        //file_put_contents(\Yii::getAlias('@frontend') . '/runtime/test.log', $offer->remnant . "\n", FILE_APPEND);
+                        $modification->updateAttributes(['quantity' => $offer->remnant]);
+                        $modification->save();
                     }
+                    //file_put_contents(\Yii::getAlias('@frontend') . '/runtime/test.log', $offer->remnant . "\n", FILE_APPEND);
                 }
+            }
         }
     }
 }

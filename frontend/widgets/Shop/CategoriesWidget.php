@@ -32,7 +32,7 @@ class CategoriesWidget extends Widget
                 $indent . Html::encode($view->category->name),
                 ['/shop/catalog/category', 'id' => $view->category->id],
                 ['class' => $active ? 'active' : '']
-            ).Html::endTag('div').Html::endTag('li').$count;
+            ).Html::endTag('div').Html::endTag('li');
         }, $this->categories->getTreeWithSubsOf($this->active))), [
             'class' => 'widget-category-catalog',
         ]);

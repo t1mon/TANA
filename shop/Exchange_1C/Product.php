@@ -31,6 +31,7 @@ class Product extends ActiveRecord implements ProductInterface
     {
         $id = CategoryModel1C::find()->select(['id'])->andWhere(['accounting_id' => $group->id])->scalar();
         $this->updateAttributes(['group_id' => $id]);
+        unset($group);
     }
 
     public function setProperty1c($property)
@@ -46,8 +47,11 @@ class Product extends ActiveRecord implements ProductInterface
                 $PvProductProperty->property_value_id = $value->id;
                 $PvProductProperty->value =  $value->name;
                 $PvProductProperty->save();
+                unset($PvProductProperty);
             }
         }
+        unset($propertyValue);
+        unset($property);
     }
 
     public function addImage1c($path, $caption)
@@ -71,13 +75,15 @@ class Product extends ActiveRecord implements ProductInterface
                         $propertyValue->property_id = $propertyModel->id;
                         $propertyValue->accounting_id = (string)$value->ИдЗначения;
                         $propertyValue->save();
-                        if ($property->name == "Торговая марка"){
-                            file_put_contents(\Yii::getAlias('@frontend') . '/runtime/test.log', "VALUE---Загружено свойство".(string)$value->Значения . "\n", FILE_APPEND);
-                        }
+//                        if ($property->name == "Торговая марка"){
+//                            file_put_contents(\Yii::getAlias('@frontend') . '/runtime/test.log', "VALUE---Загружено свойство".(string)$value->Значения . "\n", FILE_APPEND);
+//                        }
                         unset($propertyValue);
                     }
             }
+            unset($propertyModel);
         }
+        unset($properties);
     }
 
     public function getOffer1c($offer)
@@ -88,6 +94,7 @@ class Product extends ActiveRecord implements ProductInterface
             $offerModel->save();
             //\Yii::$app->queue->push(new OfferQueue1C($offerModel));
         }
+        unset($offer);
         //file_put_contents(\Yii::getAlias('@frontend') . '/runtime/offer.log', serialize($data). "\n", FILE_APPEND);
         return $offerModel;
     }
@@ -102,6 +109,7 @@ class Product extends ActiveRecord implements ProductInterface
         $model->description = (string)$product->Описание;
         $model->article = (string)$product->Артикул;
         $model->save();
+        unset($product);
         //\Yii::$app->queue->push(new ProductQueue1C($model));
         //file_put_contents(\Yii::getAlias('@frontend') . '/runtime/product.log', serialize($data). "\n", FILE_APPEND);
         return $model;
@@ -114,16 +122,22 @@ class Product extends ActiveRecord implements ProductInterface
             $requisite->name = $name;
             $requisite->save();
         }
-        $requisiteProduct = new PvProductRequisiteModel();
-        $requisiteProduct->product_id = $this->id;
-        $requisiteProduct->requisite_id = $requisite->id;
-        $requisiteProduct->value = $value;
-        $requisiteProduct->save();
+        if (!PvProductRequisiteModel::findOne(['product_id' => $this->id])){
+            $requisiteProduct = new PvProductRequisiteModel();
+            $requisiteProduct->product_id = $this->id;
+            $requisiteProduct->requisite_id = $requisite->id;
+            $requisiteProduct->value = $value;
+            $requisiteProduct->save();
+        }
+        unset($requisite);
+        unset($requisiteProduct);
+        unset($name);
+        unset($value);
     }
 
     public function setRaw1cData($cml, $product)
     {
-
+        unset($cml);unset($product);
     }
 
     public function getOffers()
@@ -139,6 +153,7 @@ class Product extends ActiveRecord implements ProductInterface
                 return $property->id;
             }
         }
+        unset($properties);
     }
 
     public function transactions()

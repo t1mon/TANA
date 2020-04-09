@@ -25,7 +25,7 @@ class CategoryModel1C extends ActiveRecord
 
     public function afterSave($insert, $changedAttributes)
     {
-        if(!Category::findOne(['name' => $this->name])) {
+        if(!Category::findOne(['accounting_id' => $this->accounting_id])) {
             if ($this->parent_id == null)
             {
                 $this->CategoryCreate(1);
@@ -33,9 +33,9 @@ class CategoryModel1C extends ActiveRecord
             if ($this->parent_id != null)
             {
                 $categoryT = CategoryModel1C::findOne(['id' => $this->parent_id]);
-                $category =  Category::find()->where(['name' => $categoryT->name])->one();
+                $category =  Category::find()->where(['accounting_id' => $categoryT->accounting_id])->one();
                 if ($category) {
-                    $this->CategoryCreate($category->id++);
+                    $this->CategoryCreate($category->id);
                 }
             }
         }
@@ -45,22 +45,23 @@ class CategoryModel1C extends ActiveRecord
 
     public function CategoryCreate($id)
     {
-            $form = new CategoryForm();
-            $form->name = $this->name;
-            $form->slug = Inflector::slug($this->name);
-            $form->parentId = $id;
             $category = Category::create(
-                $form->name,
-                $form->slug,
-                $form->title,
-                $form->description,
+                $this->name,
+                Inflector::slug($this->name),
+                '',
+                '',
                 new Meta('', '', '')
             );
             $category->accounting_id = $this->accounting_id;
-            $category->appendTo(Category::findOne($form->parentId));
+            $category->appendTo(Category::findOne($id));
             $category->save();
+            unset($category);
 
     }
+
+//    public function updateCategory(Category $category){
+//        $category->updateAttributes(['name' => $this->name ]);
+//    }
 
 
     public function transactions():array
