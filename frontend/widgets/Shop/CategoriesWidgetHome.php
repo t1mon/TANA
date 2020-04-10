@@ -6,22 +6,28 @@ use shop\entities\Shop\Category;
 use shop\readModels\Shop\CategoryReadRepository;
 use shop\readModels\Shop\views\CategoryView;
 use yii\base\Widget;
+use yii\caching\Cache;
 use yii\helpers\Html;
 use yii\helpers\VarDumper;
 
 class CategoriesWidgetHome extends Widget
 {
-    public $tpl;
-    public $tree;
-    public $menuHtml;
+    private $cache;
+
+    public function __construct(Cache $cache,array $config = [])
+    {
+        $this->cache = $cache;
+        parent::__construct($config);
+    }
 
 
     public function run(): string
     {
-        $this->tree = Category::findOne(1)->tree();
-        $this->menuHtml = $this->getMenuHtml($this->tree[0]['children']);
 
-        return $this->menuHtml;
+        $tree = Category::findOne(1)->tree();
+        $menuHtml = $this->getMenuHtml($tree[0]['children']);
+
+        return $menuHtml;
     }
 
     protected function getMenuHtml($tree)

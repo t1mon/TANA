@@ -2,6 +2,7 @@
 namespace frontend\controllers;
 
 use Faker\Factory;
+use shop\entities\Meta;
 use shop\entities\Shop\Category;
 use shop\entities\User\User;
 use shop\Exchange_1C\Category_Model;
@@ -14,6 +15,7 @@ use shop\readModels\Shop\CategoryReadRepository;
 use shop\services\newsletter\Newsletter;
 use shop\useCases\manage\Shop\ProductManageService;
 use yii\filters\AccessControl;
+use yii\helpers\Inflector;
 use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\UploadedFile;
@@ -90,13 +92,14 @@ class SiteController extends Controller
 //        $remnant = null;
 //        if ($remnant === null){$remnant = 0;}
 //        echo 'Number::: '. $remnant ;
-        $v  =  [];
-        $test = [2,4,67];
-        foreach ($test as $item){
-            $v []= 33 + $item;
-        }
-        echo max($v);
-        \Yii::$app->cache->flush();
+//        $v  =  [];
+//        $test = [2,4,67];
+//        foreach ($test as $item){
+//            $v []= 33 + $item;
+//        }
+//        echo max($v);
+//        \Yii::$app->cache->flush();
+
 
     }
     public function cate($category)

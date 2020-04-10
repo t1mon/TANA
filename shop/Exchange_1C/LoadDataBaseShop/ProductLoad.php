@@ -120,7 +120,7 @@ class ProductLoad
        $brand = PvProductPropertyModel::find()->andWhere(['product_id' => $product->id])->andWhere(['property_id' => $idTM])->one();
        $brandId = !empty($brand['property_value_id']) ? $brand['property_value_id'] : 1;
        try {
-           if (!$p = \shop\entities\Shop\Product\Product::find()->andWhere(['name' => $product->name])->one()) {
+           if (!$p = \shop\entities\Shop\Product\Product::find()->andWhere(['accounting_id' => $product->accounting_id])->one()) {
                $p = \shop\entities\Shop\Product\Product::create(
                    $brandId,
                    $categoryId,
@@ -132,6 +132,7 @@ class ProductLoad
                    new Meta('', '', ''),
                    Inflector::slug($product->name)
                );
+               $p->accounting_id = $product->accounting_id;
            }
            $p->quantity = $product->remnant ?: 0;
            $p->status = $product->is_active;

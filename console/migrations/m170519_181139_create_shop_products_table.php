@@ -14,6 +14,7 @@ class m170519_181139_create_shop_products_table extends Migration
             'brand_id' => $this->integer()->notNull(),
             'created_at' => $this->integer()->unsigned()->notNull(),
             'code' => $this->string()->notNull(),
+            'accounting_id' => $this->char(255),
             'name' => $this->string()->notNull(),
             'price_old' => $this->integer(),
             'price_new' => $this->integer(),

@@ -2,6 +2,7 @@
 
 namespace shop\entities\Shop\Product;
 
+use shop\entities\behaviors\SlugBehavior;
 use shop\entities\EventTrait;
 use lhs\Yii2SaveRelationsBehavior\SaveRelationsBehavior;
 use shop\entities\AggregateRoot;
@@ -14,6 +15,7 @@ use shop\entities\Shop\Product\events\ProductDraft;
 use shop\entities\Shop\Product\queries\ProductQuery;
 use shop\entities\Shop\Tag;
 use shop\entities\User\WishlistItem;
+use yii\behaviors\SluggableBehavior;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use yii\db\Exception;
@@ -612,6 +614,23 @@ class Product extends ActiveRecord implements AggregateRoot
                 'class' => SaveRelationsBehavior::className(),
                 'relations' => ['categoryAssignments', 'tagAssignments', 'relatedAssignments', 'modifications', 'values', 'photos', 'reviews'],
             ],
+            'slug' => [
+                'class' => 'skeeks\yii2\slug\SlugBehavior',
+                'slugAttribute' => 'slug',                      //The attribute to be generated
+                'attribute' => 'name',                          //The attribute from which will be generated
+                // optional params
+                'maxLength' => 64,                              //Maximum length of attribute slug
+                'minLength' => 3,                               //Min length of attribute slug
+                'ensureUnique' => true,
+                'slugifyOptions' => [
+                    'lowercase' => true,
+                    'separator' => '-',
+                    'trim' => true
+                    //'regexp' => '/([^A-Za-z0-9]|-)+/',
+                    //'rulesets' => ['russian'],
+                    //@see all options https://github.com/cocur/slugify
+                ]
+            ]
         ];
     }
 
