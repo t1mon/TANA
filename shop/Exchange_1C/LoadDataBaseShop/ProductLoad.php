@@ -3,8 +3,10 @@ namespace shop\Exchange_1C\LoadDataBaseShop;
 
 use shop\entities\Meta;
 use shop\entities\Shop\Brand;
+use shop\entities\Shop\Category;
 use shop\entities\Shop\Characteristic;
 use shop\entities\Shop\Product\Modification;
+use shop\Exchange_1C\Model\CategoryModel1C;
 use shop\Exchange_1C\Model\PriceModel;
 use shop\Exchange_1C\Model\PropertyModel;
 use shop\Exchange_1C\Model\PvOfferPriceModel;
@@ -15,32 +17,18 @@ use shop\Exchange_1C\Product;
 use shop\forms\manage\Shop\BrandForm;
 use shop\forms\manage\Shop\CharacteristicForm;
 use shop\forms\manage\Shop\Product\ProductCreateForm;
+use shop\services\TransactionManager;
 use shop\useCases\manage\Shop\BrandManageService;
 use shop\useCases\manage\Shop\ProductManageService;
 use yii\helpers\Inflector;
+use yii\helpers\VarDumper;
 
 class ProductLoad
 {
-    private $brand;
-
-    public function __construct(BrandManageService $brand)
-    {
-        $this->brand = $brand;
-    }
 
     /* Событие после парсинга всех продуктов */
     public function afterProductSync()
     {
-        //$product = Product::find()->orderBy('id DESC')->one();
-        /* $products = Product::find()->orderBy('id ASC')->all();
-         foreach ($products as $product) {
-             $category = $product->group1c->id;
-             file_put_contents(\Yii::getAlias('@frontend') . '/runtime/test.log', $product->name ." : ". $category . "\n", FILE_APPEND);
-         } */
-//        $form = new ProductCreateForm();
-//        $form->code = $product->article;
-//        $form->name = $product->name;
-
         //file_put_contents(\Yii::getAlias('@frontend') . '/runtime/test.log', "ALL::::::::Продукты загружены" . "\n", FILE_APPEND);
     }
     /* Событие после парсинга продукта */
@@ -53,15 +41,9 @@ class ProductLoad
     /* По очереди вызываем методы записи бренда, установки свойств, записи продуктов */
     public function afterOfferSync()
     {
-
-        //self::updateRemnant();
-
         self::loadBrand();
         self::loadCharacteristic();
         self::work();
-        //self::loadProduct();
-        //self::loadModification();
-
     }
 
 
@@ -80,15 +62,16 @@ class ProductLoad
 
     /* Работа с Магазином */
 
-    public static function work()
+    public function work()
     {
         $products = Product::find()->each();
         foreach ($products as $product){
             self::updateRemnant($product);
+            self::insertOrUpdateProduct($product);
         }
     }
 
-    public static function loadBrand()
+    public function loadBrand()
     {
         /* Хардкордно закодировано свойство, по которому загружаем бренды (условие работы имеенно с магазином ТАНА )*/
         $data = array();
@@ -107,7 +90,7 @@ class ProductLoad
         \Yii::$app->db->createCommand()->batchInsert('shop_brands', ['name', 'slug', 'meta_json'], $data)->execute();
     }
 
-    public static function loadCharacteristic()
+    public function loadCharacteristic()
     {
         $data = [];
         $characteristics = SpecificationModel::find()->each();
@@ -119,7 +102,7 @@ class ProductLoad
         \Yii::$app->db->createCommand()->batchInsert('shop_characteristics', ['name', 'type', 'required','default','variants_json','sort'], $data)->execute();
     }
 
-   public static function updateRemnant(Product $product)
+   public function updateRemnant(Product $product)
    {
            $remnant = 0;
            foreach ($product->offers as $offer){
@@ -130,81 +113,66 @@ class ProductLoad
            unset($product);
    }
 
+   public function insertOrUpdateProduct(Product $product)
+   {   $transaction = \shop\entities\Shop\Product\Product::getDb()->beginTransaction();
+       $idTM = $product->getPropertyTM();
+       $categoryId = $product->group1c->category->id;
+       $brand = PvProductPropertyModel::find()->andWhere(['product_id' => $product->id])->andWhere(['property_id' => $idTM])->one();
+       $brandId = !empty($brand['property_value_id']) ? $brand['property_value_id'] : 1;
+       try {
+           if (!$p = \shop\entities\Shop\Product\Product::find()->andWhere(['name' => $product->name])->one()) {
+               $p = \shop\entities\Shop\Product\Product::create(
+                   $brandId,
+                   $categoryId,
+                   $product->article,
+                   $product->name,
+                   $product->description,
+                   0,
+                   $product->remnant ?: 0,
+                   new Meta('', '', ''),
+                   Inflector::slug($product->name)
+               );
+           }
+           $p->quantity = $product->remnant ?: 0;
+           $p->status = $product->is_active;
+           $p->save();
+           self::insertOrUpdateModification($product);
+           $transaction->commit();
+       } catch (\Throwable $e){
+           $transaction->rollBack();
+           throw $e;
+       }
+
+   }
+
+   public function insertOrUpdateModification(Product $product)
+   {
+       $p = array();
+       if ($offers = $product->offers){
+           foreach ($offers as $offer)
+           {
+               if ($offer->remnant) {
+                   $priceId = PvOfferPriceModel::find()->andWhere(['offer_id' => $offer->id])->one()['price_id'];
+                   $price = PriceModel::findOne(['id' => $priceId]);
+                   if (!$modification = Modification::find()->andWhere(['code' => $offer->accounting_id])->one()) {
+                       $modification = Modification::create(
+                           $offer->accounting_id,
+                           $offer->name,
+                           $price['value'],
+                           $offer->remnant
+                       );
+                       $modification->product_id = $product->id;
+                   }
+                   $p [] = $price['value'];
+                   $modification->quantity = $offer->remnant;
+                   $modification->save();
+               }
+           }
+       }
+       $p = !empty($p) ?  min($p) : 0;
+      $product->updateAttributes(['price' => $p]);
+      \shop\entities\Shop\Product\Product::findOne(['id' => $product->id])->updateAttributes(['price_new' => $p]);
+   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public static function loadProduct()
-    {
-        $products = Product::find()->all();
-
-        foreach ($products as $product) {
-            $idTM = $product->getPropertyTM();
-            $brand = PvProductPropertyModel::find()->andWhere(['product_id' => $product->id])->andWhere(['property_id' => $idTM])->one();
-            $brandId = !empty($brand['property_value_id']) ? $brand['property_value_id'] : 1;
-            //file_put_contents(\Yii::getAlias('@frontend') . '/runtime/test.log', $brandId . "\n", FILE_APPEND);
-            if (!\shop\entities\Shop\Product\Product::find()->andWhere(['name' => $product->name])->one())
-            {
-                $p = \shop\entities\Shop\Product\Product::create(
-                    $brandId,
-                    ++$product->group_id,
-                    $product->article,
-                    $product->name,
-                    $product->description,
-                    0,
-                    $product->remnant ?:0 ,
-                    new Meta('','',''),
-                    Inflector::slug($product->name)
-                );
-                //if ($product->remnant > 0) { $p->isActive();}
-                //$p->status = \shop\entities\Shop\Product\Product::STATUS_ACTIVE;
-                $p->save();
-
-            }
-        }
-    }
-
-    public static function loadModification()
-    {
-        $products = Product::find()->all();
-        foreach ($products as $product){
-            if ($offers = $product->offers){
-                foreach ($offers as $offer)
-                {
-                    if ($offer->remnant) {
-                        $priceId = PvOfferPriceModel::find()->andWhere(['offer_id' => $offer->id])->one()['price_id'];
-                        $price = PriceModel::findOne(['id' => $priceId]);
-                        if (!$modification = Modification::find()->andWhere(['code' => $offer->accounting_id])->one()) {
-                            $modification = Modification::create(
-                                $offer->accounting_id,
-                                $offer->name,
-                                $price['value'],
-                                $offer->remnant
-                            );
-                            $modification->product_id = $product->id;
-                        }
-                        $modification->updateAttributes(['quantity' => $offer->remnant]);
-                        $modification->save();
-                    }
-                    //file_put_contents(\Yii::getAlias('@frontend') . '/runtime/test.log', $offer->remnant . "\n", FILE_APPEND);
-                }
-            }
-        }
-    }
 }

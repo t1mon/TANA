@@ -62,7 +62,9 @@ class CategoryModel1C extends ActiveRecord
 //    public function updateCategory(Category $category){
 //        $category->updateAttributes(['name' => $this->name ]);
 //    }
-
+    public function getCategory(){
+        return $this->hasOne(Category::class,['accounting_id' => 'accounting_id']);
+    }
 
     public function transactions():array
     {

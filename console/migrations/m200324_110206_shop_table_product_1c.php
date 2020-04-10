@@ -17,6 +17,7 @@ class m200324_110206_shop_table_product_1c extends Migration
             'article' => $this->char(255),
             'description' => $this->char(255),
             'accounting_id' => $this->char(255),
+            'price' => $this->integer(),
             'group_id' => $this->integer(),
             'catalog_id' => $this->integer(),
             'is_active' => $this->boolean(),

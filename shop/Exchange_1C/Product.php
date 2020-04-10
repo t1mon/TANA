@@ -147,12 +147,13 @@ class Product extends ActiveRecord implements ProductInterface
 
     public function getPropertyTM()
     {
-        $properties = PropertyModel::find()->all();
-        foreach ($properties as $property){
-            if ($property->name == 'Торговая марка'){
-                return $property->id;
-            }
-        }
+//        $properties = PropertyModel::find()->each();
+//        foreach ($properties as $property){
+//            if ($property->name == 'Торговая марка'){
+//                return $property->id;
+//            }
+//        }
+        return PropertyModel::findOne(['name' => 'Торговая марка'])->id;
     }
 
     public function transactions()

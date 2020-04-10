@@ -90,36 +90,12 @@ class SiteController extends Controller
 //        $remnant = null;
 //        if ($remnant === null){$remnant = 0;}
 //        echo 'Number::: '. $remnant ;
-           // $categories = $this->category->getAll();
-        $categories = Category::find()->andWhere(['>', 'depth', 0])->orderBy('lft')->andWhere(['depth' => 1])->each();
-        //$categories = Category::find()->andWhere(['name' => 'detskij-assortiment'])->all();
-//        foreach ($categories as $category){
-//                echo $category->name."<br>";
-//            foreach ($category->getChildren()->all() as $child){
-//                    echo "-" . $child->name . "<br>";
-//                foreach ($child->getChildren()->all() as $chil){
-//                    echo "--" . $chil->name . "<br>";
-//                    foreach ($chil->getChildren()->all() as $chi){
-//                        echo "---" . $chi->name . "<br>";
-//                        foreach ($chi->getChildren()->all() as $ch){
-//                            echo "----" . $ch->name . "<br>";
-//                        }
-//                    }
-//                }
-//            }
-//        }
-        echo "<ul>";
-        foreach ($categories as $category) {
-            echo "<li>";
-            echo $category->name . "<br>";
-            if ($category->getChildren()->all()){
-                echo "<ul>";
-                $this->cate($category);
-                echo "</ul>";
-            }
-            echo "</li>";
+        $v  =  [];
+        $test = [2,4,67];
+        foreach ($test as $item){
+            $v []= 33 + $item;
         }
-        echo "</ul>";
+        echo max($v);
 
     }
     public function cate($category)

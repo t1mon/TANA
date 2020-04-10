@@ -18,6 +18,7 @@ use shop\entities\behaviors\FlySystemImageUploadBehavior;
 use shop\entities\Shop\Order\events\OrderChangeStatus;
 use shop\entities\Shop\Product\events\ProductAppearedInStock;
 use shop\entities\Shop\Product\events\ProductDraft;
+use shop\Exchange_1C\LoadDataBaseShop\ProductLoad;
 use shop\jobs\AsyncEventJobHandler;
 use shop\listeners\Shop\Category\CategoryPersistenceListener;
 use shop\listeners\Shop\Order\OrderChangeStatusListener;
