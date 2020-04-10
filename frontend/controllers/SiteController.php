@@ -96,6 +96,7 @@ class SiteController extends Controller
             $v []= 33 + $item;
         }
         echo max($v);
+        \Yii::$app->cache->flush();
 
     }
     public function cate($category)

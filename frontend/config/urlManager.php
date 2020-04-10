@@ -9,6 +9,11 @@ return [
     'enablePrettyUrl' => true,
     'showScriptName' => false,
     'cache' => false,
+    'normalizer' => [
+        'class' => 'yii\web\UrlNormalizer',
+        'normalizeTrailingSlash' => true,
+        'collapseSlashes' => true,
+    ],
     'rules' => [
         '' => 'site/index',
         'contact' => 'contact/index',
@@ -31,6 +36,7 @@ return [
         'catalog/page/<page:\d+>' => 'shop/catalog/index',
         'catalog' => 'shop/catalog/index',
         'page/<slug:[\w\-]+>' => 'page/view',
+        //'brand/<slug:[\w\-]+>' => 'shop/catalog/brand',
 //        '<catalog:\w+>' => 'shop/catalog/search',
         ['class' => 'frontend\urls\ExchangeUrlRule'],
         ['class' => 'frontend\urls\ProductUrlRule' ],
