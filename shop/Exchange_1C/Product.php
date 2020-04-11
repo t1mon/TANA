@@ -40,7 +40,7 @@ class Product extends ActiveRecord implements ProductInterface
         $propertyValue = $property->getValueModel();
         if ($propertyAccountingId = (string)$propertyValue->ИдЗначения) {
             $value = PropertyValueModel::findOne(['accounting_id' => $propertyAccountingId]);
-            if (!PvProductPropertyModel::findOne(['value' => $value->name])){
+            if (!PvProductPropertyModel::findOne(['product_id' => $this->id])){
                 $PvProductProperty = new PvProductPropertyModel();
                 $PvProductProperty->product_id = $this->id;
                 $PvProductProperty->property_id = $propertyModel->id;
@@ -137,7 +137,8 @@ class Product extends ActiveRecord implements ProductInterface
 
     public function setRaw1cData($cml, $product)
     {
-        unset($cml);unset($product);
+        unset($cml);
+        unset($product);
     }
 
     public function getOffers()

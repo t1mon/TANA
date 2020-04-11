@@ -102,21 +102,7 @@ class SiteController extends Controller
 
 
     }
-    public function cate($category)
-    {
-            foreach ($isChild = $category->getChildren()->all() as $child) {
-                echo "<li>";
-                if ($child->getChildren()->all()) {
-                    echo  $child->name;
-                    echo "<ul>";$this->cate($child); echo "</ul>";
-                }
-                else{
-                    echo  $child->id;
-                }
-                echo "</li>";
-            }
 
-        }
 
   /*  public function afterAction($action, $result)
     {
@@ -201,4 +187,13 @@ class SiteController extends Controller
         return $this->render('@common/mail/auth/signup/confirm-html');
     } */
 
+public function actionOpcacheStat(){
+    return $this->renderPartial('opcache-stat');
 }
+
+public function actionZend2(){
+    return $this->renderPartial('zend2');
+}
+}
+
+
