@@ -48,7 +48,7 @@
                     <div class="col-xl-2 col-lg-2 col-md-6 col-4">
                         <div class="logo">
                             <a href="index.html">
-                                <img alt="" src="img/logo/logo.png">
+                                <img alt="" src="/img/logo/logo.png">
                             </a>
                         </div>
                     </div>
@@ -101,7 +101,7 @@
                                             </li>
                                             <li>
                                                 <ul>
-                                                    <li class="mega-menu-img"><a href="shop.html"><img src="img/banner/banner-12.png" alt=""></a></li>
+                                                    <li class="mega-menu-img"><a href="shop.html"><img src="/img/banner/banner-12.png" alt=""></a></li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -168,7 +168,7 @@
                                     <ul>
                                         <li class="single-shopping-cart">
                                             <div class="shopping-cart-img">
-                                                <a href="#"><img alt="" src="img/cart/cart-1.png"></a>
+                                                <a href="#"><img alt="" src="/img/cart/cart-1.png"></a>
                                             </div>
                                             <div class="shopping-cart-title">
                                                 <h4><a href="#">T- Shart & Jeans </a></h4>
@@ -181,7 +181,7 @@
                                         </li>
                                         <li class="single-shopping-cart">
                                             <div class="shopping-cart-img">
-                                                <a href="#"><img alt="" src="img/cart/cart-2.png"></a>
+                                                <a href="#"><img alt="" src="/img/cart/cart-2.png"></a>
                                             </div>
                                             <div class="shopping-cart-title">
                                                 <h4><a href="#">T- Shart & Jeans </a></h4>

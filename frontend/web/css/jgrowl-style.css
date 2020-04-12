@@ -1,0 +1,31 @@
+.jGrowl-closer {
+    background-color: #FF8800;
+    opacity: 0;
+}
+.jgrowl{
+    border:none;
+    color: #fff;
+    width:400px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.jgrowl.success{
+    background-color: #00be4b;
+    border-color: #d0e9c6;
+    color: #fff;
+}
+.jgrowl.info{
+    background-color: #29ABE0;
+    border-color: #bcdff1;
+    color: #fff;
+}
+.jgrowl.warning{
+    background-color: #F47C3C;
+    border-color: #faf2cc;
+    color: #fff;
+}
+.jgrowl.danger{
+    background-color: #d9534f;
+    border-color: #000;
+    color: #fff;
+}

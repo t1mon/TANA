@@ -33,10 +33,10 @@ $this->registerMetaTag([
                 <div class="col-xl-2 col-lg-2 col-md-4 col-5">
                     <div class="logo text-center logo-hm5">
                         <a class="sticky-none" href="index.html">
-                            <img alt="" src="img/logo/logo-2.png">
+                            <img alt="" src="/img/logo/logo-2.png">
                         </a>
                         <a class="sticky-block" href="index.html">
-                            <img alt="" src="img/logo/logo.png">
+                            <img alt="" src="/img/logo/logo.png">
                         </a>
                     </div>
                 </div>
@@ -74,7 +74,7 @@ $this->registerMetaTag([
                                 <ul>
                                     <li class="single-shopping-cart">
                                         <div class="shopping-cart-img">
-                                            <a href="#"><img alt="" src="img/cart/cart-1.png"></a>
+                                            <a href="#"><img alt="" src="/img/cart/cart-1.png"></a>
                                         </div>
                                         <div class="shopping-cart-title">
                                             <h4><a href="#">T- Shart & Jeans </a></h4>
@@ -87,7 +87,7 @@ $this->registerMetaTag([
                                     </li>
                                     <li class="single-shopping-cart">
                                         <div class="shopping-cart-img">
-                                            <a href="#"><img alt="" src="img/cart/cart-2.png"></a>
+                                            <a href="#"><img alt="" src="/img/cart/cart-2.png"></a>
                                         </div>
                                         <div class="shopping-cart-title">
                                             <h4><a href="#">T- Shart & Jeans </a></h4>
@@ -116,7 +116,7 @@ $this->registerMetaTag([
     </header>
     <div class="slider-area">
         <div class="slider-active-2 owl-carousel nav-style-3">
-            <div class="slider-height-5 d-flex align-items-center bg-img" style="background-image:url(img/slider/slider-5.jpg);">
+            <div class="slider-height-5 d-flex align-items-center bg-img" style="background-image:url(/img/slider/slider-5.jpg);">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-12">
@@ -131,7 +131,7 @@ $this->registerMetaTag([
                     </div>
                 </div>
             </div>
-            <div class="slider-height-5 d-flex align-items-center bg-img" style="background-image:url(img/slider/slider-5-1.jpg);">
+            <div class="slider-height-5 d-flex align-items-center bg-img" style="background-image:url(/img/slider/slider-5-1.jpg);">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-12">
@@ -177,8 +177,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-8.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-6.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-8.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-6.jpg" alt="">
                                     </a>
                                     <span class="pink">-10%</span>
                                     <div class="product-action">
@@ -213,8 +213,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-7.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-4-1.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-7.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-4-1.jpg" alt="">
                                     </a>
                                     <span class="purple">New</span>
                                     <div class="product-action">
@@ -248,8 +248,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-6.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-6-1.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-6.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-6-1.jpg" alt="">
                                     </a>
                                     <span class="pink">-10%</span>
                                     <div class="product-action">
@@ -284,8 +284,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-5.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-5-1.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-5.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-5-1.jpg" alt="">
                                     </a>
                                     <span class="purple">New</span>
                                     <div class="product-action">
@@ -319,8 +319,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-4.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-4-1.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-4.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-4-1.jpg" alt="">
                                     </a>
                                     <span class="pink">-10%</span>
                                     <div class="product-action">
@@ -355,8 +355,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-3.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-3-1.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-3.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-3-1.jpg" alt="">
                                     </a>
                                     <span class="purple">New</span>
                                     <div class="product-action">
@@ -390,8 +390,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-2.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-2-1.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-2.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-2-1.jpg" alt="">
                                     </a>
                                     <span class="pink">-10%</span>
                                     <div class="product-action">
@@ -426,8 +426,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-1.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-1-1.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-1.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-1-1.jpg" alt="">
                                     </a>
                                     <span class="purple">New</span>
                                     <div class="product-action">
@@ -465,8 +465,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-1.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-1-1.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-1.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-1-1.jpg" alt="">
                                     </a>
                                     <span class="pink">-10%</span>
                                     <div class="product-action">
@@ -501,8 +501,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-2.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-2-1.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-2.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-2-1.jpg" alt="">
                                     </a>
                                     <span class="purple">New</span>
                                     <div class="product-action">
@@ -536,8 +536,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-3.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-3-1.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-3.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-3-1.jpg" alt="">
                                     </a>
                                     <span class="pink">-10%</span>
                                     <div class="product-action">
@@ -572,8 +572,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-4.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-4-1.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-4.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-4-1.jpg" alt="">
                                     </a>
                                     <span class="purple">New</span>
                                     <div class="product-action">
@@ -607,8 +607,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-5.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-5-1.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-5.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-5-1.jpg" alt="">
                                     </a>
                                     <span class="pink">-10%</span>
                                     <div class="product-action">
@@ -643,8 +643,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-6.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-6-1.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-6.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-6-1.jpg" alt="">
                                     </a>
                                     <span class="purple">New</span>
                                     <div class="product-action">
@@ -678,8 +678,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-7.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-4-1.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-7.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-4-1.jpg" alt="">
                                     </a>
                                     <span class="pink">-10%</span>
                                     <div class="product-action">
@@ -714,8 +714,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-8.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-6.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-8.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-6.jpg" alt="">
                                     </a>
                                     <span class="purple">New</span>
                                     <div class="product-action">
@@ -753,8 +753,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-6.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-6-1.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-6.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-6-1.jpg" alt="">
                                     </a>
                                     <span class="pink">-10%</span>
                                     <div class="product-action">
@@ -789,8 +789,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-5.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-5-1.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-5.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-5-1.jpg" alt="">
                                     </a>
                                     <span class="purple">New</span>
                                     <div class="product-action">
@@ -824,8 +824,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-4.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-4-1.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-4.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-4-1.jpg" alt="">
                                     </a>
                                     <span class="pink">-10%</span>
                                     <div class="product-action">
@@ -860,8 +860,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-3.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-3-1.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-3.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-3-1.jpg" alt="">
                                     </a>
                                     <span class="purple">New</span>
                                     <div class="product-action">
@@ -895,8 +895,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-2.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-2-1.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-2.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-2-1.jpg" alt="">
                                     </a>
                                     <span class="pink">-10%</span>
                                 </div>
@@ -920,8 +920,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-1.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-1-1.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-1.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-1-1.jpg" alt="">
                                     </a>
                                     <span class="purple">New</span>
                                     <div class="product-action">
@@ -955,8 +955,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-8.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-6.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-8.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-6.jpg" alt="">
                                     </a>
                                     <span class="pink">-10%</span>
                                     <div class="product-action">
@@ -991,8 +991,8 @@ $this->registerMetaTag([
                             <div class="product-wrap mb-25 scroll-zoom">
                                 <div class="product-img">
                                     <a href="product-details.html">
-                                        <img class="default-img" src="img/product/pro-7.jpg" alt="">
-                                        <img class="hover-img" src="img/product/pro-4-1.jpg" alt="">
+                                        <img class="default-img" src="/img/product/pro-7.jpg" alt="">
+                                        <img class="hover-img" src="/img/product/pro-4-1.jpg" alt="">
                                     </a>
                                     <span class="purple">New</span>
                                     <div class="product-action">
@@ -1055,22 +1055,22 @@ $this->registerMetaTag([
     <div class="instagram-area">
         <div class="instagram-active owl-carousel">
             <div class="single-instagram">
-                <a href="#"><img src="img/instagram/instagram-1.jpg" alt=""></a>
+                <a href="#"><img src="/img/instagram/instagram-1.jpg" alt=""></a>
             </div>
             <div class="single-instagram">
-                <a href="#"><img src="img/instagram/instagram-2.jpg" alt=""></a>
+                <a href="#"><img src="/img/instagram/instagram-2.jpg" alt=""></a>
             </div>
             <div class="single-instagram">
-                <a href="#"><img src="img/instagram/instagram-3.jpg" alt=""></a>
+                <a href="#"><img src="/img/instagram/instagram-3.jpg" alt=""></a>
             </div>
             <div class="single-instagram">
-                <a href="#"><img src="img/instagram/instagram-4.jpg" alt=""></a>
+                <a href="#"><img src="/img/instagram/instagram-4.jpg" alt=""></a>
             </div>
             <div class="single-instagram">
-                <a href="#"><img src="img/instagram/instagram-5.jpg" alt=""></a>
+                <a href="#"><img src="/img/instagram/instagram-5.jpg" alt=""></a>
             </div>
             <div class="single-instagram">
-                <a href="#"><img src="img/instagram/instagram-2.jpg" alt=""></a>
+                <a href="#"><img src="/img/instagram/instagram-2.jpg" alt=""></a>
             </div>
         </div>
     </div>
@@ -1083,7 +1083,7 @@ $this->registerMetaTag([
         </div>
         <div class="side-logo">
             <a href="index.html">
-                <img alt="" src="img/logo/logo.png">
+                <img alt="" src="/img/logo/logo.png">
             </a>
         </div>
         <div id="menu" class="text-left clickable-menu-style">

@@ -15,15 +15,15 @@ class AppAsset extends AssetBundle
         'css/icons.min.css',
         'css/plugins.css',
         'css/style.css',
-        'css/settings.css'
-//        '//cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.4.7/jquery.jgrowl.min.css',
+        'css/settings.css',
+       //'//cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.4.7/jquery.jgrowl.min.css',
     ];
     public $js = [
         'js/vendor/modernizr-2.8.3.min.js',
         'js/popper.min.js',
         'js/plugins.js',
-        'js/main.js'
-//        '//cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.4.7/jquery.jgrowl.min.js',
+        'js/main.js',
+        //'//cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.4.7/jquery.jgrowl.min.js',
     ];
     public $depends = [
         //'yii\web\YiiAsset',

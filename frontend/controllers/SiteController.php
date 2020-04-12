@@ -99,8 +99,9 @@ class SiteController extends Controller
 //        }
 //        echo max($v);
 //        \Yii::$app->cache->flush();
-
-
+        $this->layout = 'mainOther';
+        \Yii::$app->session->setFlash('info', 'Для участия в розыгрыше, необходимо авторизоваться через ВКОНТАКТЕ');
+        return $this->render('index');
     }
 
 
@@ -191,9 +192,6 @@ public function actionOpcacheStat(){
     return $this->renderPartial('opcache-stat');
 }
 
-public function actionZend2(){
-    return $this->renderPartial('zend2');
-}
 }
 
 

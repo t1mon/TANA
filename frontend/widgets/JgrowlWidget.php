@@ -2,6 +2,7 @@
 
 namespace frontend\widgets;
 
+use frontend\assets\JgrowlAsset;
 use yii\base\Widget;
 /*
  *
@@ -38,39 +39,40 @@ animateClose 	{ opacity: ‘hide’ } 	Опции анимации при зак
  *
  *
  * */
-
-class JgrowlWidget extends \yii\bootstrap\Widget
+class JgrowlWidget extends Widget
 {
     public $alertTypes = [
         'error'   => 'jgrowl danger',
         'danger'  => 'jgrowl danger',
         'success' => 'jgrowl success',
-        'info'    => 'default',
+        'info'    => 'jgrowl info',
         'warning' => 'jgrowl warning'
     ];
 
     public function init()
     {
         parent::init();
-        $session = \Yii::$app->session;
+        $view = $this->getView();
+        JgrowlAsset::register($view);
+        $this->renderGrowl(\Yii::$app->session);
+    }
+
+    private function renderGrowl($session)
+    {
         $flashes = $session->getAllFlashes();
-       //print_r($flashes);
         foreach ($flashes as $type => $data) {
             if (isset($this->alertTypes[$type])) {
                 $data = (array) $data;
                 foreach ($data as $i => $message) {
                     $css = $this->alertTypes[$type];
                     $js = <<<JS
-        
-            $.jGrowl("$message",{theme:'$css',life:10000});
+                        $.jGrowl("$message",{theme:'$css',life:10000});
 JS;
                     \Yii::$app->view->registerJs($js,\yii\web\View::POS_END);
-
                 }
-
                 $session->removeFlash($type);
             }
         }
-
     }
+
 }
