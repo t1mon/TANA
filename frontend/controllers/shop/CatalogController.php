@@ -153,7 +153,7 @@ class CatalogController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
         \Yii::$app->getUser()->setReturnUrl(\Yii::$app->request->url);
-        $this->layout = 'blank';
+        $this->layout = 'mainOther';
         $cartForm = new AddToCartForm($product);
         $reviewForm = new ReviewForm();
         if ($reviewForm->load(\Yii::$app->request->post()) && $reviewForm->validate()) {

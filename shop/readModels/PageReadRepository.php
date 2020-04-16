@@ -18,7 +18,8 @@ class PageReadRepository
 
     public function findBySlug($slug): ?Page
     {
-        return Page::find()->andWhere(['slug' => $slug])->andWhere(['>', 'depth', 0])->one();
+        //return Page::find()->andWhere(['slug' => $slug])->andWhere(['>', 'depth', 0])->one();
+        return Page::findOne(['slug' => $slug]);
     }
 
 }

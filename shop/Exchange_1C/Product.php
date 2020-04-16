@@ -122,15 +122,16 @@ class Product extends ActiveRecord implements ProductInterface
             $requisite->name = $name;
             $requisite->save();
         }
-        if (!PvProductRequisiteModel::findOne(['product_id' => $this->id])){
-            $requisiteProduct = new PvProductRequisiteModel();
-            $requisiteProduct->product_id = $this->id;
-            $requisiteProduct->requisite_id = $requisite->id;
-            $requisiteProduct->value = $value;
-            $requisiteProduct->save();
-        }
+        //Пока закоментировано не используется в магазине
+//        if (!PvProductRequisiteModel::find()->andWhere(['product_id' => $this->id, 'requisite_id' => $requisite->id])->one()){
+//            $requisiteProduct = new PvProductRequisiteModel();
+//            $requisiteProduct->product_id = $this->id;
+//            $requisiteProduct->requisite_id = $requisite->id;
+//            $requisiteProduct->value = $value;
+//            $requisiteProduct->save();
+//        }
         unset($requisite);
-        unset($requisiteProduct);
+        //unset($requisiteProduct);
         unset($name);
         unset($value);
     }

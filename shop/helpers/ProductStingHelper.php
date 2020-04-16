@@ -25,4 +25,33 @@ class ProductStingHelper
 
 
     }
+
+//    public static function delNameModification($productName, $modificationName)
+//    {
+//        $str = str_replace('(','',$modificationName);
+//        $str = str_replace(')','',$str);
+//        $str = str_replace($productName,'',$str);
+//        $str = explode(',',$str);
+//        return $str;
+//    }
+
+
+    public static function fakeStar()
+    {
+        $number = random_int(1, 5);
+        $arr = array();
+        $str = '';
+        for ($i = 0; $i < $number; $i++)
+        {
+            $arr []= 'fa fa-star-o yellow' ;
+        }
+        while (count($arr) < 5 ){
+            $arr[] = 'fa fa-star-o';
+        }
+        foreach ($arr as $item) {
+            $str .= "<i class='$item'></i>";
+        }
+        return $str;
+
+    }
 }

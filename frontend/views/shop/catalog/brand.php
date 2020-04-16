@@ -15,13 +15,9 @@ $this->params['breadcrumbs'][] = ['label' => 'Каталог', 'url' => ['index'
 $this->params['breadcrumbs'][] = $brand->name;
 ?>
 
-<!--<h1><?= Html::encode($brand->name) ?></h1>-->
-
-<div class="col-sm-9 animate fadeInUp" data-wow-delay="0.2s">
-
 <?= $this->render('_list', [
     'dataProvider' => $dataProvider
 ]) ?>
-</div>
+
 
 

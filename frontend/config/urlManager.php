@@ -27,6 +27,8 @@ return [
         ['pattern' => 'sitemap-<target:[a-z-]+>-<start:\d+>', 'route' => 'sitemap/<target>', 'suffix' => '.xml'],
         ['pattern' => 'sitemap-<target:[a-z-]+>', 'route' => 'sitemap/<target>', 'suffix' => '.xml'],
 
+        'cart' => '/shop/cart/index',
+
         'blog' => 'blog/post/index',
         'blog/tag/<slug:[\w\-]+>' => 'blog/post/tag',
         'blog/post/<slug:[\w\-]+>' => 'blog/post/post',
@@ -35,7 +37,7 @@ return [
 
         'catalog/page/<page:\d+>' => 'shop/catalog/index',
         'catalog' => 'shop/catalog/index',
-        'page/<slug:[\w\-]+>' => 'page/view',
+        '<slug:[\w\-]+>' => 'page/view',
         //'brand/<slug:[\w\-]+>' => 'shop/catalog/brand',
 //        '<catalog:\w+>' => 'shop/catalog/search',
         ['class' => 'frontend\urls\ExchangeUrlRule'],
@@ -50,7 +52,7 @@ return [
         'cabinet/<_c:[\w\-]+>/<_a:[\w-]+>' => 'cabinet/<_c>/<_a>',
         'cabinet/<_c:[\w\-]+>/<id:\d+>/<_a:[\w\-]+>' => 'cabinet/<_c>/<_a>',
 
-        ['class' => 'frontend\urls\PageUrlRule'],
+        //['class' => 'frontend\urls\PageUrlRule'],
 
         '<_c:[\w\-]+>' => '<_c>/index',
         '<_c:[\w\-]+>/<id:\d+>' => '<_c>/view',

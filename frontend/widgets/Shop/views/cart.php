@@ -73,55 +73,58 @@ use yii\helpers\Url;
 
 -->
 
-<li class="shop-cart"><a onclick="location.href = '<?= Url::to(['/shop/cart/index']) ?>'" href="#."><i class="fa fa-shopping-cart"></i></a> <span class="numb"><?= $cart->getAmount() ?></span>
-    <ul class="dropdown">
-        <?php foreach ($cart->getItems() as $item): ?>
-        <?php
-        $product = $item->getProduct();
-        $modification = $item->getModification();
-        $url = Url::to(['/shop/catalog/product', 'id' => $product->id]);
-        ?>
-
-        <li>
-
-            <div class="media">
-                <div class="media-left">
+<div class="same-style cart-wrap">
+    <?php $items = $cart->getItems()?>
+    <button class="icon-cart">
+        <i class="pe-7s-shopbag"></i>
+        <?php if ($count =count($items)):?>
+            <span class="count-style"><?=$count?></span>
+        <?php endif; ?>
+    </button>
+    <div class="shopping-cart-content">
+        <ul>
+            <?php foreach ($items as $item): ?>
+            <?php
+            $product = $item->getProduct();
+            $modification = $item->getModification();
+            $url = Url::to(['/shop/catalog/product', 'id' => $product->id]);
+            ?>
+            <li class="single-shopping-cart">
+                <div class="shopping-cart-img">
                     <?php if ($product->mainPhoto): ?>
-                        <div class="cart-img"> <a href="<?= $url ?>"> <img class="media-object img-responsive" src="<?= $product->mainPhoto->getThumbFileUrl('file', 'cart_widget_list') ?>" alt="<?= Html::encode($product->name) ?>"> </a> </div>
+                            <a href="<?= $url ?>"><img alt="" src="<?= $product->mainPhoto->getThumbFileUrl('file', 'cart_widget_list') ?>"></a>
+                    <?php else:?>
+                            <a href="<?= $url ?>"><img alt="" src="/img/cart/cart-2.png"></a>
                     <?php endif; ?>
                 </div>
-                <div class="media-body">
-                     <h6 class="media-heading"><?= Html::encode($product->name) ?></h6>
-                        <?php if ($modification): ?>
-                            <span><?= Html::encode($modification->name) ?></span>
-                        <?php endif; ?>
-                        <span class="price">Цена: <?= PriceHelper::format($item->getCost()) ?> <i class="fa fa-rub" aria-hidden="true"></i></span>
-                        <span class="qty">Кол-во: <?= $item->getQuantity() ?></span>
+                <div class="shopping-cart-title">
+                    <?php if ($modification): ?>
+                        <span><?= Html::encode($modification->name) ?></span>
+                    <?php else:?>
+                        <h4><a href="<?= $url ?>"><?= Html::encode($product->name) ?></a></h4>
+                    <?php endif; ?>
+                    <h6>Кол-во: <?= $item->getQuantity() ?></h6>
+                    <span>Цена: <?= PriceHelper::format($item->getCost()) ?> &#8381;</span>
                 </div>
-                <!--<a href="<?= Url::to(['/shop/cart/remove', 'id' => $item->getId()]) ?>" title="Remove" class="btn btn-danger btn-xs" data-method="post"><i class="fa fa-times"></i></a>-->
-            </div>
-        </li>
-        <?php endforeach; ?>
+                <div class="shopping-cart-delete">
+                    <a href="<?= Url::to(['/shop/cart/remove', 'id' => $item->getId()]) ?>" data-method="POST"><i class="fa fa-times-circle"></i></a>
+                </div>
+            </li>
+            <?php endforeach; ?>
+        </ul>
         <?php $cost = $cart->getCost(); ?>
-        <li class="no-padding no-border">
-            <h6 class="text-center">Промежуточный итог: <?= PriceHelper::format($cost->getOrigin()) ?> <i class="fa fa-rub" aria-hidden="true"></i>
-            </h6>
-        </li>
         <?php foreach ($cost->getDiscounts() as $discount): ?>
             <tr>
                 <td class="text-right"><strong><?= Html::encode($discount->getName()) ?>:</strong></td>
                 <td class="text-right"><?= PriceHelper::format($discount->getValue()) ?></td>
             </tr>
         <?php endforeach; ?>
-        <li class="no-padding no-border">
-            <h5 class="text-center">Сумма к оплате: <?= PriceHelper::format($cost->getTotal()) ?> <i class="fa fa-rub" aria-hidden="true"></i>
-            </h5>
-        </li>
-        <li class="no-padding no-border">
-            <div class="row">
-                <div class="col-xs-6"> <a href="<?= Url::to(['/shop/cart/index']) ?>" class="btn btn-small">Корзина</a></div>
-                <div class="col-xs-6 "> <a href="<?= Url::to(['/shop/checkout/index']) ?>" class="btn btn-1 btn-small">Заказать</a></div>
-            </div>
-        </li>
-    </ul>
-</li>
+        <div class="shopping-cart-total">
+            <h4>Сумма : <span class="shop-total"><?= PriceHelper::format($cost->getTotal()) ?>&#8381;</span></h4>
+        </div>
+        <div class="shopping-cart-btn btn-hover text-center">
+            <a class="default-btn" href="<?= Html::encode(Url::to(['/shop/cart/index'])) ?>">В корзину</a>
+            <a class="default-btn" href="<?= Html::encode(Url::to(['/shop/checkout/index'])) ?>">Оформить</a>
+        </div>
+    </div>
+</div>

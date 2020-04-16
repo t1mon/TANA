@@ -51,7 +51,7 @@ class Offer extends ActiveRecord implements OfferInterface
     public function setSpecification1c($specification)
     {
         $specificationModel = SpecificationModel::createByMl($specification);
-        if (!PvOfferSpecificationModel::findOne(['offer_id' => $this->id])){
+        if (!PvOfferSpecificationModel::find()->andWhere(['offer_id' => $this->id, 'specification_id' =>$specificationModel->id])->one()){
             $PvOfferSpecification = new PvOfferSpecificationModel();
             $PvOfferSpecification->offer_id = $this->id;
             $PvOfferSpecification->specification_id = $specificationModel->id;
@@ -89,6 +89,10 @@ class Offer extends ActiveRecord implements OfferInterface
     public function getPrice()
     {
         return $this->hasOne(PriceModel::class, ['id' => 'id']);
+    }
+
+    public function getOfferspecifications(){
+        return $this->hasMany(PvOfferSpecificationModel::className(),['offer_id' => 'id']);
     }
 
     public static function tableName(): string

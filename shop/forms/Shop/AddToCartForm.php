@@ -12,13 +12,14 @@ class AddToCartForm extends Model
 {
     public $modification;
     public $quantity;
+    public $check;
 
     private $_product;
 
     public function __construct(Product $product, $config = [])
     {
         $this->_product = $product;
-        $this->quantity = 1;
+        $this->quantity = 0;
         parent::__construct($config);
     }
 
@@ -31,17 +32,19 @@ class AddToCartForm extends Model
                 }
             return true;
     }"] : false,
-            ['quantity', 'required'],
-            ['quantity', 'integer', 'max' => $this->_product->quantity],
+            ['quantity', 'required','whenClient' => "function (attribute, value) { 
+                if ( value == 0 ) $.jGrowl('Количество должно быть больше 0',{ life:'7000', theme: 'jgrowl danger',position: 'top-right' }) 
+             
+                }"],
+            ['quantity', 'integer', 'max' => $this->_product->quantity , 'min' => 1],
         ]);
     }
 
     public function modificationsList(): array
     {
         return ArrayHelper::map($this->_product->modifications, 'id', function (Modification $modification) {
-            return  $modification->name . ' (Цена: ' . PriceHelper::format($modification->price ?: $this->_product->price_new) . 'руб.)';
+            return  $modification->name . "&nbsp;". PriceHelper::format($modification->price ?: $this->_product->price_new);
         });
-        //$modification->code . ' - ' .
     }
 
     public function modificationsListJava(): array

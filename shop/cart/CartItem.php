@@ -14,7 +14,7 @@ class CartItem
     public function __construct(Product $product, $modificationId, $quantity)
     {
         if (!$product->canBeCheckout($modificationId, $quantity)) {
-            throw new \DomainException('Quantity is too big.');
+            throw new \DomainException('Количество превышает отстаток.');
         }
         $this->product = $product;
         $this->modificationId = $modificationId;
@@ -23,7 +23,7 @@ class CartItem
 
     public function getId(): string
     {
-        return md5(serialize([$this->product->id, $this->modificationId]));
+        return md5(serialize([(int)$this->product->id, (int)$this->modificationId]));
     }
 
     public function getProductId(): int

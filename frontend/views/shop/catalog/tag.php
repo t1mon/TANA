@@ -12,11 +12,8 @@ $this->params['breadcrumbs'][] = ['label' => 'Каталог продукции'
 $this->params['breadcrumbs'][] = $tag->name;
 ?>
 
-
-<div class="col-sm-9 animate fadeInUp" data-wow-delay="0.2s">
 <?= $this->render('_list', [
     'dataProvider' => $dataProvider
 ]) ?>
-</div>
 
 

@@ -32,10 +32,10 @@ $this->registerMetaTag([
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-5">
                     <div class="logo text-center logo-hm5">
-                        <a class="sticky-none" href="index.html">
-                            <img alt="" src="/img/logo/logo-2.png">
+                        <a class="sticky-none" href="<?=Url::home()?>">
+                            <img alt="" src="/img/logo/logo.png">
                         </a>
-                        <a class="sticky-block" href="index.html">
+                        <a class="sticky-block" href="<?=Url::home()?>">
                             <img alt="" src="/img/logo/logo.png">
                         </a>
                     </div>
@@ -1088,91 +1088,15 @@ $this->registerMetaTag([
         </div>
         <div id="menu" class="text-left clickable-menu-style">
             <ul>
+                <li><a href="index.html">Главная</i></a></li>
             <?php //if ($this->beginCache('category_widget_home', ['duration' => 0])) : ?>
                 <?=\frontend\widgets\Shop\CategoriesWidgetHome::widget()?>
             <?php //$this->endCache();?>
             <?php //endif;?>
-                <li>
-                    <a href="index.html">home</a>
-                    <ul>
-                        <li><a href="index.html">home version 1</a></li>
-                        <li><a href="index-2.html">home version 2</a></li>
-                        <li><a href="index-3.html">home version 3</a></li>
-                        <li><a href="index-4.html">home version 4</a></li>
-                        <li><a href="index-5.html">home version 5</a></li>
-                        <li><a href="index-6.html">home version 6</a></li>
-                        <li><a href="index-7.html">home version 7</a></li>
-                        <li><a href="index-8.html">home version 8</a></li>
-                        <li><a href="index-9.html">home version 9</a></li>
-                        <li><a href="index-10.html">home version 10</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">shop</a>
-                    <ul>
-                        <li>
-                            <a href="#">shop grid</a>
-                            <ul>
-                                <li><a href="shop.html">standard style</a></li>
-                                <li><a href="shop-filter.html">Grid filter style</a></li>
-                                <li><a href="shop-grid-2-col.html">Grid 2 column</a></li>
-                                <li><a href="shop-no-sidebar.html">Grid No sidebar</a></li>
-                                <li><a href="shop-grid-fw.html">Grid full wide </a></li>
-                                <li><a href="shop-right-sidebar.html">Grid right sidebar</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">shop list</a>
-                            <ul>
-                                <li><a href="shop-list.html">list 1 column box </a></li>
-                                <li><a href="shop-list-fw.html">list 1 column full wide </a></li>
-                                <li><a href="shop-list-fw-2col.html">list 2 column  full wide</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">product details</a>
-                    <ul>
-                        <li><a href="product-details.html">tab style 1</a></li>
-                        <li><a href="product-details-2.html">tab style 2</a></li>
-                        <li><a href="product-details-3.html">tab style 3</a></li>
-                        <li><a href="product-details-4.html">sticky style</a></li>
-                        <li><a href="product-details-5.html">gallery style </a></li>
-                        <li><a href="product-details-slider-box.html">Slider style</a></li>
-                        <li><a href="product-details-affiliate.html">affiliate style</a></li>
-                        <li><a href="product-details-6.html">fixed image style </a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">pages</a>
-                    <ul>
-                        <li><a href="about.html">about us</a></li>
-                        <li><a href="cart-page.html">cart page</a></li>
-                        <li><a href="checkout.html">checkout </a></li>
-                        <li><a href="wishlist.html">wishlist </a></li>
-                        <li><a href="my-account.html">my account</a></li>
-                        <li><a href="login-register.html">login / register </a></li>
-                        <li><a href="contact.html">contact us </a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="blog.html">blog</a>
-                    <ul>
-                        <li><a href="blog.html">blog standard</a></li>
-                        <li><a href="blog-no-sidebar.html">blog no sidebar</a></li>
-                        <li><a href="blog-right-sidebar.html">blog right sidebar</a></li>
-                        <li><a href="blog-details.html">blog details 1</a></li>
-                        <li><a href="blog-details-2.html">blog details 2</a></li>
-                        <li><a href="blog-details-3.html">blog details 3</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">About Us</a>
-                </li>
-                <li>
-                    <a href="#">Contact Us</a>
-                </li>
+                <li><a href="#">Партнерам</i></a></li>
+                <li><a href="shop.html"> О нас</i> </a></li>
+                <li><a href="#">Полезная информация</i></a></li>
+                <li><a href="shop.html">Контакты</a></li>
             </ul>
         </div>
         <div class="side-social">

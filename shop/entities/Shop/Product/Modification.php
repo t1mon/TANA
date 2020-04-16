@@ -2,6 +2,8 @@
 
 namespace shop\entities\Shop\Product;
 
+use shop\Exchange_1C\Model\PvOfferSpecificationModel;
+use shop\Exchange_1C\Offer;
 use yii\db\ActiveRecord;
 
 /**
@@ -47,6 +49,11 @@ class Modification extends ActiveRecord
     public function isCodeEqualTo($code)
     {
         return $this->code === $code;
+    }
+
+    public function getSpecifications1c()
+    {
+        return $this->hasOne(Offer::className(),['accounting_id' => 'code']);
     }
 
     public static function tableName(): string
