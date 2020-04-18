@@ -4,7 +4,7 @@
 }
 
 .widget-category-catalog .active {
-    color: #a749ff;
+    color: #fe0101;
     font-weight: bold !important;
 }
 .widget-category-catalog {
@@ -22,7 +22,7 @@
     line-height: 43px;
     font-size: 16px;
     border-radius: 100%;
-    color: #a749ff;
+    color: #fe0101;
     -webkit-box-shadow: 0 0px 12px 0.8px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0px 12px 0.8px rgba(0, 0, 0, 0.1);
     background-color: #f6f6f6;

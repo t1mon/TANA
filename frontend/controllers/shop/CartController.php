@@ -14,7 +14,8 @@ use yii\web\NotFoundHttpException;
 
 class CartController extends Controller
 {
-    public $layout = 'blank';
+    public $layout = 'mainOther';
+    //public $enableCsrfValidation = false;
 
     private $products;
     private $service;
@@ -73,7 +74,7 @@ class CartController extends Controller
             }
         }
 
-        $this->layout = 'blank';
+        //$this->layout = 'blank';
 
         $form = new AddToCartForm($product);
 
@@ -101,6 +102,7 @@ class CartController extends Controller
      */
     public function actionQuantity($id)
     {
+        //$this->enableCsrfValidation = false;
         try {
             $this->service->set($id, (int)Yii::$app->request->post('quantity'));
         } catch (\DomainException $e) {

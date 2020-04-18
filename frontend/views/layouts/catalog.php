@@ -8,14 +8,14 @@ use yii\widgets\Menu;
 ?>
 <?php $this->beginContent('@frontend/views/layouts/mainOther.php') ?>
 <?php if (Yii::$app->controller->action->id == 'index'):?>
-    <?php $this->title = 'Каталог мебели - каталог товаров и цены в Самаре';
+    <?php $this->title = 'Каталог трикотаж и чулочно-носочные изделия в Самаре';
     $this->registerMetaTag([
         'name' => 'keywords',
-        'content' => 'мебель каталог товаров цены, мебель официальный каталог,мебель Самара каталог, мебель Самара каталог товаров цены'
+        'content' => 'трикотаж, чулочно-носочные изделия'
     ]);
     $this->registerMetaTag([
         'name' => 'description',
-        'content' => 'Мебель для дома в интернет-магазине MEBEL-STYLE. Огромный выбор моделей по низким ценам в наличии и под заказ; доставка, сборка, гарантия качества.'
+        'content' => 'У нас большой ассортимент трикотажный и чулочно-носочных изделий! Оптовые продажи без размерных рядов Российских производителей. Более 4 000 моделей в наличии для всей семьи, по фабричным ценам. Новинки каждую неделю.'
     ]);
 
     ?>
@@ -34,12 +34,12 @@ use yii\widgets\Menu;
                     <div class="sidebar-widget">
                         <h4 class="pro-sidebar-title">Search </h4>
                         <div class="pro-sidebar-search mb-50 mt-25">
-                            <form class="pro-sidebar-search-form" action="#">
-                                <input type="text" placeholder="Search here...">
+                            <?= \yii\helpers\Html::beginForm(['/shop/catalog/search'], 'get' , ['class'=>'pro-sidebar-search-form']) ?>
+                                <input type="text" name="text" placeholder="Поиск" />
                                 <button>
                                     <i class="pe-7s-search"></i>
                                 </button>
-                            </form>
+                                <?= \yii\helpers\Html::endForm() ?>
                         </div>
                     </div>
                     <div class="sidebar-widget">

@@ -99,7 +99,7 @@ use yii\helpers\Url;
                 </div>
                 <div class="shopping-cart-title">
                     <?php if ($modification): ?>
-                        <span><?= Html::encode($modification->name) ?></span>
+                        <h4><a href="<?= $url ?>"><?= Html::encode($modification->name) ?></a></h4>
                     <?php else:?>
                         <h4><a href="<?= $url ?>"><?= Html::encode($product->name) ?></a></h4>
                     <?php endif; ?>

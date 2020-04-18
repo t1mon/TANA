@@ -147,8 +147,9 @@ class ProductReadRepository
             ],
         ]);
 
-        $query = Product::find()->alias('p')->active('p')->with('mainPhoto', 'category');
+        //$query = Product::find()->alias('p')->active('p')->with('mainPhoto', 'category');
         if (!empty($form->text)){
+            $query = Product::find()->alias('p')->active('p')->with('mainPhoto', 'category');
             $query->andWhere(['or', ['like', 'code', $form->text], ['like', 'name', $form->text]]);
         }
 

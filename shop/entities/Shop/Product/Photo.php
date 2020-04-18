@@ -52,7 +52,7 @@ class Photo extends ActiveRecord
                 'thumbs' => [
                     'admin' => ['width' => 100, 'height' => 70],
                     'thumb' => ['width' => 320, 'height' => 240],
-                    'cart_list' => ['width' => 150, 'height' => 150],
+                    'cart_list' => ['width' => 82, 'height' => 82],
                     'cart_widget_list' => ['width' => 50, 'height' => 50],
                     'catalog_list' => ['width' => 270, 'height' => 345],
                     'new_arrival_list_widget' => ['width' => 300, 'height' => 250],

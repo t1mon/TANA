@@ -11,15 +11,15 @@ use yii\helpers\Url;
 
 ?>
 <?php $this->beginContent('@frontend/views/layouts/main.php') ?>
-<?php $this->title = 'Мебель в Самаре - купить мебель по ценам производителя! Жми'?>
+<?php $this->title = 'ТРИКОТАЖ НОСКИ КОЛГОТКИ ОПТОМ'?>
 <?php
 $this->registerMetaTag([
     'name' => 'keywords',
-    'content' => 'Мебель в Самаре, купить мебель в Самаре, много мебели в Самаре, где купить мебель в самаре, интернет магазин мебели, мебельный магазин, хорошая мебель, цена мебель товар '
+    'content' => 'трикотаж по фабричным ценам, оптом от производителя, тана трикотаж оптом в самаре, трикотаж оптом, носки оптом, колготки оптом, оптом без размеров, детский трикотаж, женский трикотаж мужской трикотаж, чулочно-носочные изделия'
 ]);
 $this->registerMetaTag([
     'name' => 'description',
-    'content' => ' Купить хорошую мебель в Самаре в ассортименте от проверенных производителей. Гарантия качества, низкой цены на мебель из нашего каталога.'
+    'content' => 'У нас большой ассортимент трикотажный и чулочно-носочных изделий! Оптовые продажи без размерных рядов Российских производителей. Более 4 000 моделей в наличии для всей семьи, по фабричным ценам. Новинки каждую неделю.'
 ]);
 ?>
     <header class="header-area sticky-bar header-padding-3 header-res-padding clearfix transparent-bar header-hm-7">
@@ -45,70 +45,29 @@ $this->registerMetaTag([
                         <div class="same-style header-search">
                             <a class="search-active" href="#"><i class="pe-7s-search"></i></a>
                             <div class="search-content">
-                                <form action="#">
-                                    <input type="text" placeholder="Search" />
-                                    <button class="button-search"><i class="pe-7s-search"></i></button>
-                                </form>
+                                <?= \yii\helpers\Html::beginForm(['/shop/catalog/search'], 'get') ?>
+                                <input type="text" name="text" placeholder="Поиск" />
+                                <button class="button-search"><i class="pe-7s-search"></i></button>
+                                <?= \yii\helpers\Html::endForm() ?>
                             </div>
                         </div>
-                        <div class="same-style account-satting">
-                            <a class="account-satting-active" href="#"><i class="pe-7s-user-female"></i></a>
-                            <div class="account-dropdown">
-                                <ul>
-                                    <li><a href="login-register.html">Login</a></li>
-                                    <li><a href="login-register.html">Register</a></li>
-                                    <li><a href="wishlist.html">Wishlist  </a></li>
-                                    <li><a href="my-account.html">my account</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="same-style header-wishlist">
-                            <a href="wishlist.html"><i class="pe-7s-like"></i></a>
-                        </div>
-                        <div class="same-style cart-wrap">
-                            <button class="icon-cart">
-                                <i class="pe-7s-shopbag"></i>
-                                <span class="count-style">02</span>
-                            </button>
-                            <div class="shopping-cart-content">
-                                <ul>
-                                    <li class="single-shopping-cart">
-                                        <div class="shopping-cart-img">
-                                            <a href="#"><img alt="" src="/img/cart/cart-1.png"></a>
-                                        </div>
-                                        <div class="shopping-cart-title">
-                                            <h4><a href="#">T- Shart & Jeans </a></h4>
-                                            <h6>Qty: 02</h6>
-                                            <span>$260.00</span>
-                                        </div>
-                                        <div class="shopping-cart-delete">
-                                            <a href="#"><i class="fa fa-times-circle"></i></a>
-                                        </div>
-                                    </li>
-                                    <li class="single-shopping-cart">
-                                        <div class="shopping-cart-img">
-                                            <a href="#"><img alt="" src="/img/cart/cart-2.png"></a>
-                                        </div>
-                                        <div class="shopping-cart-title">
-                                            <h4><a href="#">T- Shart & Jeans </a></h4>
-                                            <h6>Qty: 02</h6>
-                                            <span>$260.00</span>
-                                        </div>
-                                        <div class="shopping-cart-delete">
-                                            <a href="#"><i class="fa fa-times-circle"></i></a>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="shopping-cart-total">
-                                    <h4>Shipping : <span>$20.00</span></h4>
-                                    <h4>Total : <span class="shop-total">$260.00</span></h4>
-                                </div>
-                                <div class="shopping-cart-btn btn-hover text-center">
-                                    <a class="default-btn" href="cart-page.html">view cart</a>
-                                    <a class="default-btn" href="checkout.html">checkout</a>
-                                </div>
-                            </div>
-                        </div>
+<!--                        <div class="same-style account-satting">-->
+<!--                            <a class="account-satting-active" href="#"><i class="pe-7s-user-female"></i></a>-->
+<!--                            <div class="account-dropdown">-->
+<!--                                <ul>-->
+<!--                                    <li><a href="login-register.html">Login</a></li>-->
+<!--                                    <li><a href="login-register.html">Register</a></li>-->
+<!--                                    <li><a href="wishlist.html">Wishlist  </a></li>-->
+<!--                                    <li><a href="my-account.html">my account</a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="same-style header-wishlist">-->
+<!--                            <a href="wishlist.html"><i class="pe-7s-like"></i></a>-->
+<!--                        </div>-->
+
+                            <?=\frontend\widgets\Shop\CartWidget::widget()?>
+
                     </div>
                 </div>
             </div>
