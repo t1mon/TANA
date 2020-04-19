@@ -10,4 +10,9 @@ class BrandReadRepository
     {
         return Brand::findOne($id);
     }
+
+    public function getAll(): array
+    {
+        return Brand::find()->asArray()->all();
+    }
 }

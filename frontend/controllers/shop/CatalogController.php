@@ -52,6 +52,7 @@ class CatalogController extends Controller
      */
     public function actionIndex()
     {
+        //\yii\helpers\VarDumper::dump(\Yii::$app->request->queryParams, 3, true);
         $dataProvider = $this->products->getAll();
         $category = $this->categories->getRoot();
 

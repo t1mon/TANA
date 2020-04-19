@@ -51,7 +51,7 @@ use yii\widgets\Menu;
                             <ul>
                                 <li>
                                     <div class="sidebar-widget-list-left">
-                                        <input type="checkbox"> <a href="#">On Sale <span>4</span> </a>
+                                        <input type="checkbox" > <a href="#">On Sale <span>4</span> </a>
                                         <span class="checkmark"></span>
                                     </div>
                                 </li>
@@ -141,18 +141,7 @@ use yii\widgets\Menu;
                             </ul>
                         </div>
                     </div>
-                    <div class="sidebar-widget mt-50">
-                        <h4 class="pro-sidebar-title">Tag </h4>
-                        <div class="sidebar-widget-tag mt-25">
-                            <ul>
-                                <li><a href="#">Clothing</a></li>
-                                <li><a href="#">Accessories</a></li>
-                                <li><a href="#">For Men</a></li>
-                                <li><a href="#">Women</a></li>
-                                <li><a href="#">Fashion</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    <?=\frontend\widgets\Shop\BrandWidget::widget()?>
                 </div>
             </div>
 

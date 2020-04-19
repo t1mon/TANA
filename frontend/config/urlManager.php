@@ -39,6 +39,7 @@ return [
         'catalog' => 'shop/catalog/index',
         '<slug:[\w\-]+>' => 'page/view',
         //'brand/<slug:[\w\-]+>' => 'shop/catalog/brand',
+        'brand/<id:\d+>' => 'shop/catalog/brand',
 //        '<catalog:\w+>' => 'shop/catalog/search',
         ['class' => 'frontend\urls\ExchangeUrlRule'],
         ['class' => 'frontend\urls\ProductUrlRule' ],
