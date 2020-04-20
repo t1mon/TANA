@@ -16,6 +16,7 @@ use yii\data\Sort;
 use yii\db\ActiveQuery;
 use yii\db\Expression;
 use yii\helpers\ArrayHelper;
+use yii\helpers\VarDumper;
 
 class ProductReadRepository
 {
@@ -44,11 +45,16 @@ class ProductReadRepository
         return Product::find()->alias('p')->active('p')->with('mainPhoto', 'brand')->each();
     }
 
-    public function getAll(): DataProviderInterface
+    public function getAll($param): DataProviderInterface
     {
         $query = Product::find()->alias('p')->active('p')->with('mainPhoto');
+        foreach ($param as $item => $k){
+            if ($item != 'sort' && $item != 'page')
+                $query->andFilterWhere([$item => $k]);
+        }
         return $this->getProvider($query);
     }
+
 
     public function getAllByCategory(Category $category): DataProviderInterface
     {

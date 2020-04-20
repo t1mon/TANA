@@ -116,7 +116,9 @@ class ProductManageService
                 $form->meta->description,
                 $form->meta->keywords
             ),
-            $form->slug ? $form->slug : Inflector::slug($form->name)
+            $form->slug ? $form->slug : Inflector::slug($form->name),
+            $form->new,
+            $form->sale
         );
 
         $product->changeMainCategory($category->id);

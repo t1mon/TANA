@@ -24,7 +24,12 @@ $url = Url::to(['product', 'id' =>$product->id]);
                 <img class="default-img" src="<?=Html::encode(Yii::getAlias('@web')."/img/product/pro-1.jpg")?>" alt="">
             <?php endif; ?>
             </a>
-            <span class="pink">-10%</span>
+            <?php if ($product->new) :?>
+                <span class="new">New</span>
+            <?php endif;?>
+            <?php if ($product->sale) :?>
+                <span class="sale">Распродажа</span>
+            <?php endif;?>
             <div class="product-action">
 
                 <div class="pro-same-action pro-cart">

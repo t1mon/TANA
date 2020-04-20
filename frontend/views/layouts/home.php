@@ -1041,21 +1041,22 @@ $this->registerMetaTag([
             </button>
         </div>
         <div class="side-logo">
-            <a href="index.html">
+            <a href="<?=Url::home()?>">
                 <img alt="" src="/img/logo/logo.png">
             </a>
         </div>
         <div id="menu" class="text-left clickable-menu-style">
             <ul>
-                <li><a href="index.html">Главная</i></a></li>
+                <li><a href="<?=Url::home()?>">Главная</i></a></li>
+                <li><a href="<?=Url::to(['shop/catalog/index'])?>">Каталог</i></a></li>
             <?php //if ($this->beginCache('category_widget_home', ['duration' => 0])) : ?>
                 <?=\frontend\widgets\Shop\CategoriesWidgetHome::widget()?>
             <?php //$this->endCache();?>
             <?php //endif;?>
-                <li><a href="#">Партнерам</i></a></li>
-                <li><a href="shop.html"> О нас</i> </a></li>
-                <li><a href="#">Полезная информация</i></a></li>
-                <li><a href="shop.html">Контакты</a></li>
+                <li><a href="<?=Url::to(['site/to-partners'])?>">Партнерам</i></a></li>
+                <li><a href="<?=Url::to(['site/about'])?>"> О нас</i> </a></li>
+                <li><a href="<?=Url::to(['site/info'])?>">Полезная информация</i></a></li>
+                <li><a href="<?=Url::to(['contact/index'])?>">Контакты</a></li>
             </ul>
         </div>
         <div class="side-social">

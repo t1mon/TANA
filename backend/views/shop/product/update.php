@@ -33,6 +33,10 @@ $this->params['breadcrumbs'][] = 'Редактирование';
                 <div class="col-md-6">
                     <?= $form->field($model, 'slug')->textInput(['maxlength' => true])->label('ЧПУ Продукта (адрес формируется автоматически)') ?>
                 </div>
+                <div class="col-md-4">
+                    <?= $form->field($model, 'new')->checkbox(['value'=>1, 'uncheckValue'=>0])->label('Новый продукт') ?>
+                    <?= $form->field($model, 'sale')->checkbox(['value'=>1, 'uncheckValue'=>0])->label('Распродажа') ?>
+                </div>
             </div>
             <?= $form->field($model, 'description')->widget(CKEditor::className())->label('Описание продукта') ?>
         </div>

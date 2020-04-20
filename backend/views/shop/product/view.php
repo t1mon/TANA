@@ -125,7 +125,6 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
         <div class="col-md-6">
-
             <div class="box box-default">
                 <div class="box-header with-border">Характеристики</div>
                 <div class="box-body">

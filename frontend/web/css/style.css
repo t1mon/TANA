@@ -3935,7 +3935,9 @@ a.default-btn {
       border-radius: 3px;
       font-weight: 500; }
       .product-wrap .product-img span.pink {
-        background-color: #fa6bff; }
+        background-color: #c62828; }
+.product-wrap .product-img span.new, .product-wrap .product-img span.sale {
+  background-color: #c62828; }
       .product-wrap .product-img span.purple {
         background-color: #fe0101; }
     .product-wrap .product-img .hover-img {
@@ -4593,7 +4595,7 @@ a.default-btn {
     position: absolute;
     display: block;
     border: 0;
-    background: #fa6bff none repeat scroll 0 0;
+    background: #c62828 none repeat scroll 0 0;
     border: none;
     -webkit-transition: all .0s ease 0s;
     -o-transition: all .0s ease 0s;
@@ -4605,7 +4607,7 @@ a.default-btn {
     height: 15px;
     margin-left: 0;
     width: 15px;
-    border: 4px solid #fa6bff; }
+    border: 4px solid #c62828; }
 
 .tab-content.jump .tab-pane {
   display: block;
@@ -4632,7 +4634,7 @@ a.default-btn {
       top: 20px;
       right: 20px; }
       .product-wrap-2 .product-img span.pink {
-        color: #fa6bff; }
+        color: #c62828; }
       .product-wrap-2 .product-img span.purple {
         color: #fe0101; }
     .product-wrap-2 .product-img .default-img {
@@ -4684,7 +4686,7 @@ a.default-btn {
         -ms-transform: scaleX(0);
         transform: scaleX(0); }
         .product-wrap-2 .product-img .product-action-2 a:hover {
-          background-color: #fa6bff; }
+          background-color: #c62828; }
   .product-wrap-2 .product-content-2 {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -4707,7 +4709,7 @@ a.default-btn {
       margin-right: 17px;
       position: relative; }
       .product-wrap-2 .product-content-2 .title-price-wrap-2 .price-2 span.old {
-        color: #fa6bff;
+        color: #c62828;
         text-decoration: line-through; }
       .product-wrap-2 .product-content-2 .title-price-wrap-2 .price-2 span::before {
         position: absolute;
@@ -4861,7 +4863,7 @@ a.default-btn {
       font-weight: 500;
       z-index: 99; }
       .product-wrap-3 .product-img > span.pink {
-        background-color: #fa6bff; }
+        background-color: #c62828; }
       .product-wrap-3 .product-img > span.purple {
         background-color: #fe0101; }
   .product-wrap-3 .product-content-3-wrap {
@@ -4935,7 +4937,7 @@ a.default-btn {
         -o-transition: all 0.4s ease-in-out;
         transition: all 0.4s ease-in-out; }
         .product-wrap-3 .product-content-3-wrap .product-content-3 .product-action-3 a:hover {
-          background-color: #fa6bff; }
+          background-color: #c62828; }
   .product-wrap-3:hover .product-content-3-wrap {
     opacity: 1;
     visibility: visible;
@@ -5095,7 +5097,7 @@ a.default-btn {
     .product-wrap-4 .product-content-4 .price-4 span:last-child:before {
       display: none; }
     .product-wrap-4 .product-content-4 .price-4 span.old {
-      color: #fa6bff;
+      color: #c62828;
       text-decoration: line-through; }
   .product-wrap-4 .product-content-4 .price-4.price-4-center span {
     margin: 0 12px; }
@@ -5167,7 +5169,7 @@ a.default-btn {
       .product-wrap-5 .product-img span.purple {
         background-color: #fe0101; }
       .product-wrap-5 .product-img span.pink {
-        background-color: #fa6bff; }
+        background-color: #c62828; }
   .product-wrap-5 .product-action-4 {
     background: none repeat scroll 0 0 #fe0101;
     bottom: 0;
@@ -5205,7 +5207,7 @@ a.default-btn {
         border-radius: 50px;
         margin: 0 3px; }
         .product-wrap-5 .product-action-4 .pro-same-action a:hover {
-          background-color: #fa6bff;
+          background-color: #c62828;
           color: #fff; }
   .product-wrap-5 .product-content-5 {
     margin-top: 28px; }
@@ -5233,7 +5235,7 @@ a.default-btn {
       .product-wrap-5 .product-content-5 .price-5 span:last-child:before {
         display: none; }
       .product-wrap-5 .product-content-5 .price-5 span.old {
-        color: #fa6bff;
+        color: #c62828;
         text-decoration: line-through; }
   .product-wrap-5:hover .product-action-4 {
     opacity: 1;
@@ -5401,7 +5403,7 @@ a.default-btn {
     font-weight: 500;
     padding: 2px 10px 5px; }
     .blog-wrap .blog-img span.pink {
-      background-color: #fa6bff; }
+      background-color: #c62828; }
     .blog-wrap .blog-img span.purple {
       background-color: #fe0101; }
 
@@ -6695,8 +6697,8 @@ a.default-btn {
       z-index: 999;
       width: auto; }
       .sidebar-widget .sidebar-widget-list ul li .sidebar-widget-list-left input:checked ~ .checkmark {
-        background-color: #fa6bff;
-        border: 2px solid #fa6bff; }
+        background-color: #c62828;
+        border: 2px solid #c62828; }
       .sidebar-widget .sidebar-widget-list ul li .sidebar-widget-list-left input:checked ~ .checkmark::after {
         display: block; }
     .sidebar-widget .sidebar-widget-list ul li .sidebar-widget-list-left .checkmark {
@@ -6892,7 +6894,7 @@ a.default-btn {
     .shop-top-bar .shop-tab a:first-child {
       margin-left: 0; }
     .shop-top-bar .shop-tab a.active {
-      color: #fa6bff; }
+      color: #c62828; }
 
 .shop-list-wrap .product-wrap:hover .hover-img {
   opacity: inherit;
@@ -7109,7 +7111,7 @@ a.default-btn {
     padding: 3px 11px;
     border-radius: 3px;
     font-weight: 500;
-    background-color: #fa6bff; }
+    background-color: #c62828; }
   .product-details-img .large-img-style .img-popup-wrap {
     position: absolute;
     right: 30px;
@@ -7412,7 +7414,7 @@ a.default-btn {
     padding: 3px 11px;
     border-radius: 3px;
     font-weight: 500;
-    background-color: #fa6bff;
+    background-color: #c62828;
     z-index: 99; }
   .zoompro-wrap .zoompro-span .product-video {
     text-align: center;
@@ -7421,7 +7423,7 @@ a.default-btn {
     left: 30px;
     z-index: 99; }
     .zoompro-wrap .zoompro-span .product-video a {
-      background-color: #fa6bff;
+      background-color: #c62828;
       border-radius: 3px;
       color: #fff;
       display: inline-block;
@@ -7447,7 +7449,7 @@ a.default-btn {
     padding: 3px 11px;
     border-radius: 3px;
     font-weight: 500;
-    background-color: #fa6bff;
+    background-color: #c62828;
     z-index: 99; }
 
 @media only screen and (max-width: 767px) {

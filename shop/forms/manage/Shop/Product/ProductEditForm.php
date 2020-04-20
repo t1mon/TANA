@@ -25,6 +25,8 @@ class ProductEditForm extends CompositeForm
     public $description;
     public $weight;
     public $slug;
+    public $new;
+    public $sale;
 
     private $_product;
 
@@ -38,6 +40,8 @@ class ProductEditForm extends CompositeForm
         $this->meta = new MetaForm($product->meta);
         $this->categories = new CategoriesForm($product);
         $this->slug = $product->slug;
+        $this->new = $product->new;
+        $this->sale = $product->sale;
         $this->tags = new TagsForm($product);
         $this->values = array_map(function (Characteristic $characteristic) use ($product) {
             return new ValueForm($characteristic, $product->getValue($characteristic->id));
@@ -57,6 +61,7 @@ class ProductEditForm extends CompositeForm
             ['description', 'string'],
             ['slug', SlugValidator::class],
             ['weight', 'integer', 'min' => 0],
+            [['new', 'sale'], 'boolean' ]
         ];
     }
 

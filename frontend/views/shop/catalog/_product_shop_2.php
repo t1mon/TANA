@@ -22,7 +22,12 @@ $url = Url::to(['product', 'id' =>$product->id]);
                             <img class="hover-img" src="<?=Html::encode(Yii::getAlias('@web')."/img/product/pro-1-1.jpg")?>" alt="">
                         <?php endif; ?>
                     </a>
-                    <span class="pink">-10%</span>
+                    <?php if ($product->new) :?>
+                        <span class="new">New</span>
+                    <?php endif;?>
+                    <?php if ($product->sale) :?>
+                        <span class="sale">Распродажа</span>
+                    <?php endif;?>
                 </div>
             </div>
         </div>
@@ -43,11 +48,11 @@ $url = Url::to(['product', 'id' =>$product->id]);
                         <i class="fa fa-star-o"></i>
                         <i class="fa fa-star-o"></i>
                     </div>
-                    <a href="#">3 Reviews</a>
+<!--                    <a href="#">3 Reviews</a>-->
                 </div>
                 <p><?= Yii::$app->formatter->asHtml(ProductStingHelper::cropName($product->description,50)) ?></p>
                 <div class="shop-list-btn btn-hover">
-                    <a href="#">ADD TO CART</a>
+                    <a href="<?=Html::encode(Url::to(['/shop/cart/add', 'id' => $product->id]))?>">В корзину</a>
                 </div>
             </div>
         </div>

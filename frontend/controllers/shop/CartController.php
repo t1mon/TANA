@@ -89,11 +89,12 @@ class CartController extends Controller
                 return $this->redirect(Yii::$app->request->referrer);
             }
         }
-
-        return $this->render('add', [
-            'product' => $product,
-            'model' => $form,
-        ]);
+        Yii::$app->session->setFlash('warning', 'Необходимо выбрать модельный ряд товара!');
+        return $this->redirect(['shop/catalog/product', 'id' => $product->id]);
+//        return $this->render('add', [
+//            'product' => $product,
+//            'model' => $form,
+//        ]);
     }
 
     /**

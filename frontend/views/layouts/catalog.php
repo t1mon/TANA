@@ -5,6 +5,9 @@
 
 use frontend\widgets\Shop\CategoriesWidget;
 use yii\widgets\Menu;
+use yii\helpers\Html;
+use yii\helpers\Url;
+
 ?>
 <?php $this->beginContent('@frontend/views/layouts/mainOther.php') ?>
 <?php if (Yii::$app->controller->action->id == 'index'):?>
@@ -32,10 +35,10 @@ use yii\widgets\Menu;
             <div class="col-lg-3">
                 <div class="sidebar-style mr-30">
                     <div class="sidebar-widget">
-                        <h4 class="pro-sidebar-title">Search </h4>
+                        <h4 class="pro-sidebar-title">Поиск</h4>
                         <div class="pro-sidebar-search mb-50 mt-25">
                             <?= \yii\helpers\Html::beginForm(['/shop/catalog/search'], 'get' , ['class'=>'pro-sidebar-search-form']) ?>
-                                <input type="text" name="text" placeholder="Поиск" />
+                                <input type="text" name="text" placeholder="Текст поиска" />
                                 <button>
                                     <i class="pe-7s-search"></i>
                                 </button>
@@ -51,90 +54,15 @@ use yii\widgets\Menu;
                             <ul>
                                 <li>
                                     <div class="sidebar-widget-list-left">
-                                        <input type="checkbox" > <a href="#">On Sale <span>4</span> </a>
+                                        <input type="checkbox" value="sale"> <a href="#">Распродажа <span>4</span> </a>
                                         <span class="checkmark"></span>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="sidebar-widget-list-left">
-                                        <input type="checkbox" value=""> <a href="#">New <span>4</span></a>
-                                        <span class="checkmark"></span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="sidebar-widget-list-left">
-                                        <input type="checkbox" value=""> <a href="#">In Stock <span>4</span> </a>
-                                        <span class="checkmark"></span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="sidebar-widget mt-45">
-                        <h4 class="pro-sidebar-title">Filter By Price </h4>
-                        <div class="price-filter mt-10">
-                            <div class="price-slider-amount">
-                                <input type="text" id="amount" name="price"  placeholder="Add Your Price" />
-                            </div>
-                            <div id="slider-range"></div>
-                        </div>
-                    </div>
-                    <div class="sidebar-widget mt-50">
-                        <h4 class="pro-sidebar-title">Colour </h4>
-                        <div class="sidebar-widget-list mt-20">
-                            <ul>
-                                <li>
-                                    <div class="sidebar-widget-list-left">
-                                        <input type="checkbox" value=""> <a href="#">Green <span>4</span> </a>
-                                        <span class="checkmark"></span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="sidebar-widget-list-left">
-                                        <input type="checkbox" value=""> <a href="#">Cream <span>4</span> </a>
-                                        <span class="checkmark"></span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="sidebar-widget-list-left">
-                                        <input type="checkbox" value=""> <a href="#">Blue <span>4</span> </a>
-                                        <span class="checkmark"></span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="sidebar-widget-list-left">
-                                        <input type="checkbox" value=""> <a href="#">Black <span>4</span> </a>
-                                        <span class="checkmark"></span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="sidebar-widget mt-40">
-                        <h4 class="pro-sidebar-title">Size </h4>
-                        <div class="sidebar-widget-list mt-20">
-                            <ul>
-                                <li>
-                                    <div class="sidebar-widget-list-left">
-                                        <input type="checkbox" value=""> <a href="#">XL</a>
-                                        <span class="checkmark"></span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="sidebar-widget-list-left">
-                                        <input type="checkbox" value=""> <a href="#">L</a>
-                                        <span class="checkmark"></span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="sidebar-widget-list-left">
-                                        <input type="checkbox" value=""> <a href="#">SM</a>
-                                        <span class="checkmark"></span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="sidebar-widget-list-left">
-                                        <input type="checkbox" value=""> <a href="#">XXL</a>
+                                        <?php $getNew = \Yii::$app->request->get('new'); ?>
+
+                                        <input type="checkbox" value="<?=Html::encode(Url::current(['new' => !$getNew ?: null])) ?>" onchange="location = this.value" <?php if($getNew) echo 'checked' ?> > <a href="#.">New <span>4</span></a>
                                         <span class="checkmark"></span>
                                     </div>
                                 </li>
@@ -148,6 +76,11 @@ use yii\widgets\Menu;
         </div>
     </div>
 </div>
+<?php
+$script = <<<JS
 
+JS;
+$this->registerJs($script,yii\web\View::POS_END);
+?>
 
 <?php $this->endContent() ?>

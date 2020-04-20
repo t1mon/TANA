@@ -37,8 +37,10 @@ use shop\entities\Shop\Product\Review;
  * @property integer $status
  * @property integer $weight
  * @property integer $quantity
- *  * @property string $slug
- *
+ * @property integer $new
+ * @property integer $sale
+ * @property string $slug
+
  * @property Meta $meta
  * @property Brand $brand
  * @property Category $category
@@ -93,7 +95,7 @@ class Product extends ActiveRecord implements AggregateRoot
         $this->setQuantity($quantity);
     }
 
-    public function edit($brandId, $code, $name, $description, $weight, Meta $meta,$slug): void
+    public function edit($brandId, $code, $name, $description, $weight, Meta $meta,$slug,$new,$sale): void
     {
         $this->brand_id = $brandId;
         $this->code = $code;
@@ -102,6 +104,8 @@ class Product extends ActiveRecord implements AggregateRoot
         $this->weight = $weight;
         $this->meta = $meta;
         $this->slug = $slug;
+        $this->new =$new;
+        $this->sale = $sale;
     }
 
     public function changeMainCategory($categoryId): void

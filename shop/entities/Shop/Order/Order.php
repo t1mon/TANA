@@ -144,7 +144,7 @@ class Order extends ActiveRecord
             if ($status->value === $value || $value==$this->current_status )
                 throw  new \DomainException('Выбранный вами статус заказа уже был создан ранее');
         }
-        $this->recordEvent(new OrderChangeStatus($this));
+        //$this->recordEvent(new OrderChangeStatus($this));
         $this->statuses[] = new Status($value, time());
         $this->current_status = $value;
     }

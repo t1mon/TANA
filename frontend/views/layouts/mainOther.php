@@ -2,7 +2,7 @@
 
 /* @var $this \yii\web\View */
 /* @var $content string */
-
+use yii\helpers\Url;
 ?>
 <?php $this->beginContent('@frontend/views/layouts/main.php') ?>
     <header class="header-area header-in-container clearfix">
@@ -11,19 +11,18 @@
                 <div class="header-top-wap">
                     <div class="language-currency-wrap">
                         <div class="same-language-currency use-style">
-                            <a href="#">+7 (846) 268 95 65</a>
+                            <a href="tel:+78462689565">+7 (846) 268 95 65</a>
                         </div>
                         <div class="same-language-currency use-style">
-                            <a href="#">+ 7 (902) 374 38 76</a>
+                            <a href="tel:+79023743876">+ 7 (902) 374 38 76</a>
                         </div>
                         <div class="same-language-currency use-style">
-                            <a href="#">+7 (917) 945 95 55</a>
+                            <a href="tel:+79179459555">+7 (917) 945 95 55</a>
                         </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         <div class="header-bottom sticky-bar header-res-padding">
             <div class="container">
                 <div class="row">
@@ -38,11 +37,11 @@
                         <div class="main-menu">
                             <nav>
                                 <ul>
-                                    <li><a href="index.html">Главная</i></a></li>
-                                    <li><a href="#">Партнерам</i></a></li>
-                                    <li><a href="shop.html"> О нас</i> </a></li>
-                                    <li><a href="#">Полезная информация</i></a></li>
-                                    <li><a href="shop.html">Контакты</a></li>
+                                    <li><a href="<?=Url::home()?>">Главная</i></a></li>
+                                    <li><a href="<?=Url::to(['site/to-partners'])?>">Партнерам</i></a></li>
+                                    <li><a href="<?=Url::to(['site/about'])?>"> О нас</i> </a></li>
+                                    <li><a href="<?=Url::to(['site/info'])?>">Полезная информация</i></a></li>
+                                    <li><a href="<?=Url::to(['contact/index'])?>">Контакты</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -58,20 +57,6 @@
                                     <?= \yii\helpers\Html::endForm() ?>
                                 </div>
                             </div>
-<!--                            <div class="same-style account-satting">-->
-<!--                                <a class="account-satting-active" href="#"><i class="pe-7s-user-female"></i></a>-->
-<!--                                <div class="account-dropdown">-->
-<!--                                    <ul>-->
-<!--                                        <li><a href="login-register.html">Login</a></li>-->
-<!--                                        <li><a href="login-register.html">Register</a></li>-->
-<!--                                        <li><a href="wishlist.html">Wishlist  </a></li>-->
-<!--                                        <li><a href="my-account.html">my account</a></li>-->
-<!--                                    </ul>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="same-style header-wishlist">-->
-<!--                                <a href="wishlist.html"><i class="pe-7s-like"></i></a>-->
-<!--                            </div>-->
                             <?=\frontend\widgets\Shop\CartWidget::widget()?>
                         </div>
                     </div>
@@ -80,11 +65,11 @@
                     <div class="mobile-menu">
                         <nav id="mobile-menu-active">
                             <ul class="menu-overflow">
-                                <li><a href="index.html">Главная</i></a></li>
-                                <li><a href="#">Партнерам</i></a></li>
-                                <li><a href="shop.html"> О нас</i> </a></li>
-                                <li><a href="#">Полезная информация</i></a></li>
-                                <li><a href="shop.html">Контакты</a></li>
+                                <li><a href="<?=Url::home()?>">Главная</i></a></li>
+                                <li><a href="<?=Url::to(['site/to-partners'])?>">Партнерам</i></a></li>
+                                <li><a href="<?=Url::to(['site/about'])?>"> О нас</i> </a></li>
+                                <li><a href="<?=Url::to(['site/info'])?>">Полезная информация</i></a></li>
+                                <li><a href="<?=Url::to(['contact/index'])?>">Контакты</a></li>
                             </ul>
                         </nav>
                     </div>

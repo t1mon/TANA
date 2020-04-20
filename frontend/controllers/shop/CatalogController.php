@@ -53,7 +53,7 @@ class CatalogController extends Controller
     public function actionIndex()
     {
         //\yii\helpers\VarDumper::dump(\Yii::$app->request->queryParams, 3, true);
-        $dataProvider = $this->products->getAll();
+        $dataProvider = $this->products->getAll(\Yii::$app->request->queryParams);
         $category = $this->categories->getRoot();
 
         return $this->render('index', [
@@ -124,7 +124,7 @@ class CatalogController extends Controller
      */
     public function actionSearch()
     {
-            $this->layout = 'search';
+            $this->layout = 'catalog';
             $form = new SearchForm();
             $form->load(\Yii::$app->request->queryParams);
             $form->validate();

@@ -7,11 +7,12 @@ use shop\forms\Shop\Order\OrderForm;
 use shop\useCases\Shop\OrderService;
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 
 class CheckoutController extends Controller
 {
-    public $layout = 'blank';
+    public $layout = 'mainOther';
 
     private $service;
     private $cart;
@@ -48,7 +49,6 @@ class CheckoutController extends Controller
             return $this->redirect('/shop/catalog/index');
         }
         $form = new OrderForm($this->cart->getWeight());
-
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
             try {
                 $user = !Yii::$app->user->isGuest ? Yii::$app->user->id : null ;

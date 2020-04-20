@@ -20,7 +20,11 @@ return [
         'signup' => 'auth/signup/request',
         'signup/<_a:[\w-]+>' => 'auth/signup/<_a>',
         '<_a:login|logout>' => 'auth/auth/<_a>',
-
+        /*Static*/
+        'to-partners' => 'site/to-partners',
+        'suppliers' => 'site/suppliers',
+        'info' => 'site/info',
+        /*Static*/
         ['pattern' => 'yandex-market', 'route' => 'market/index', 'suffix' => '.xml'],
 
         ['pattern' => 'sitemap', 'route' => 'sitemap/index', 'suffix' => '.xml'],
@@ -59,5 +63,7 @@ return [
         '<_c:[\w\-]+>/<id:\d+>' => '<_c>/view',
         '<_c:[\w\-]+>/<_a:[\w-]+>' => '<_c>/<_a>',
         '<_c:[\w\-]+>/<id:\d+>/<_a:[\w\-]+>' => '<_c>/<_a>',
+
+
     ],
 ];
