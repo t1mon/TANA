@@ -50,7 +50,7 @@ return [
         ['class' => 'frontend\urls\CategoryUrlRule'],
         //'catalog/<id:\d+>' => 'shop/catalog/product',
 
-        '<slug:[\w\-]+>' => 'page/view',
+        //'<slug:[\w\-]+>' => 'page/view',
         'cabinet' => 'cabinet/default/index',
         'cabinet/<_c:[\w\-]+>' => 'cabinet/<_c>/index',
         'cabinet/<_c:[\w\-]+>/<id:\d+>' => 'cabinet/<_c>/view',
