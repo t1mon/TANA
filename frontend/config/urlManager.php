@@ -41,7 +41,6 @@ return [
 
         'catalog/page/<page:\d+>' => 'shop/catalog/index',
         'catalog' => 'shop/catalog/index',
-        '<slug:[\w\-]+>' => 'page/view',
         //'brand/<slug:[\w\-]+>' => 'shop/catalog/brand',
         'brand/<id:\d+>' => 'shop/catalog/brand',
 //        '<catalog:\w+>' => 'shop/catalog/search',
@@ -51,6 +50,7 @@ return [
         ['class' => 'frontend\urls\CategoryUrlRule'],
         //'catalog/<id:\d+>' => 'shop/catalog/product',
 
+        '<slug:[\w\-]+>' => 'page/view',
         'cabinet' => 'cabinet/default/index',
         'cabinet/<_c:[\w\-]+>' => 'cabinet/<_c>/index',
         'cabinet/<_c:[\w\-]+>/<id:\d+>' => 'cabinet/<_c>/view',

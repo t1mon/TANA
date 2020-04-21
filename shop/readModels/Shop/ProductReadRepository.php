@@ -49,7 +49,7 @@ class ProductReadRepository
     {
         $query = Product::find()->alias('p')->active('p')->with('mainPhoto');
         foreach ($param as $item => $k){
-            if ($item != 'sort' && $item != 'page')
+            if ($item == 'new' || $item == 'sale')
                 $query->andFilterWhere([$item => $k]);
         }
         return $this->getProvider($query);

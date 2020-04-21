@@ -14,6 +14,7 @@ class ProductStingHelper
 
     public static function productFields(DataProviderInterface $dataProvider):string //Показы с по из
     {
+        if (!$dataProvider->getTotalCount()) return 'Нет элементов';
        $current_page = \Yii::$app->request->get('page')? \Yii::$app->request->get('page'): 1;
        $start_line = ($current_page-1)*$dataProvider->getCount()+1;
        $end_line = $start_line+$dataProvider->getCount()-1;

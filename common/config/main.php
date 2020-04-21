@@ -24,11 +24,11 @@ return [
             'groupClass' => \shop\Exchange_1C\Group::class,
             'productClass' => \shop\Exchange_1C\Product::class,
             'offerClass' => \shop\Exchange_1C\Offer::class,
-            'on afterProductSync' => [\shop\Exchange_1C\LoadDataBaseShop\ProductLoad::class, 'afterProductSync'],
-            'on afterUpdateProduct' => [\shop\Exchange_1C\LoadDataBaseShop\ProductLoad::class, 'afterUpdateProduct'],
-            'on afterOfferSync' => [\shop\Exchange_1C\LoadDataBaseShop\ProductLoad::class, 'afterOfferSync'],
-            'on afterUpdateOffer' => [\shop\Exchange_1C\LoadDataBaseShop\ProductLoad::class, 'afterUpdateOffer'],
-            'on afterFinishUploadFile' => [\shop\Exchange_1C\LoadDataBaseShop\ProductLoad::class, 'afterFinishUploadFile'],
+            //'on afterProductSync' => [\shop\Exchange_1C\LoadDataBaseShop\ProductLoad::class, 'afterProductSync'],
+            //'on afterUpdateProduct' => [\shop\Exchange_1C\LoadDataBaseShop\ProductLoad::class, 'afterUpdateProduct'],
+            //'on afterOfferSync' => [\shop\Exchange_1C\LoadDataBaseShop\ProductLoad::class, 'afterOfferSync'],
+            //'on afterUpdateOffer' => [\shop\Exchange_1C\LoadDataBaseShop\ProductLoad::class, 'afterUpdateOffer'],
+            //'on afterFinishUploadFile' => [\shop\Exchange_1C\LoadDataBaseShop\ProductLoad::class, 'afterFinishUploadFile'],
             'auth' => function ($username, $password) {
                 if($user = \shop\entities\User\User::findByUsername($username)){
                     if($user->validatePassword($password)){
@@ -38,7 +38,8 @@ return [
                 return false;
             },
             'bootstrapUrlRule' => false,
-            'debug' => false
+            'debug' => false,
+            //'timeLimit' => 18000
         ]
     ],
 
