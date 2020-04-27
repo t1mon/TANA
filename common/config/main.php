@@ -28,7 +28,7 @@ return [
             //'on afterUpdateProduct' => [\shop\Exchange_1C\LoadDataBaseShop\ProductLoad::class, 'afterUpdateProduct'],
             'on afterOfferSync' => [\shop\Exchange_1C\LoadDataBaseShop\ProductLoad::class, 'afterOfferSync'],
             //'on afterUpdateOffer' => [\shop\Exchange_1C\LoadDataBaseShop\ProductLoad::class, 'afterUpdateOffer'],
-            //'on afterFinishUploadFile' => [\shop\Exchange_1C\LoadDataBaseShop\ProductLoad::class, 'afterFinishUploadFile'],
+            'on afterFinishUploadFile' => [\shop\Exchange_1C\LoadDataBaseShop\ProductLoad::class, 'afterFinishUploadFile'],
             'auth' => function ($username, $password) {
                 if($user = \shop\entities\User\User::findByUsername($username)){
                     if($user->validatePassword($password)){
