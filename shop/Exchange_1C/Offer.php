@@ -29,11 +29,11 @@ class Offer extends ActiveRecord implements OfferInterface
             $PvOfferPrice->offer_id = $this->id;
             $PvOfferPrice->price_id = $priceModel->id;
             $PvOfferPrice->save();
-            unset($PvOfferPrice);
+            //unset($PvOfferPrice);
         }
-        unset($priceModel);
-        unset($priceType);
-        unset($price);
+        //unset($priceModel);
+        //unset($priceType);
+        //unset($price);
     }
 
 
@@ -43,7 +43,7 @@ class Offer extends ActiveRecord implements OfferInterface
         foreach ($types as $type) {
             PriceTypeModel::createByMl($type);
         }
-        unset($types);
+       // unset($types);
     }
 
 
@@ -57,10 +57,10 @@ class Offer extends ActiveRecord implements OfferInterface
             $PvOfferSpecification->specification_id = $specificationModel->id;
             $PvOfferSpecification->value = (string)$specification->Значение;
             $PvOfferSpecification->save();
-            unset($PvOfferSpecification);
+           // unset($PvOfferSpecification);
         }
-        unset($specificationModel);
-        unset($specification);
+        //unset($specificationModel);
+       // unset($specification);
     }
 
 

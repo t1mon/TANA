@@ -55,7 +55,7 @@ class CategoryModel1C extends ActiveRecord
             $category->accounting_id = $this->accounting_id;
             $category->appendTo(Category::findOne($id));
             $category->save();
-            unset($category);
+           // unset($category);
 
     }
 

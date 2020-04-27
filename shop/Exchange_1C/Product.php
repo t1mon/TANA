@@ -31,7 +31,7 @@ class Product extends ActiveRecord implements ProductInterface
     {
         $id = CategoryModel1C::find()->select(['id'])->andWhere(['accounting_id' => $group->id])->scalar();
         $this->updateAttributes(['group_id' => $id]);
-        unset($group);
+        //unset($group);
     }
 
     public function setProperty1c($property)
@@ -47,11 +47,11 @@ class Product extends ActiveRecord implements ProductInterface
                 $PvProductProperty->property_value_id = $value->id;
                 $PvProductProperty->value =  $value->name;
                 $PvProductProperty->save();
-                unset($PvProductProperty);
+                //unset($PvProductProperty);
             }
         }
-        unset($propertyValue);
-        unset($property);
+        //unset($propertyValue);
+        //unset($property);
     }
 
     public function addImage1c($path, $caption)
@@ -81,9 +81,9 @@ class Product extends ActiveRecord implements ProductInterface
                         unset($propertyValue);
                     }
             }
-            unset($propertyModel);
+            //unset($propertyModel);
         }
-        unset($properties);
+        //unset($properties);
     }
 
     public function getOffer1c($offer)
@@ -94,7 +94,7 @@ class Product extends ActiveRecord implements ProductInterface
             $offerModel->save();
             //\Yii::$app->queue->push(new OfferQueue1C($offerModel));
         }
-        unset($offer);
+        //unset($offer);
         //file_put_contents(\Yii::getAlias('@frontend') . '/runtime/offer.log', serialize($data). "\n", FILE_APPEND);
         return $offerModel;
     }
@@ -109,7 +109,7 @@ class Product extends ActiveRecord implements ProductInterface
         $model->description = (string)$product->Описание;
         $model->article = (string)$product->Артикул;
         $model->save();
-        unset($product);
+        //unset($product);
         //\Yii::$app->queue->push(new ProductQueue1C($model));
         //file_put_contents(\Yii::getAlias('@frontend') . '/runtime/product.log', serialize($data). "\n", FILE_APPEND);
         return $model;
@@ -130,10 +130,10 @@ class Product extends ActiveRecord implements ProductInterface
 //            $requisiteProduct->value = $value;
 //            $requisiteProduct->save();
 //        }
-        unset($requisite);
+        //unset($requisite);
         //unset($requisiteProduct);
-        unset($name);
-        unset($value);
+        //unset($name);
+        //unset($value);
     }
 
     public function setRaw1cData($cml, $product)
