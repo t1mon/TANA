@@ -58,13 +58,14 @@ class ProductLoad
     public function afterFinishUploadFile()
     {
         //file_put_contents(\Yii::getAlias('@frontend') . '/runtime/test.log', "_______Файд загружен на сервер" . "\n", FILE_APPEND);
+        file_put_contents(\Yii::getAlias('@frontend') . '/runtime/work.log', "::Начало работы" . "\n", FILE_APPEND);
     }
 
     /* Работа с Магазином */
 
     public function work()
     {
-        file_put_contents(\Yii::getAlias('@frontend') . '/runtime/work.log', "::Начало работы" . "\n", FILE_APPEND);
+
         $products = Product::find()->each();
         foreach ($products as $product){
             self::updateRemnant($product);
