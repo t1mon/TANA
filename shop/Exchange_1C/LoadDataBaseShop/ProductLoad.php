@@ -64,11 +64,16 @@ class ProductLoad
 
     public function work()
     {
+        file_put_contents(\Yii::getAlias('@frontend') . '/runtime/work.log', "::Начало работы" . "\n", FILE_APPEND);
         $products = Product::find()->each();
         foreach ($products as $product){
             self::updateRemnant($product);
             self::insertOrUpdateProduct($product);
         }
+        if (file_exists(\Yii::getAlias('@frontend') . '/runtime/work.log')){
+            unlink(\Yii::getAlias('@frontend') . '/runtime/work.log');
+        }
+
     }
 
     public function loadBrand()
