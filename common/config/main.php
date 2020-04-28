@@ -39,7 +39,7 @@ return [
             },
             'bootstrapUrlRule' => false,
             'debug' => false,
-            'timeLimit' => 14400
+            'timeLimit' => 7200
         ]
     ],
 
