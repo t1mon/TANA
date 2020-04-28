@@ -47,6 +47,7 @@ class ProductLoad
         if (file_exists(\Yii::getAlias('@frontend') . '/runtime/work.log')){
             unlink(\Yii::getAlias('@frontend') . '/runtime/work.log');
         }
+        file_put_contents(\Yii::getAlias('@frontend') . '/runtime/time.log', "END - ".date("Y-m-d H:i:s") . "\n", FILE_APPEND);
     }
 
 
@@ -62,6 +63,7 @@ class ProductLoad
     {
         //file_put_contents(\Yii::getAlias('@frontend') . '/runtime/test.log', "_______Файд загружен на сервер" . "\n", FILE_APPEND);
         file_put_contents(\Yii::getAlias('@frontend') . '/runtime/work.log', "::Начало работы" . "\n", FILE_APPEND);
+        file_put_contents(\Yii::getAlias('@frontend') . '/runtime/time.log', "START - ".date("Y-m-d H:i:s") . "\n");
         set_time_limit(0);
     }
 
