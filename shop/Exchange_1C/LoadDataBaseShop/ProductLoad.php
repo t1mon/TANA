@@ -41,9 +41,9 @@ class ProductLoad
     /* По очереди вызываем методы записи бренда, установки свойств, записи продуктов */
     public function afterOfferSync()
     {
-        //self::loadBrand();
-        //self::loadCharacteristic();
-        //self::work();
+        self::loadBrand();
+        self::loadCharacteristic();
+        self::work();
         if (file_exists(\Yii::getAlias('@frontend') . '/runtime/work.log')){
             unlink(\Yii::getAlias('@frontend') . '/runtime/work.log');
         }
