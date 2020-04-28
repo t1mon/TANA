@@ -62,6 +62,7 @@ class ProductLoad
     {
         //file_put_contents(\Yii::getAlias('@frontend') . '/runtime/test.log', "_______Файд загружен на сервер" . "\n", FILE_APPEND);
         file_put_contents(\Yii::getAlias('@frontend') . '/runtime/work.log', "::Начало работы" . "\n", FILE_APPEND);
+        set_time_limit(0);
     }
 
     /* Работа с Магазином */
