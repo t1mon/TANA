@@ -35,6 +35,7 @@ class ProductLoad
     public function afterUpdateProduct()
     {
         //file_put_contents(\Yii::getAlias('@frontend') . '/runtime/test.log', "--Продукт загружен--" . "\n", FILE_APPEND);
+        set_time_limit(60);
     }
 
     /* Событие после парсинга всех предложений */
@@ -64,7 +65,7 @@ class ProductLoad
         //file_put_contents(\Yii::getAlias('@frontend') . '/runtime/test.log', "_______Файд загружен на сервер" . "\n", FILE_APPEND);
         file_put_contents(\Yii::getAlias('@frontend') . '/runtime/work.log', "::Начало работы" . "\n", FILE_APPEND);
         file_put_contents(\Yii::getAlias('@frontend') . '/runtime/time.log', "START - ".date("Y-m-d H:i:s") . "\n");
-        set_time_limit(0);
+
     }
 
     /* Работа с Магазином */
