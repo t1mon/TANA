@@ -32,8 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'columns' => [
 
                     [
-
-                             'label' => 'Фото',
+                            'label' => 'Фото',
+                        'attribute' => 'main_photo_id' ,
                         'value' => function (Product $model) {
                             return $model->mainPhoto ? Html::img($model->mainPhoto->getThumbFileUrl('file', 'admin')) : null;
                         },
