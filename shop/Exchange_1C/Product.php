@@ -14,6 +14,7 @@ use shop\Exchange_1C\Model\queue\OfferQueue1C;
 use shop\Exchange_1C\Model\queue\ProductQueue1C;
 use shop\Exchange_1C\Model\RequisiteModel;
 use yii\db\ActiveRecord;
+use yii\helpers\VarDumper;
 
 class Product extends ActiveRecord implements ProductInterface
 {
@@ -91,11 +92,9 @@ class Product extends ActiveRecord implements ProductInterface
         $offerModel = Offer::createByMl($offer);
         $offerModel->product_id = $this->id;
         if ($offerModel->getDirtyAttributes()) {
+            $this->updateAttributes(['updated_at' => 1]);
             $offerModel->save();
-            //\Yii::$app->queue->push(new OfferQueue1C($offerModel));
         }
-        //unset($offer);
-        //file_put_contents(\Yii::getAlias('@frontend') . '/runtime/offer.log', serialize($data). "\n", FILE_APPEND);
         return $offerModel;
     }
 
@@ -103,11 +102,15 @@ class Product extends ActiveRecord implements ProductInterface
     {
         if (!$model = Product::findOne(['accounting_id' => $product->id])) {
             $model = new Product();
+            $model->updated_at = 1;
             $model->accounting_id = $product->id;
         }
         $model->name = $product->name;
         $model->description = (string)$product->Описание;
         $model->article = (string)$product->Артикул;
+        if ($model->getDirtyAttributes()) {
+            $model->updateAttributes(['updated_at' => 1]);
+        }
         $model->save();
         //unset($product);
         //\Yii::$app->queue->push(new ProductQueue1C($model));

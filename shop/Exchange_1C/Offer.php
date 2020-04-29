@@ -77,7 +77,7 @@ class Offer extends ActiveRecord implements OfferInterface
             $offerModel->name = (string)$offer->name;
             $offerModel->accounting_id = (string)$offer->id;
         }
-        $offerModel->remnant = (string)$offer->Количество;
+        $offerModel->remnant = (int)$offer->Количество;
         return $offerModel;
     }
 

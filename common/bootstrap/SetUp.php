@@ -4,6 +4,7 @@ namespace common\bootstrap;
 
 //use Elasticsearch\Client;
 //use Elasticsearch\ClientBuilder;
+use console\controllers\ExcController;
 use League\Flysystem\Adapter\Ftp;
 use League\Flysystem\Filesystem;
 use shop\cart\Cart;
@@ -19,6 +20,7 @@ use shop\entities\Shop\Order\events\OrderChangeStatus;
 use shop\entities\Shop\Product\events\ProductAppearedInStock;
 use shop\entities\Shop\Product\events\ProductDraft;
 use shop\Exchange_1C\LoadDataBaseShop\ProductLoad;
+use shop\Exchange_1C\repositories\ExchangeRepository;
 use shop\jobs\AsyncEventJobHandler;
 use shop\listeners\Shop\Category\CategoryPersistenceListener;
 use shop\listeners\Shop\Order\OrderChangeStatusListener;
@@ -58,6 +60,9 @@ class SetUp implements BootstrapInterface
 
 //        $container->setSingleton(Client::class, function () {
 //            return ClientBuilder::create()->build();
+//        });
+//        $container->setSingleton(ExcController::class, function (){
+//            return new ExchangeRepository();
 //        });
 
         $container->setSingleton(MailerInterface::class, function () use ($app) {
