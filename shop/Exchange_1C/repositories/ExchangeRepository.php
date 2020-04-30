@@ -7,11 +7,13 @@ use shop\entities\Shop\Characteristic;
 use shop\entities\Shop\Product\Modification;
 use shop\Exchange_1C\Model\PriceModel;
 use shop\Exchange_1C\Model\PropertyModel;
+use shop\Exchange_1C\Model\PropertyValueModel;
 use shop\Exchange_1C\Model\PvOfferPriceModel;
 use shop\Exchange_1C\Model\PvProductPropertyModel;
 use shop\Exchange_1C\Model\SpecificationModel;
 use shop\Exchange_1C\Product;
 use yii\helpers\Inflector;
+use yii\helpers\VarDumper;
 
 
 class ExchangeRepository
@@ -22,18 +24,20 @@ class ExchangeRepository
         /* Хардкордно закодировано свойство, по которому загружаем бренды (условие работы имеенно с магазином ТАНА )*/
         $data = array();
         $property = PropertyModel::find()->andWhere(['name' => 'Торговая марка'])->one();
+
         foreach ($property->properties as $value)
         {
-            $brands = Brand::find()->andWhere(['name' => $value->name])->one();
+            $brands = Brand::find()->andWhere(['accounting_id' => $value->accounting_id])->one();
             if (!$brands) {
                 $data [] = [
                     $value->name,
                     Inflector::slug($value->name),
-                    json_encode( new Meta('', '', ''))
+                    json_encode( new Meta('', '', '')),
+                    $value->accounting_id
                 ];
             }
         }
-        \Yii::$app->db->createCommand()->batchInsert('shop_brands', ['name', 'slug', 'meta_json'], $data)->execute();
+        \Yii::$app->db->createCommand()->batchInsert('shop_brands', ['name', 'slug', 'meta_json','accounting_id'], $data)->execute();
     }
 
     public function loadCharacteristic()
@@ -51,7 +55,7 @@ class ExchangeRepository
     public function worksShop()
     {
 
-        $products = Product::find()->andWhere(['updated_at' => 1])->each();
+        $products = Product::find()->andWhere(['updated_at' => 0])->each();
         foreach ($products as $product){
             $this->updateRemnant($product);
             $this->insertOrUpdateProduct($product);
@@ -76,7 +80,9 @@ class ExchangeRepository
         $idTM = $product->getPropertyTM();
         $categoryId = $product->group1c->category->id;
         $brand = PvProductPropertyModel::find()->andWhere(['product_id' => $product->id])->andWhere(['property_id' => $idTM])->one();
-        $brandId = !empty($brand['property_value_id']) ? $brand['property_value_id'] : 1;
+        //$brandId = !empty($brand['property_value_id']) ? $brand['property_value_id'] : 1;
+        $accounting_id = PropertyValueModel::findOne($brand['property_value_id'])['accounting_id'];
+        $brandId = Brand::find()->andWhere(['accounting_id' =>$accounting_id])->one()->id ?? Brand::find()->one()->id;
         try {
             if (!$p = \shop\entities\Shop\Product\Product::find()->andWhere(['accounting_id' => $product->accounting_id])->one()) {
                 $p = \shop\entities\Shop\Product\Product::create(
@@ -106,6 +112,7 @@ class ExchangeRepository
 
     private function insertOrUpdateModification(Product $product)
     {
+        $_productId = \shop\entities\Shop\Product\Product::find()->andWhere(['accounting_id' => $product->accounting_id])->one()->id;
         $p = array();
         if ($offers = $product->offers){
             foreach ($offers as $offer)
@@ -120,7 +127,8 @@ class ExchangeRepository
                             $price['value'],
                             $offer->remnant
                         );
-                        $modification->product_id = $product->id;
+                        $modification->product_id = $_productId;
+                        //$modification->product_id = $product->id;
                     }
                     $p [] = $price['value'];
                     $modification->quantity = $offer->remnant;
@@ -130,7 +138,7 @@ class ExchangeRepository
         }
         $p = !empty($p) ?  min($p) : 0;
         $product->updateAttributes(['price' => $p]);
-        \shop\entities\Shop\Product\Product::findOne(['id' => $product->id])->updateAttributes(['price_new' => $p]);
+        \shop\entities\Shop\Product\Product::findOne(['id' => $_productId])->updateAttributes(['price_new' => $p]);
     }
 
 }

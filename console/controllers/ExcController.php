@@ -8,6 +8,9 @@
 
 namespace console\controllers;
 
+use shop\entities\Shop\Brand;
+use shop\entities\Shop\Characteristic;
+use shop\entities\Shop\Product\Product;
 use shop\Exchange_1C\repositories\ExchangeRepository;
 use yii\console\Controller;
 
@@ -31,6 +34,14 @@ class ExcController extends Controller
 
         $this->repos->worksShop();
         $this->stdout('WorkShop DONE'.PHP_EOL);
+    }
+
+
+    public function actionDelete22()
+    {
+        Product::deleteAll();
+        Characteristic::deleteAll();
+        Brand::deleteAll();
     }
 
 }
