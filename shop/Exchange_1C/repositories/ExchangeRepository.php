@@ -60,7 +60,6 @@ class ExchangeRepository
             $this->updateRemnant($product);
             $this->insertOrUpdateProduct($product);
             $product->updateAttributes(['updated_at' => 0]);
-            echo "Продукт -> ".$product->id." ".$product->name." обработан \n";
         }
     }
 
