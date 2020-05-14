@@ -47,8 +47,13 @@ class SiteController extends Controller
                 'class' => 'yii\web\ErrorAction',
             ],
             'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
+                'class' => 'frontend\captcha\NumberCaptcha',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+                'foreColor' => 0xDC3545, // цвет символов
+                'fontFile' => '@frontend/web/fonts/Beccaria.ttf',
+                'minLength' => 3, // минимальное количество символов
+                'maxLength' => 3, // максимальное
+                'offset' => -12, // расстояние между символами (можно отрицательное)
             ],
         ];
     }

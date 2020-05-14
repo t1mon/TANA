@@ -32,6 +32,14 @@ class ProductReadRepository
         return Product::find()->active()->count();
     }
 
+    public function filterCount(string $operand,$queryParam = null):int
+    {
+        if (isset($queryParam['new']) && isset($queryParam['sale']))
+            return Product::find()->active()->andWhere(['new' => $queryParam['new'], 'sale' => $queryParam['sale']])->count();
+
+        return Product::find()->active()->andWhere([$operand => 1])->count();
+    }
+
     public function getAllByRange(int $offset, int $limit): array
     {
         return Product::find()->alias('p')->active('p')->orderBy(['id' => SORT_ASC])->limit($limit)->offset($offset)->all();
@@ -50,7 +58,7 @@ class ProductReadRepository
         $query = Product::find()->alias('p')->active('p')->with('mainPhoto');
         foreach ($param as $item => $k){
             if ($item == 'new' || $item == 'sale')
-                $query->andFilterWhere([$item => $k]);
+                $query->andWhere(['p.'.$item => $k]);
         }
         return $this->getProvider($query);
     }
@@ -84,7 +92,7 @@ class ProductReadRepository
 
     public function getFeatured($limit): array
     {
-        return Product::find()->with('mainPhoto')->orderBy(['rand()'=>SORT_DESC])->active()->limit($limit)->all();
+        return Product::find()->with('mainPhoto')->andWhere(['new'=>1])->orderBy(['rand()'=>SORT_DESC])->active()->limit($limit)->all();
     }
 
     public function find($id): ?Product

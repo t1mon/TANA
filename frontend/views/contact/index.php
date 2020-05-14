@@ -122,8 +122,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </li>
                                     <li class="col-sm-12">
                                         <label>
-                                            <?= $form->field($model, 'verifyCode')->widget(
-                                                \himiklab\yii2\recaptcha\ReCaptcha::className())->label(false) ?>
+                                            <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+                                                'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
+                                            ]) ?>
                                         </label>
                                     </li>
                                 </ul>
@@ -189,8 +190,4 @@ $this->registerJs($script,\yii\web\View::POS_READY);
 ?>
 
 
-<!-- VK Widget -->
-<div id="vk_community_messages"></div>
-<script type="text/javascript">
-    VK.Widgets.CommunityMessages("vk_community_messages", 132528657, {expandTimeout: "225000",widgetPosition: "left",disableExpandChatSound: "1",tooltipButtonText: "Есть вопрос?", buttonType:'blue_circle', expanded:"0"});
-</script>
+

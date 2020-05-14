@@ -29,7 +29,7 @@ use yii\helpers\Url;
                     <div class="col-xl-2 col-lg-2 col-md-6 col-4">
                         <div class="logo">
                             <a href="<?=\yii\helpers\Url::home()?>">
-                                <img alt="" src="/img/logo/logo.png">
+                                <img class="img-fluid" alt="" src="/img/logo/logo.png">
                             </a>
                         </div>
                     </div>

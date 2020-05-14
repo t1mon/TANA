@@ -19,7 +19,7 @@ class ContactForm extends Model
             [['name', 'email', 'subject', 'body'], 'required'],
             [['verifyCode'],'required','message' =>'Вы же не робот?'],
             ['email', 'email'],
-            [['verifyCode'], \himiklab\yii2\recaptcha\ReCaptchaValidator::className()],
+            ['verifyCode','captcha'],
         ];
     }
 

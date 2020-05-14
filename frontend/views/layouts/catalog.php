@@ -51,22 +51,7 @@ use yii\helpers\Url;
                             <?= CategoriesWidget::widget([
                                 'active' => $this->params['active_category'] ?? null
                             ]) ?>
-                            <ul>
-                                <li>
-                                    <div class="sidebar-widget-list-left">
-                                        <input type="checkbox" value="sale"> <a href="#">Распродажа <span>4</span> </a>
-                                        <span class="checkmark"></span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="sidebar-widget-list-left">
-                                        <?php $getNew = \Yii::$app->request->get('new'); ?>
-
-                                        <input type="checkbox" value="<?=Html::encode(Url::current(['new' => !$getNew ?: null])) ?>" onchange="location = this.value" <?php if($getNew) echo 'checked' ?> > <a href="#.">New <span>4</span></a>
-                                        <span class="checkmark"></span>
-                                    </div>
-                                </li>
-                            </ul>
+                        <?= \frontend\widgets\Shop\FilterWidget::widget()?>
                         </div>
                     </div>
                     <?=\frontend\widgets\Shop\BrandWidget::widget()?>

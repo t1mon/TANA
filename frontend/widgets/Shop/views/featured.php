@@ -14,39 +14,45 @@ use shop\helpers\ProductStingHelper;
             <!--  New Arrival  -->
             <?php foreach ($products as $product): ?>
             <?php $url = Url::to(['shop/catalog/product', 'id' =>$product->id]);?>
-            <div style="cursor: pointer" class="items-in" onclick="location.href='<?= Html::encode($url) ?>'">
-                <!-- Tags -->
-                <?php if ($product->price_old && $percent = PriceHelper::percent($product->price_new,$product->price_old)): ?>
-                    <div class="hot-tag"><?=Html::encode($percent)?>% </div>
-                <?php endif;?>
-                <!-- Image -->
-                <?php if ($product->mainPhoto): ?>
-                    <img src="<?= Html::encode($product->mainPhoto->getThumbFileUrl('file', 'new_arrival_list_widget')) ?>" alt="<?=Html::encode($product->name)?>">
-                <?php else:?>
-                    <img src="/image/new-item-1.jpg" alt="">
-                <?php endif;?>
-                <!-- Hover Details -->
-                <div class="over-item">
-                    <ul class="animated fadeIn">
-                        <?php if ($product->mainPhoto): ?>
-                            <li class="rs"> <a href="<?= Html::encode($product->mainPhoto->getThumbFileUrl('file', 'catalog_origin')) ?>" data-lighter><i class="ion-search"></i></a></li>
-                        <?php else:?>
-                            <li class="rs"> <a href="/image/new-item-1.jpg" data-lighter><i class="ion-search"></i></a></li>
+    <div class="col-xl-3 col-md-6 col-lg-4 col-sm-6">
+        <div class="product-wrap mb-25 scroll-zoom">
+            <div class="product-img">
+                <a href="<?= Html::encode($url) ?>">
+                    <?php if ($product->mainPhoto): ?>
+                        <img class="default-img" src="<?= Html::encode($product->mainPhoto->getThumbFileUrl('file', 'catalog_list')) ?>" alt="">
+                        <?php if(count($product->photos) > 1):?>
+                            <img class="hover-img" src="<?= Html::encode($product->photos[1]->getThumbFileUrl('file', 'catalog_list')) ?>" alt="">
                         <?php endif;?>
-                        <li class="rs"> <a href="#."><i class="ion-shuffle"></i></a></li>
-                        <li class="rs"> <a href="<?= Url::to(['/cabinet/wishlist/add', 'id' => $product->id]) ?> "><i class="fa fa-heart-o"></i></a></li>
-                        <li class="full-w rs"> <a href="<?= Url::to(['/shop/cart/add', 'id' => $product->id])?>" class="btn" methods="post">ДОБАВИТЬ В КОРЗИНУ</a></li>
-                        <!-- Rating Stars -->
-                        <li class="stars"><?=\shop\helpers\StarHelper::drawStar((int)$product->rating)?></li>
-                    </ul>
-                </div>
-                <!-- Item Name -->
-                <div class="details-sec"> <a href="<?= Html::encode($url) ?>"><?= Html::encode(ProductStingHelper::cropName($product->name, 28)) ?></a> <span class="font-montserrat"><?= PriceHelper::format($product->price_new) ?>
-                        <i class="fa fa-rub" aria-hidden="true"></i></span>
+                    <?php else:?>
+                        <img class="default-img" src="<?=Html::encode(Yii::getAlias('@web')."/img/product/pro-1.jpg")?>" alt="">
+                    <?php endif; ?>
+                </a>
+                <?php if ($product->new) :?>
+                    <span class="new">New</span>
+                <?php endif;?>
+                <?php if ($product->sale) :?>
+                    <span class="sale">Распродажа</span>
+                <?php endif;?>
+                <div class="product-action">
 
+                    <div class="pro-same-action pro-cart">
+                        <a title="В корзину" href="<?=Html::encode(Url::to(['/shop/cart/add', 'id' => $product->id]))?>"><i class="pe-7s-cart"></i> В Корзину</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="product-content text-center">
+                <h3><a href="<?= Html::encode($url) ?>"><?= Html::encode(ProductStingHelper::cropName($product->name, 48)) ?></a></h3>
+                <div class="product-rating">
+                    <?=\shop\helpers\ProductStingHelper::fakeStar()?>
+                </div>
+                <div class="product-price">
+                    <span><?= PriceHelper::format($product->price_new) ?>&#8381;</span>
                     <?php if ($product->price_old): ?>
-                        <span class="text-line"><?= PriceHelper::format($product->price_old) ?><i class="fa fa-rub" aria-hidden="true"></i></span>
+                        <span class="old"><?= PriceHelper::format($product->price_old) ?>&#8381;</span>
                     <?php endif;?>
                 </div>
             </div>
+        </div>
+    </div>
             <?php endforeach;?>

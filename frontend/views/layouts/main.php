@@ -39,7 +39,7 @@ AppAsset::register($this);
                 <div class="copyright mb-30">
                     <div class="footer-logo">
                         <a href="<?=Url::home()?>">
-                            <img alt="" src="/img/logo/logo.png">
+                            <img class="img-fluid" alt="" src="/img/logo/logo.png">
                         </a>
                     </div>
                     <p>© <?=date('Y')?> <a href="<?=Url::home()?>">ООО ТАНА</a>.</p>
