@@ -27,7 +27,7 @@ $this->registerMetaTag([
             <div class="row">
                 <div class="col-xl-5 col-lg-6 col-md-4 col-2">
                     <div class="clickable-menu clickable-mainmenu-active">
-                        <a href="#"><i class="pe-7s-menu"></i></a>
+                        <a href="#"><i class="pe-7s-menu"></i>МЕНЮ</a>
                     </div>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-5">
@@ -478,22 +478,31 @@ $this->registerMetaTag([
     <div class="instagram-area">
         <div class="instagram-active owl-carousel">
             <div class="single-instagram">
-                <a href="#"><img src="/img/instagram/instagram-1.jpg" alt=""></a>
+                <a href="#"><img src="/img/brand/1.png" alt=""></a>
             </div>
             <div class="single-instagram">
-                <a href="#"><img src="/img/instagram/instagram-2.jpg" alt=""></a>
+                <a href="#"><img src="/img/brand/2.png" alt=""></a>
             </div>
             <div class="single-instagram">
-                <a href="#"><img src="/img/instagram/instagram-3.jpg" alt=""></a>
+                <a href="#"><img src="/img/brand/3.png" alt=""></a>
             </div>
             <div class="single-instagram">
-                <a href="#"><img src="/img/instagram/instagram-4.jpg" alt=""></a>
+                <a href="#"><img src="/img/brand/4.png" alt=""></a>
             </div>
             <div class="single-instagram">
-                <a href="#"><img src="/img/instagram/instagram-5.jpg" alt=""></a>
+                <a href="#"><img src="/img/brand/5.png" alt=""></a>
             </div>
             <div class="single-instagram">
-                <a href="#"><img src="/img/instagram/instagram-2.jpg" alt=""></a>
+                <a href="#"><img src="/img/brand/6.png" alt=""></a>
+            </div>
+            <div class="single-instagram">
+                <a href="#"><img src="/img/brand/7.png" alt=""></a>
+            </div>
+            <div class="single-instagram">
+                <a href="#"><img src="/img/brand/8.png" alt=""></a>
+            </div>
+            <div class="single-instagram">
+                <a href="#"><img src="/img/brand/9.png" alt=""></a>
             </div>
         </div>
     </div>
@@ -512,7 +521,7 @@ $this->registerMetaTag([
         <div id="menu" class="text-left clickable-menu-style">
             <ul>
                 <li><a href="<?=Url::home()?>">Главная</i></a></li>
-                <li><a href="<?=Url::to(['shop/catalog/index'])?>">Каталог</i></a></li>
+                <li><a href="<?=Url::to(['shop/catalog/index'])?>">Полный каталог</i></a></li>
                 <?php //if ($this->beginCache('category_widget_home', ['duration' => 0])) : ?>
                 <?=\frontend\widgets\Shop\CategoriesWidgetHome::widget()?>
                 <?php //$this->endCache();?>

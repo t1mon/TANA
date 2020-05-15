@@ -456,7 +456,7 @@
         endTrigger.on('click', function() {
             container.removeClass('inside');
         });
-        container.addClass('inside');
+        //container.addClass('inside');
     };
     sidebarMainmenu();
 
