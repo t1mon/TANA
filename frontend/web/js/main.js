@@ -41,7 +41,7 @@
     $('.slider-active-2').owlCarousel({
         loop: true,
         nav: true,
-        autoplay: false,
+        autoplay: true,
         navText: ['<i class="pe-7s-angle-left"></i>', '<i class="pe-7s-angle-right"></i>'],
         autoplayTimeout: 5000,
         animateOut: 'fadeOut',
@@ -49,13 +49,14 @@
         item: 1,
         responsive: {
             0: {
-                items: 1
+                items: 1,
             },
             768: {
                 items: 1
             },
             1000: {
                 items: 1
+
             }
         }
     })

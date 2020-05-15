@@ -51,22 +51,22 @@ $this->registerMetaTag([
                                 <?= \yii\helpers\Html::endForm() ?>
                             </div>
                         </div>
-                        <!--                        <div class="same-style account-satting">-->
-                        <!--                            <a class="account-satting-active" href="#"><i class="pe-7s-user-female"></i></a>-->
-                        <!--                            <div class="account-dropdown">-->
-                        <!--                                <ul>-->
-                        <!--                                    <li><a href="login-register.html">Login</a></li>-->
-                        <!--                                    <li><a href="login-register.html">Register</a></li>-->
-                        <!--                                    <li><a href="wishlist.html">Wishlist  </a></li>-->
-                        <!--                                    <li><a href="my-account.html">my account</a></li>-->
-                        <!--                                </ul>-->
-                        <!--                            </div>-->
-                        <!--                        </div>-->
-                        <!--                        <div class="same-style header-wishlist">-->
-                        <!--                            <a href="wishlist.html"><i class="pe-7s-like"></i></a>-->
-                        <!--                        </div>-->
+<!--                        <div class="same-style account-satting">-->
+<!--                            <a class="account-satting-active" href="#"><i class="pe-7s-user-female"></i></a>-->
+<!--                            <div class="account-dropdown">-->
+<!--                                <ul>-->
+<!--                                    <li><a href="login-register.html">Login</a></li>-->
+<!--                                    <li><a href="login-register.html">Register</a></li>-->
+<!--                                    <li><a href="wishlist.html">Wishlist  </a></li>-->
+<!--                                    <li><a href="my-account.html">my account</a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="same-style header-wishlist">-->
+<!--                            <a href="wishlist.html"><i class="pe-7s-like"></i></a>-->
+<!--                        </div>-->
 
-                        <?=\frontend\widgets\Shop\CartWidget::widget()?>
+                            <?=\frontend\widgets\Shop\CartWidget::widget()?>
 
                     </div>
                 </div>
@@ -74,46 +74,24 @@ $this->registerMetaTag([
         </div>
     </header>
     <div class="slider-area">
-        <div class="slider-active owl-carousel nav-style-1">
-            <div class="single-slider slider-height-1 bg-red">
+        <div class="slider-active-2 owl-carousel nav-style-3">
+            <div class="slider-height-5 d-flex align-items-center bg-img" style="background-image:url(/img/slider/2.jpg);">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-6">
-                            <div class="slider-content slider-animated-1">
-                                <h3 class="animated">Трикотаж</h3>
-                                <h1 class="animated">Новинки Лета <br>2020 Коллекция</h1>
-                                <div class="slider-btn btn-hover">
-                                    <a class="animated" href="shop.html">В Каталог</a>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                            <div class="slider-content-6 slider-animated-1 text-center">
+                                <h1 class="animated">Welcome to Flone</h1>
+                                <p class="animated">30% off Summer Vacation</p>
+                                <div class="slider-btn-5 btn-hover">
+                                    <a class="animated" href="shop.html">SHOP NOW</a>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-6">
-                            <div class="slider-single-img slider-animated-1">
-                                <img class="animated" src="/img/slider/banner-test.png" alt="">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="single-slider slider-height-1 bg-red">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-6">
-                            <div class="slider-content slider-animated-1">
-                                <h3 class="animated">Smart Products</h3>
-                                <h1 class="animated">Summer Offer <br>2019 Collection</h1>
-                                <div class="slider-btn btn-hover">
-                                    <a class="animated" href="shop.html">SHOP NOW</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-6">
-                            <div class="slider-single-img slider-animated-1">
-                                <img class="animated" src="/img/slider/single-slide-1.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="slider-height-5 d-flex align-items-center bg-img" style="background-image:url(/img/slider/1.jpg);">
+
             </div>
         </div>
     </div>
@@ -513,10 +491,10 @@ $this->registerMetaTag([
             <ul>
                 <li><a href="<?=Url::home()?>">Главная</i></a></li>
                 <li><a href="<?=Url::to(['shop/catalog/index'])?>">Каталог</i></a></li>
-                <?php //if ($this->beginCache('category_widget_home', ['duration' => 0])) : ?>
+            <?php //if ($this->beginCache('category_widget_home', ['duration' => 0])) : ?>
                 <?=\frontend\widgets\Shop\CategoriesWidgetHome::widget()?>
-                <?php //$this->endCache();?>
-                <?php //endif;?>
+            <?php //$this->endCache();?>
+            <?php //endif;?>
                 <li><a href="<?=Url::to(['site/to-partners'])?>">Партнерам</i></a></li>
                 <li><a href="<?=Url::to(['site/about'])?>"> О нас</i> </a></li>
                 <li><a href="<?=Url::to(['site/info'])?>">Полезная информация</i></a></li>
