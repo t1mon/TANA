@@ -9,6 +9,7 @@ use shop\forms\ContactForm;
 class ContactController extends Controller
 {
     private $service;
+    public $layout = 'mainOther';
 
     public function __construct($id, $module, ContactService $service, $config = [])
     {

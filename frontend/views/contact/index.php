@@ -8,186 +8,134 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 
-$this->title = 'КОНТАКТЫ';
+$this->title = 'Контакты';
 $this->params['breadcrumbs'][] = $this->title;
-\frontend\assets\GoogleMapsAsset::register($this);
+\frontend\assets\YandexMapsAsset::register($this)
 ?>
 
-<!-- CONTENT START -->
-<div class="content">
-
-    <!-- Map -->
-    <div id="map" class="animate fadeInUp" data-wow-delay="0.4s"></div>
-    <!--======= BOXES =========-->
-    <section class="section-p-60px contact-box animate fadeInUp" data-wow-delay="0.4s">
-        <div class="container">
-            <div class="row">
-
-                <!-- Shop Location -->
-                <div class="col-md-4 animate fadeInLeft" data-wow-delay="0.4s">
-                    <div class="boxes-in">
-                        <h6>НАШ АДРЕС</h6>
-                        <ul class="location">
-                            <li> <i class="fa fa-location-arrow"></i>
-                                <p>г. Самара, ул. Партизанская 17 ТЦ Мега-Мебель
-                                    3 этаж офис 304 "MEBEL-STYLE"</p>
-                            </li>
-                            <li> <i class="fa fa-phone"></i>
-                                <p>Телефон: 8(846)215-16-65, +7(927)006-17-01</p>
-                            </li>
-                            <li> <i class="fa fa-envelope"></i>
-                                <p>support@mebel-style.online</p>
-                            </li>
-                            <li> <i class="fa fa-clock-o"></i>
-                                <p>ОТКРЫТ: 9:00 - 20:00 ПН-ПТ</p>
-                            </li>
+<div class="contact-area pt-100 pb-100">
+    <div class="container">
+        <div class="contact-map mb-10">
+            <div id="map"></div>
+        </div>
+        <div class="custom-row-2">
+            <div class="col-lg-4 col-md-5">
+                <div class="contact-info-wrap">
+                    <div class="single-contact-info">
+                        <div class="contact-icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="contact-info-dec">
+                            <p>Viber/WhatsApp <br>+ 7 927 207-53-53</p>
+                            <p>+7(846) 260-57-64</p>
+                            <p>+7 (846) 268-95-65</p>
+                            <p>+7 902 374-38-76</p>
+                        </div>
+                    </div>
+                    <div class="single-contact-info">
+                        <div class="contact-icon">
+                            <i class="fa fa-globe"></i>
+                        </div>
+                        <div class="contact-info-dec">
+                            <p><a href="#">tana-sklad@mail.ru</a></p>
+                        </div>
+                    </div>
+                    <div class="single-contact-info">
+                        <div class="contact-icon">
+                            <i class="fa fa-map-marker"></i>
+                        </div>
+                        <div class="contact-info-dec">
+                            <p>443070, г.Самара,</p>
+                            <p>ул.Партизанская, дом 17</p>
+                            <p>«Волга-Мебель»</p>
+                        </div>
+                    </div>
+                    <div class="contact-social text-center">
+                        <h3>ООО ТАНА</h3>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                         </ul>
                     </div>
                 </div>
-
-                <!-- NEWSLETTER -->
-                <!--<div class="col-md-4 animate fadeInUp" data-wow-delay="0.4s">
-                    <div class="boxes-in">
-                        <h6>МЫ В ВКОНТАКТЕ</h6>
-                        <!-- VK Widget -->
-                <!-- <div id="vk_groups"></div>
-                 <script type="text/javascript">
-                     VK.Widgets.Group("vk_groups", {mode: 4, wide: 1, height: "400"}, 132528657);
-                 </script>
-                 <!--======= FOOTER ICONS =========-->
-                <!-- <ul class="social_icons">
-                     <li class="facebook"><a href="#."> <i class="fa fa-facebook"></i></a></li>
-                     <li class="twitter"><a href="#."> <i class="fa fa-twitter"></i></a></li>
-                     <li class="googleplus"><a href="#."> <i class="fa fa-google"></i></a></li>
-                     <li class="skype"><a href="#."> <i class="fa fa-skype"></i></a></li>
-                     <li class="pinterest"><a href="#."> <i class="fa fa-pinterest"></i></a></li>
-                     <li class="dribbble"><a href="#."> <i class="fa fa-dribbble"></i></a></li>
-                     <li class="flickr"><a href="#."> <i class="fa fa-flickr"></i></a></li>
-                     <li class="behance"><a href="#."> <i class="fa fa-behance"></i></a></li>
-                     <li class="linkedin"><a href="#."> <i class="fa fa-linkedin"></i></a></li>
-                     <li class="youtube"><a href="#."> <i class="fa fa-youtube"></i></a></li>
-                     <li class="instagram"><a href="#."> <i class="fa fa-instagram"></i></a></li>
-                     <li class="stumbleupon"><a href="#."> <i class="fa fa-stumbleupon"></i></a></li>
-                     <li class="soundcloud"><a href="#."> <i class="fa fa-soundcloud"></i></a></li>
-                 </ul> -->
-                <!-- </div>
-             </div> -->
-
-                <!-- TESTIMONIAL -->
-                <div class="col-md-4 animate fadeInRight" data-wow-delay="0.4s">
-                    <div class="boxes-in">
-                        <h6>СЛУЖБА ПОДДЕРЖКИ</h6>
-                        <div class="media">
-                            <div class="media-left">
-                                <!--  Image -->
-                                <div class="avatar"><a target="_blank" href="https://vk.com/agibalova163"><img class="media-object img-circle" src="/image/avatar-11.png" align="left" alt=""></a>
-                                </div>
-                            </div>
-                            <!--  Details -->
-                            <div class="media-body">
-                                <h5>Анастасия</h5>
-                                <p>Менеджер по работе с клиентами</p>
-                                <!--<span><i class="fa fa-skype"></i> adnan.arif69</span> </div>-->
-                            </div>
-                        </div>
+            </div>
+            <div class="col-lg-8 col-md-7">
+                <div class="contact-form">
+                    <div class="contact-title mb-30">
+                        <h2>Обратная связь</h2>
                     </div>
-                </div>
-            </div>
-    </section>
-    <!--======= Contact Us =========-->
-    <section class="section-p-30px conact-us no-padding-b animate fadeInUp" data-wow-delay="0.4s">
-        <!--======= CONTACT FORM =========-->
-        <div class="container">
-            <!-- Tittle -->
-            <div class="tittle">
-                <p>Пожалуйста, обращаться к нам, если у вас есть какие-либо вопросы, комментарии или сообщения.
-                    Мы постараюсь ответить в кротчайшие сроки!</p>
-            </div>
-            <div class="contact section-p-30px no-padding-b">
-                <div class="contact_form">
-                    <!--======= FORM  =========-->
-                    <?php $form = ActiveForm::begin(['id' => 'contact-form', 'class' => 'contact_form']); ?>
+                    <?php $form = ActiveForm::begin(['id' => 'contact-form','options' =>['class' => 'contact-form-style']]); ?>
                         <div class="row">
-                            <div class="col-md-6">
-                                <ul class="row">
-                                    <li class="col-sm-12">
-                                        <label>
-                                            <?= $form->field($model, 'name')->textInput(['placeholder'=>'ВВЕДИТЕ ИМЯ'])->label(false) ?>
-                                        </label>
-                                    </li>
-                                    <li class="col-sm-12">
-                                        <label>
-                                            <?= $form->field($model, 'email')->textInput(['placeholder'=>'ВВЕДИТЕ EMAIL'])->label(false) ?>
-                                        </label>
-                                    </li>
-                                    <li class="col-sm-12">
-                                        <label>
-                                            <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
-                                                'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
-                                            ]) ?>
-                                        </label>
-                                    </li>
-                                </ul>
+                            <div class="col-lg-6">
+                                <?= $form->field($model, 'name')->textInput(['placeholder'=>'Имя'])->label(false) ?>
                             </div>
-                            <div class="col-md-6">
-                                <ul class="row">
-                                    <li class="col-sm-12">
-                                        <label>
-                                            <?= $form->field($model, 'subject')->textInput(['placeholder'=>'ВВЕДИТЕ ТЕМУ ПИСЬМА'])->label(false) ?>
-                                        </label>
-                                    </li>
-                                    <li class="col-sm-12">
-                                        <label>
-                                            <?= $form->field($model, 'body')->textarea(['rows' => 6, 'placeholder'=>'ВВЕДИТЕ СООБЩЕНИЕ'])->label(false) ?>
-                                        </label>
-                                    </li>
-                                    <li class="col-sm-12 no-margin">
-                                        <?= Html::submitButton('ОТПРАВИТЬ ПИСЬМО', ['class' => 'btn', 'name' => 'contact-button']) ?>
-                                    </li>
-                                </ul>
+                            <div class="col-lg-6">
+                                <?= $form->field($model, 'email')->textInput(['placeholder'=>'Email'])->label(false) ?>
+                            </div>
+                            <div class="col-lg-12">
+                                <?= $form->field($model, 'subject')->textInput(['placeholder'=>'Тема письма'])->label(false) ?>
+                            </div>
+                            <div class="col-lg-12">
+                                <?= $form->field($model, 'body')->textarea(['rows' => 6, 'placeholder'=>'Сообщение'])->label(false) ?>
+                                <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+                                    'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
+                                ])->label(false) ?>
+                                <?= Html::submitButton('Отправить', ['class' => 'submit', 'name' => 'contact-button']) ?>
                             </div>
                         </div>
                     <?php ActiveForm::end(); ?>
+                    <p class="form-messege"></p>
                 </div>
             </div>
         </div>
-    </section>
-
-
+    </div>
 </div>
-
 <?php
 $script = <<<JS
-var map;
-function initialize_map() {
-if ($('#map').length) {
-	var myLatLng = new google.maps.LatLng(53.191095,50.167357);
-	var mapOptions = {
-		zoom: 16,
-		center: myLatLng,
-		scrollwheel: false,
-		panControl: false,
-		zoomControl: true,
-		scaleControl: false,
-		mapTypeControl: false,
-		streetViewControl: false
-	};
-	map = new google.maps.Map(document.getElementById('map'), mapOptions);
-	var marker = new google.maps.Marker({
-		position: myLatLng,
-		map: map,
-		tittle: 'Envato',
-		icon: './image/map-locator-new.png'
-	});
-} else {
-	return false;
+//Инициализация карты
+ymaps.ready(init);
+var myMap,
+    myPlacemark,
+    myPlacemark2,
+    myPlacemark3,
+    myPlacemark4,
+    myPlacemark5;
+
+function init(){
+    myMap = new ymaps.Map("map", {
+        center: [53.192010, 50.166579],
+        zoom: 15,
+        controls: []
+    });
+
+    var settings = {
+        // Опции.
+        // Своё изображение иконки метки.
+        iconLayout: 'default#image',
+        //iconImageHref: '/img/marker.png',
+        // Размеры метки.
+        //iconImageSize: [68, 66],
+        // Смещение левого верхнего угла иконки относительно
+        // её "ножки" (точки привязки).
+        //iconImageOffset: [-20, -60]
+    };
+
+    var zoomControl = new ymaps.control.ZoomControl({
+        options: {
+            position: {
+                right: 10,
+                top: 10
+            },
+            size: 'small'
+        }
+    });
+
+    myMap.controls.add(zoomControl);
+    myPlacemark = new ymaps.Placemark([53.192010, 50.166579], {}, settings);
+    myMap.geoObjects.add(myPlacemark);
+    myMap.behaviors.disable('scrollZoom');
 }
-}
-google.maps.event.addDomListener(window, 'load', initialize_map);
 JS;
 
 $this->registerJs($script,\yii\web\View::POS_READY);
 ?>
-
-
-

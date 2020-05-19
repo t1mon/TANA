@@ -21,6 +21,7 @@ return [
         'signup/<_a:[\w-]+>' => 'auth/signup/<_a>',
         '<_a:login|logout>' => 'auth/auth/<_a>',
         /*Static*/
+        'about' => 'site/about',
         'to-partners' => 'site/to-partners',
         'suppliers' => 'site/suppliers',
         'info' => 'site/info',

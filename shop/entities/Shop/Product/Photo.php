@@ -57,8 +57,9 @@ class Photo extends ActiveRecord
                     'catalog_list' => ['width' => 270, 'height' => 345],
                     'new_arrival_list_widget' => ['width' => 300, 'height' => 250],
                     'catalog_product_additional' => ['width' => 66, 'height' => 66],
-                    'catalog_shop-details' => ['processor' => [new WaterMarker(570, 680, '@frontend/web/img/logo/logo.png'), 'process']],
-                    'catalog_img_popup' => ['processor' => [new WaterMarker(600, 700, '@frontend/web/img/logo/logo.png'), 'process']],
+                    'catalog_shop-details' => ['width' => 570, 'height' => 680],
+                    'catalog_img_popup' => ['width' => 600, 'height' => 700],
+                    //'catalog_img_popup' => ['processor' => [new WaterMarker(600, 700, '@frontend/web/img/logo/logo.png'), 'process']],
                 ],
             ],
         ];
