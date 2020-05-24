@@ -28,7 +28,7 @@ use shop\helpers\ProductStingHelper;
                     <?php endif; ?>
                 </a>
                 <?php if ($product->new) :?>
-                    <span class="new">New</span>
+                    <span class="new">Новинка</span>
                 <?php endif;?>
                 <?php if ($product->sale) :?>
                     <span class="sale">Распродажа</span>

@@ -25,7 +25,7 @@ $url = Url::to(['product', 'id' =>$product->id]);
             <?php endif; ?>
             </a>
             <?php if ($product->new) :?>
-                <span class="new">New</span>
+                <span class="new">Новинка</span>
             <?php endif;?>
             <?php if ($product->sale) :?>
                 <span class="sale">Распродажа</span>

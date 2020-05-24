@@ -17,7 +17,7 @@
     $('.slider-active').owlCarousel({
         loop: true,
         nav: true,
-        autoplay: false,
+        autoplay: true,
         navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
         autoplayTimeout: 5000,
         animateOut: 'fadeOut',

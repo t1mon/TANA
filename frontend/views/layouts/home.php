@@ -75,21 +75,21 @@ $this->registerMetaTag([
     </header>
     <div class="slider-area">
         <div class="slider-active owl-carousel nav-style-1">
-            <div class="single-slider slider-height-1 bg-red">
+            <div class="single-slider slider-height-1 bg-aqua">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-6">
                             <div class="slider-content slider-animated-1">
-                                <h3 class="animated">Трикотаж</h3>
-                                <h1 class="animated">Новинки Лета <br>2020 Коллекция</h1>
+                                <h3 class="animated">Российский трикотаж</h3>
+                                <h1 class="animated">Для всей семьи</h1>
                                 <div class="slider-btn btn-hover">
-                                    <a class="animated" href="shop.html">В Каталог</a>
+                                    <a class="animated" href="<?=Url::to(['/catalog'])?>">В Каталог</a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-6">
                             <div class="slider-single-img slider-animated-1">
-                                <img class="animated" src="/img/slider/banner-test.png" alt="">
+                                <img class="animated" src="<?=Yii::getAlias('@static')?>/banners/family.png" alt="Российский трикотоаж для всей семьи">
                             </div>
                         </div>
                     </div>
@@ -100,16 +100,16 @@ $this->registerMetaTag([
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-6">
                             <div class="slider-content slider-animated-1">
-                                <h3 class="animated">Smart Products</h3>
-                                <h1 class="animated">Summer Offer <br>2019 Collection</h1>
+                                <h3 class="animated">Новые поступления</h3>
+                                <h1 class="animated">Каждую неделю</h1>
                                 <div class="slider-btn btn-hover">
-                                    <a class="animated" href="shop.html">SHOP NOW</a>
+                                    <a class="animated" href="<?=Url::to(['/catalog','new' => 1])?>">Новинки</a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-6">
                             <div class="slider-single-img slider-animated-1">
-                                <img class="animated" src="/img/slider/single-slide-1.png" alt="">
+                                <img class="animated" src="<?=Yii::getAlias('@static')?>/banners/new.png" alt="Новинки ООО ТАНА">
                             </div>
                         </div>
                     </div>
@@ -117,43 +117,47 @@ $this->registerMetaTag([
             </div>
         </div>
     </div>
-    <div class="funfact-area bg-gray-3 pt-100 pb-70">
+    <div class="suppoer-area pt-100 pb-60">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="single-count text-center mb-30">
-                        <div class="count-icon">
-                            <i class="pe-7s-portfolio"></i>
+                    <div class="support-wrap mb-30 support-1">
+                        <div class="support-icon">
+                            <img class="animated" src="/img/icon-img/30.png" alt="">
                         </div>
-                        <h2 class="count">360</h2>
-                        <span>project done</span>
+                        <div class="support-content">
+                            <h5>Более 30-ти торговых марок</h5>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="single-count text-center mb-30">
-                        <div class="count-icon">
-                            <i class="pe-7s-cup"></i>
+                    <div class="support-wrap mb-30 support-2">
+                        <div class="support-icon">
+                            <img class="animated" src="/img/icon-img/rus.png" alt="">
                         </div>
-                        <h2 class="count">690</h2>
-                        <span>cups of coffee</span>
+                        <div class="support-content">
+                            <h5>Сделано в России</h5>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="single-count text-center mb-30">
-                        <div class="count-icon">
-                            <i class="pe-7s-light"></i>
+                    <div class="support-wrap mb-30 support-3">
+                        <div class="support-icon">
+                            <img class="animated" src="/img/icon-img/cert.png" alt="">
                         </div>
-                        <h2 class="count">420</h2>
-                        <span>branding</span>
+                        <div class="support-content">
+                            <h5>Весь товар сертифицирован </h5>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="single-count text-center mb-30 mrgn-none">
-                        <div class="count-icon">
-                            <i class="pe-7s-smile"></i>
+                    <div class="support-wrap mb-30 support-4">
+                        <div class="support-icon">
+                            <img class="animated" src="/img/icon-img/dilevery.png" alt="">
                         </div>
-                        <h2 class="count">100</h2>
-                        <span>happy clients</span>
+                        <div class="support-content">
+                            <h5>Отгружаем без размерных рядов</h5>
+                        </div>
                     </div>
                 </div>
             </div>

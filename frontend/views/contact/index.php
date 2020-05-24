@@ -107,18 +107,19 @@ function init(){
         center: [53.192010, 50.166579],
         zoom: 15,
         controls: []
+        
     });
 
     var settings = {
         // Опции.
         // Своё изображение иконки метки.
         iconLayout: 'default#image',
-        //iconImageHref: '/img/marker.png',
+        iconImageHref: '/img/icon-img/marker.png',
         // Размеры метки.
-        //iconImageSize: [68, 66],
+        iconImageSize: [40, 60],
         // Смещение левого верхнего угла иконки относительно
         // её "ножки" (точки привязки).
-        //iconImageOffset: [-20, -60]
+        iconImageOffset: [-20, -60],
     };
 
     var zoomControl = new ymaps.control.ZoomControl({
