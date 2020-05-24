@@ -1081,7 +1081,19 @@ input {
   font-size: 14px;
   color: #333;
   width: 100%; }
+.radio-product .radio input {
+  height: inherit;
+  width: inherit;
+}
+.form-group.field-addtocartform-modification.required.has-error{
+  color: red;
+}
 
+.form-group.field-addtocartform-modification.required.has-error p{
+  background-color: red;
+  color: #fff;
+  padding: 3px;
+}
 select {
   width: 100%;
   background: transparent;

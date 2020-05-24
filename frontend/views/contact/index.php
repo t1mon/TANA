@@ -78,6 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="col-lg-12">
                                 <?= $form->field($model, 'body')->textarea(['rows' => 6, 'placeholder'=>'Сообщение'])->label(false) ?>
                                 <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+                                        'options' => ['placeholder'=>'Введите цыфры'],
                                     'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
                                 ])->label(false) ?>
                                 <?= Html::submitButton('Отправить', ['class' => 'submit', 'name' => 'contact-button']) ?>

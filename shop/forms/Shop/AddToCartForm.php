@@ -4,6 +4,7 @@ namespace shop\forms\Shop;
 
 use shop\entities\Shop\Product\Modification;
 use shop\entities\Shop\Product\Product;
+use shop\Exchange_1C\Model\SpecificationModel;
 use shop\helpers\PriceHelper;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
@@ -23,12 +24,19 @@ class AddToCartForm extends Model
         parent::__construct($config);
     }
 
+    public function attributeLabels()
+    {
+        return  [
+            'modification' => 'Модельный ряд'
+        ];
+    }
+
     public function rules(): array
     {
         return array_filter([
             $this->_product->modifications ? ['modification', 'required', 'whenClient' => "function (attribute, value) {
             if (value == ''){ 
-                $.jGrowl(\"Необходимо выбрать модификацию продукта!\", { life:'7000', theme: 'jgrowl warning',position: 'top-right' });
+                $.jGrowl(\"Необходимо выбрать Модельный ряд!\", { life:'7000', theme: 'jgrowl warning',position: 'top-right' });
                 }
             return true;
     }"] : false,
@@ -47,10 +55,38 @@ class AddToCartForm extends Model
         });
     }
 
-    public function modificationsListJava(): array
+    public function modificationsList1C() : array
     {
-        return ArrayHelper::map($this->_product->modifications, 'id', function (Modification $modification) {
-            return PriceHelper::format($modification->price ?: $this->_product->price_new);
+        return ArrayHelper::map($this->_product->modifications, 'id', function (Modification $modification,$name) {
+            $modArr = ArrayHelper::map($modification->specifications1c->offerspecifications,'specification_id','value');
+            foreach ($this->indexSpecification() as $value){
+                if (isset($modArr[$value]))
+                $name .= $modArr[$value] . " ";
+            }
+            return  $name;
         });
     }
+
+    private function indexSpecification()
+    {
+        $array = [];
+        $specifications = SpecificationModel::find()->asArray()->all();
+        foreach ($specifications as $item => $specification){
+            foreach ($specification as $key => $value)
+            {
+                if ($key == 'name') $specifications[$item][$key] = trim(preg_replace('/\d/', '', $specification[$key]));
+                if ($value == 'Цвет' || $value == 'Размер') $array [] = $specification['id'];
+            }
+            if ($specifications[$item]['name'] == 'Цвет' || $specifications[$item]['name'] == 'Размер' )
+            {
+                $array[] = $specifications[$item]['id'];
+            }
+        }
+
+
+        return $array;
+
+
+    }
+
 }

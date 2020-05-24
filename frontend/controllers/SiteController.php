@@ -50,6 +50,7 @@ class SiteController extends Controller
                 'class' => 'frontend\captcha\NumberCaptcha',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
                 'foreColor' => 0xDC3545, // цвет символов
+                'backColor' => 0xF3F3F3,
                 'fontFile' => '@frontend/web/fonts/Beccaria.ttf',
                 'minLength' => 3, // минимальное количество символов
                 'maxLength' => 3, // максимальное
