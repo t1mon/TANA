@@ -90,9 +90,9 @@ class ProductReadRepository
         return $this->getProvider($query);
     }
 
-    public function getFeatured($limit): array
+    public function getFeatured($limit,$trigger): array
     {
-        return Product::find()->with('mainPhoto')->andWhere(['new'=>1])->orderBy(['rand()'=>SORT_DESC])->active()->limit($limit)->all();
+        return Product::find()->with('mainPhoto')->andWhere([$trigger=>1])->orderBy(['rand()'=>SORT_DESC])->active()->limit($limit)->all();
     }
 
     public function find($id): ?Product

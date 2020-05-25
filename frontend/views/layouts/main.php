@@ -81,8 +81,8 @@ AppAsset::register($this);
                     </div>
                     <div class="footer-list">
                         <ul>
-                            <li><a href="#">Instagram</a></li>
-                            <li><a href="#">Youtube</a></li>
+                            <li><a href="https://www.instagram.com/trikotazh_tana/" target="_blank">Instagram</a></li>
+                            <li><a href="https://vk.com/trikotag63" target="_blank">Vkontakte</a></li>
                         </ul>
                     </div>
                 </div>

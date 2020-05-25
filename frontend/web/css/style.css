@@ -1352,13 +1352,13 @@ textarea:focus {
   background-color: #f6f6f8; }
 
 .bg-gray-2 {
-  background-color: #f6f6f6; }
+  background-color: #e0e0e0; }
 
 .bg-gray-3 {
   background-color: #f7f7f7; }
 
 .bg-black {
-  background-color: #9e9e9e000; }
+  background-color: #000; }
 
 .bg-glaucous {
   background-color: #daedff; }
@@ -2882,8 +2882,8 @@ a.default-btn {
       font-weight: 500;
       margin: 0; }
     .single-slider .slider-content h1 {
-      line-height: 97px;
-      font-size: 72px;
+      line-height: 67px;
+      font-size: 52px;
       color: #010101;
       margin: 6px 0 37px; }
       @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -3914,14 +3914,17 @@ a.default-btn {
     .product-tab-list.pt-30, .product-tab-list.pt-55 {
       padding: 10px 0 30px; } }
   .product-tab-list a {
+    border: 2px solid;
+    padding: 4px;
     margin: 0 11px; }
+
     @media only screen and (max-width: 767px) {
       .product-tab-list a {
         margin: 0 11px 5px; } }
     .product-tab-list a h4 {
       font-weight: 500;
       font-size: 18px;
-      color: #555;
+      /*color: #555;*/
       margin: 0;
       -webkit-transition: all .3s ease 0s;
       -o-transition: all .3s ease 0s;
@@ -3929,7 +3932,12 @@ a.default-btn {
       .product-tab-list a h4:hover {
         color: #9e9e9e; }
     .product-tab-list a.active h4 {
-      color: #9e9e9e; }
+      color: #fff;
+    }
+.product-tab-list a.active  {
+  background-color: red;
+  border-color: red;
+}
 
 .product-wrap {
   position: relative; }
@@ -8171,7 +8179,7 @@ h3.cart-page-title {
     align-items: center;
     margin-bottom: 40px; }
     .contact-info-wrap .single-contact-info .contact-icon {
-      margin-right: 20px; }
+      margin-right: 10px; }
       .contact-info-wrap .single-contact-info .contact-icon i {
         font-size: 20px;
         color: #252525;

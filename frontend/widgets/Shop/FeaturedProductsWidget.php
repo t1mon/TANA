@@ -8,6 +8,7 @@ use yii\base\Widget;
 class FeaturedProductsWidget extends Widget
 {
     public $limit;
+    public $trigger;
 
     private $repository;
 
@@ -20,7 +21,7 @@ class FeaturedProductsWidget extends Widget
     public function run()
     {
         return $this->render('featured', [
-            'products' => $this->repository->getFeatured($this->limit)
+            'products' => $this->repository->getFeatured($this->limit, $this->trigger)
         ]);
     }
 }

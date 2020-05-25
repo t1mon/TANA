@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <i class="fa fa-phone"></i>
                         </div>
                         <div class="contact-info-dec">
-                            <p>Viber/WhatsApp <br>+ 7 927 207-53-53</p>
+                            <p>Viber/WhatsApp <br><br>+ 7 927 207-53-53</p>
                             <p>+7(846) 260-57-64</p>
                             <p>+7 (846) 268-95-65</p>
                             <p>+7 902 374-38-76</p>
@@ -46,15 +46,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                         <div class="contact-info-dec">
                             <p>443070, г.Самара,</p>
-                            <p>ул.Партизанская, дом 17</p>
-                            <p>«Волга-Мебель»</p>
+                            <p>ул.Партизанская, д. 17Д</p>
                         </div>
                     </div>
                     <div class="contact-social text-center">
                         <h3>ООО ТАНА</h3>
                         <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://vk.com/trikotag63" target="_blank"><i class="fa fa-vk"></i></a></li>
+                            <li><a href="https://www.instagram.com/trikotazh_tana/" target="_blank"><i class="fa fa-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -133,7 +132,7 @@ function init(){
     });
 
     myMap.controls.add(zoomControl);
-    myPlacemark = new ymaps.Placemark([53.192010, 50.166579], {}, settings);
+    myPlacemark = new ymaps.Placemark([53.190931, 50.166192], {}, settings);
     myMap.geoObjects.add(myPlacemark);
     myMap.behaviors.disable('scrollZoom');
 }
