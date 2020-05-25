@@ -55,6 +55,22 @@ class AddToCartForm extends Model
         });
     }
 
+    public function otherModificationList(): array
+    {
+
+        $modArr = [];
+        foreach ($this->_product->modifications as $modification){
+            $modArr [] = ArrayHelper::map($modification->specifications1c->offerspecifications,'specification_id','value');
+        }
+        $result = [];
+        foreach ($modArr as $item){
+            foreach ($item as $key=>$value) {
+                    if ($key != 1 && $key != 2) {$result [$key] = $value;}
+            }
+        }
+        return $result;
+    }
+
     public function modificationsList1C() : array
     {
         return ArrayHelper::map($this->_product->modifications, 'id', function (Modification $modification,$name) {
@@ -82,11 +98,7 @@ class AddToCartForm extends Model
                 $array[] = $specifications[$item]['id'];
             }
         }
-
-
         return $array;
-
-
     }
 
 }
