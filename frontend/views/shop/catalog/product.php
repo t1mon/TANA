@@ -83,13 +83,10 @@ $reviews_count =$product->getActiveReviewCount($reviews);
                         <?php endif;?>
                     </div>
                     <div class="pro-details-rating-wrap">
-                        <div class="pro-details-rating">
-                            <?=\shop\helpers\ProductStingHelper::fakeStar()?>
-                        </div>
-                        <span><a href="#">3 Reviews</a></span>
+                        <span><a href="#">3 Отзыва</a></span>
                     </div>
                     <div class="pro-details-meta">
-                        <span>Артикуль :</span>
+                        <span>Артикул :</span>
                         <ul>
                             <li><?= Html::encode($product->code) ?></li>
                         </ul>

@@ -40,16 +40,6 @@ $url = Url::to(['product', 'id' =>$product->id]);
                         <span class="old"><?= PriceHelper::format($product->price_old) ?>&#8381;</span>
                     <?php endif;?>
                 </div>
-                <div class="rating-review">
-                    <div class="product-list-rating">
-                        <i class="fa fa-star-o yellow"></i>
-                        <i class="fa fa-star-o yellow"></i>
-                        <i class="fa fa-star-o yellow"></i>
-                        <i class="fa fa-star-o"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-<!--                    <a href="#">3 Reviews</a>-->
-                </div>
                 <p><?= Yii::$app->formatter->asHtml(ProductStingHelper::cropName($product->description,50)) ?></p>
                 <div class="shop-list-btn btn-hover">
                     <a href="<?=Html::encode(Url::to(['/shop/cart/add', 'id' => $product->id]))?>">В корзину</a>
