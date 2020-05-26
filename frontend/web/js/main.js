@@ -218,7 +218,7 @@
     $('.related-product-active').owlCarousel({
         loop: true,
         nav: false,
-        autoplay: false,
+        autoplay: true,
         autoplayTimeout: 5000,
         item: 4,
         margin: 30,
