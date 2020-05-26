@@ -88,7 +88,7 @@ $this->registerMetaTag([
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-6">
                             <div class="slider-single-img slider-animated-1">
-                                <img class="animated" src="<?=Yii::getAlias('@static')?>/banners/family.png" alt="Российский трикотоаж для всей семьи">
+                                <img class="animated owl-lazy" src="/img/banner/family.png" alt="Российский трикотоаж для всей семьи">
                             </div>
                         </div>
                     </div>
@@ -107,7 +107,7 @@ $this->registerMetaTag([
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-6">
                             <div class="slider-single-img slider-animated-1">
-                                <img class="animated" src="<?=Yii::getAlias('@static')?>/banners/new.png" alt="Новинки ООО ТАНА">
+                                <img class="animated owl-lazy" src="/img/banner/new.png" alt="Новинки ООО ТАНА">
                             </div>
                         </div>
                     </div>

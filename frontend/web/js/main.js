@@ -16,6 +16,7 @@
     /* Slider active */
     $('.slider-active').owlCarousel({
         loop: true,
+        lazyLoad:true,
         nav: true,
         autoplay: true,
         navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
