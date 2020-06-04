@@ -113,6 +113,25 @@ $this->registerMetaTag([
                     </div>
                 </div>
             </div>
+            <div class="single-slider slider-height-1 bg-gray-2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-6">
+                            <div class="slider-content slider-animated-1">
+                                <h1 class="animated">Огромный выбор<br>На всю семью</h1>
+                                <div class="slider-btn btn-hover">
+                                    <a class="animated" href="<?=Url::to(['/catalog','sale' => 1])?>">Распродажа</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-6">
+                            <div class="slider-single-img slider-animated-1">
+                                <img class="animated owl-lazy" src="/img/banner/sale.jpg" alt="Распродажа ООО ТАНА">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="suppoer-area pt-100 pb-60">
