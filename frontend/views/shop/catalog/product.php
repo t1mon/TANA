@@ -193,6 +193,7 @@ $reviews_count =$product->getActiveReviewCount($reviews);
                                 <?php if ($key==4):?>
                                     <li><span>Полотно</span> <?=$otherModification?></li>
                                 <?php endif;?>
+                            <?= $key." : ".$otherModification?>
                             <?php endforeach;?>
                         </ul>
                         <?php endif;?>
