@@ -330,6 +330,8 @@ $script = <<<JS
          if($('.checkbox input:checked').length == 0){
              isValid = false
              $.jGrowl("Не выбран размерный ряд",{theme:'jgrowl danger',life:10000});
+         }else{
+             isValid = true
          }
         if (isValid){
          var data = []
