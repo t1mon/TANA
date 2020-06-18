@@ -2,6 +2,7 @@
 
 namespace frontend\controllers\shop;
 
+use shop\entities\Shop\Product\Modification;
 use shop\forms\Shop\AddToCartForm;
 use shop\helpers\JgrowlMessageHelper;
 use shop\readModels\Shop\ProductReadRepository;
@@ -74,6 +75,18 @@ class CartController extends Controller
             Yii::$app->session->setFlash('success', 'Товар успешно добавлен в корзину!');
             return true;
         }
+    }
+
+    public function actionQtyGet()
+    {
+        //Yii::$app->response->format = Response::FORMAT_JSON;
+        if (Yii::$app->request->isAjax){
+            //$data = Yii::$app->request->post();
+            $data = file_get_contents('php://input');
+            $mod  = Modification::findOne($data);
+            return $mod->quantity;
+        }
+        return ['error' => 'ERROR'];
     }
 
     public function actionAdd($id)

@@ -127,9 +127,9 @@ $reviews_count =$product->getActiveReviewCount($reviews);
                                 <input type="checkbox" id="<?=$modification_id?>" name="scales"><label for="<?=$modification_id?>"><?=$modification?>
                                 </label>
                                 <div class="modification-plus-minus">
-                                    <div class="dec qtybutton">-</div>
-                                    <input id="<?=$modification_id?>-qty" class="qty-input" type="text" name="" value="0">
-                                    <div class="inc qtybutton">+</div>
+                                    <div class="dec qtybutton" data-id="<?=$modification_id?>">-</div>
+                                    <input id="<?=$modification_id?>-qty" class="qty-input" data-qty="0" type="text" name="<?=$modification_id?>" value="0">
+                                    <div class="inc qtybutton" data-id="<?=$modification_id?>">+</div>
                                 </div>
                             </li>
                         <?php endforeach;?>
@@ -305,26 +305,75 @@ $reviews_count =$product->getActiveReviewCount($reviews);
 
 <?php
 $script = <<<JS
+
+    function validQty(id) {
+       if (+id.attr('data-qty') < +id.val() ){
+           isValid = false
+           $.jGrowl("Кол-во превышает остаток на складе ",{theme:'jgrowl danger',life:10000});
+           id.css({'background-color':'red','color':'#fff'})
+       }else{
+           isValid = true
+           id.css({'background-color':'inherit','color':'inherit'})
+       }
+       
+       if (id.val() == 0 ){
+           isValid = false
+           $.jGrowl(" Кол-во не должно равняться 0 ",{theme:'jgrowl danger',life:10000});
+       }
+       
+       
+    }
+    var isValid = false
+    // Отправка данных в корзину
     $('#add-to-cart').on('click',function(event) {
+         event.preventDefault()
+         if($('.checkbox input:checked').length == 0){
+             isValid = false
+             $.jGrowl("Не выбран размерный ряд",{theme:'jgrowl danger',life:10000});
+         }
+        if (isValid){
          var data = []
-      event.preventDefault()
-      $('.checkbox input:checked').each(function() {
-          product_id = $product->id
-          mod_id = $(this).attr('id')
-          val = $('#'+mod_id+'-qty').val()          
-          //data.push([product_id,mod_id,val])
-          data.push({'productId':product_id,'modId':mod_id,'val':val})
-      })   
-      //console.log(data)
-      
+          $('.checkbox input:checked').each(function() {
+              product_id = $product->id
+              mod_id = $(this).attr('id')
+              val = $('#'+mod_id+'-qty').val()          
+              data.push({'productId':product_id,'modId':mod_id,'val':val})
+          })   
           data = JSON.stringify(data)
           $.post('/shop/cart/add-ajax',data,function(dataserv) {
               if (dataserv){ 
                   window.location.reload()
               }
-            console.log(dataserv)
+            //console.log(dataserv)
           })
-      
+    }
+    })
+    //Получение остатка  
+    $('.checkbox :checkbox').each(function() {
+     
+        var mod_id = $(this).attr('id')
+        $.post('/shop/cart/qty-get',mod_id,function(dataserv) {
+            if (dataserv['error'] != 'ERROR'){
+                $('#'+mod_id+'-qty').attr("data-qty", dataserv)
+                console.log(dataserv)
+            }
+        })
+    })
+    //Валидация
+    
+    $('.qty-input').on('input', function() {
+        $(this).val($(this).val().replace(/[A-Za-zА-Яа-яЁё.]/, ''))
+    });
+    $('.qty-input').on('input',function() {
+        validQty($(this))
+    })
+    $('.dec').on('click',function() {
+        id = $(this).attr('data-id')
+        validQty($('#'+id+'-qty'))
+    })
+     $('.inc').on('click',function() {
+        id = $(this).attr('data-id')
+        validQty($('#'+id+'-qty'))
     })
 
 JS;

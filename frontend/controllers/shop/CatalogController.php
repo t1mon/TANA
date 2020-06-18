@@ -168,31 +168,31 @@ class CatalogController extends Controller
         ]);
     }
 
-    public function actionConsultation()
-    {
-        if (\Yii::$app->request->isAjax) {
-            $dkim = \Yii::$app->params['dkim'];
-            $signer = new \Swift_Signers_DKIMSigner(trim($dkim['privateKey']), trim($dkim['domainName']), trim($dkim['selector']));
-            $sent = $this->mailer
-                ->compose(
-                    ['html' => 'auth/consult/consult-html', 'text' => 'auth/consult/consult-text'],
-                    [
-                        'name' => \Yii::$app->request->post('name'),
-                        'phone' => \Yii::$app->request->post('phone'),
-                        'message' => \Yii::$app->request->post('message')
-                    ]
-                )
-                ->setTo('gorin163@gmail.com')
-                ->setSubject('Пользователь запросил консультацию');
-            $sent->getSwiftMessage()->attachSigner($signer);
-            $sent->send();
-
-            if (!$sent) {
-                throw new \RuntimeException('Sending error.');
-            } else
-                return 1;
-            //return  \Yii::$app->request->post('name').\Yii::$app->request->post('phone').\Yii::$app->request->post('message');
-        }
-
-    }
+//    public function actionConsultation()
+//    {
+//        if (\Yii::$app->request->isAjax) {
+//            $dkim = \Yii::$app->params['dkim'];
+//            $signer = new \Swift_Signers_DKIMSigner(trim($dkim['privateKey']), trim($dkim['domainName']), trim($dkim['selector']));
+//            $sent = $this->mailer
+//                ->compose(
+//                    ['html' => 'auth/consult/consult-html', 'text' => 'auth/consult/consult-text'],
+//                    [
+//                        'name' => \Yii::$app->request->post('name'),
+//                        'phone' => \Yii::$app->request->post('phone'),
+//                        'message' => \Yii::$app->request->post('message')
+//                    ]
+//                )
+//                ->setTo('gorin163@gmail.com')
+//                ->setSubject('Пользователь запросил консультацию');
+//            $sent->getSwiftMessage()->attachSigner($signer);
+//            $sent->send();
+//
+//            if (!$sent) {
+//                throw new \RuntimeException('Sending error.');
+//            } else
+//                return 1;
+//            //return  \Yii::$app->request->post('name').\Yii::$app->request->post('phone').\Yii::$app->request->post('message');
+//        }
+//
+//    }
 }
