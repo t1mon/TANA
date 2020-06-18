@@ -116,25 +116,35 @@ $reviews_count =$product->getActiveReviewCount($reviews);
                     </div>
                     <?php endif;?>
                     <?php if ($product->isAvailable()): ?>
-                    <?php $form = ActiveForm::begin([
-                        'action' => ['/shop/cart/add', 'id' => $product->id],
-                        'id' =>'validate_red',
-                    ]) ?>
+                    <form>
 
                     <?php if ($modifications = $cartForm->modificationsList1C()): ?>
-                        <?= $form->field($cartForm, 'modification')->radioList($modifications, ['class'=>'radio-product'])->label('Модельный ряд (размер,цвет):') ?>
+                        <?php // $form->field($cartForm, 'modification')->checkboxList($modifications, ['class'=>''])->label('Модельный ряд (размер,цвет):') ?>
+                        <div class="checkbox">
+                            <ul>
+                         <?php foreach ($modifications as $modification_id=>$modification): ?>
+                            <li>
+                                <input type="checkbox" id="<?=$modification_id?>" name="scales"><label for="<?=$modification_id?>"><?=$modification?>
+                                </label>
+                                <div class="modification-plus-minus">
+                                    <div class="dec qtybutton">-</div>
+                                    <input id="<?=$modification_id?>-qty" class="qty-input" type="text" name="" value="0">
+                                    <div class="inc qtybutton">+</div>
+                                </div>
+                            </li>
+                        <?php endforeach;?>
+                            </ul>
+                        </div>
                     <?php endif; ?>
-
                     <div class="pro-details-quality">
                         <div class="cart-plus-minus">
-                            <?= $form->field($cartForm, 'quantity')->textInput(['class'=>'cart-plus-minus-box'])->label(false) ?>
+                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="0">
                         </div>
                         <div class="pro-details-cart btn-hover">
                             <a id="add-to-cart" href="#">Добавить в <i class="pe-7s-cart"></i></a>
-                            <?=Html::submitButton("<i class=\"pe-7s-cart\"></i>", ['id'=> 'button-cart','class' => 'hidden button-cart']);?>
                         </div>
                     </div>
-                        <?php ActiveForm::end() ?>
+                    </form>
                     <?php endif;?>
                     <div class="pro-details-social">
                         <ul>
@@ -295,10 +305,28 @@ $reviews_count =$product->getActiveReviewCount($reviews);
 
 <?php
 $script = <<<JS
-    document.getElementById('add-to-cart').addEventListener('click',function(event) {
+    $('#add-to-cart').on('click',function(event) {
+         var data = []
       event.preventDefault()
-      document.getElementById('button-cart').click()
+      $('.checkbox input:checked').each(function() {
+          product_id = $product->id
+          mod_id = $(this).attr('id')
+          val = $('#'+mod_id+'-qty').val()          
+          //data.push([product_id,mod_id,val])
+          data.push({'productId':product_id,'modId':mod_id,'val':val})
+      })   
+      //console.log(data)
+      
+          data = JSON.stringify(data)
+          $.post('/shop/cart/add-ajax',data,function(dataserv) {
+              if (dataserv){ 
+                  window.location.reload()
+              }
+            console.log(dataserv)
+          })
+      
     })
+
 JS;
 
 $this->registerJs($script,yii\web\View::POS_READY);

@@ -11,6 +11,7 @@ use yii\filters\VerbFilter;
 use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
 
 class CartController extends Controller
 {
@@ -57,6 +58,24 @@ class CartController extends Controller
      * @return mixed
      * @throws NotFoundHttpException
      */
+    public function actionAddAjax()
+    {
+        //Yii::$app->response->format = Response::FORMAT_JSON;
+        if (Yii::$app->request->isAjax){
+                $data = json_decode(file_get_contents('php://input'),true);
+                foreach ($data as $d) {
+                    try{
+                        $this->service->add($d['productId'], $d['modId'], $d['val']);
+                    }catch (\Exception $e)
+                    {
+                        return $e->getMessage();
+                    }
+                }
+            Yii::$app->session->setFlash('success', 'Товар успешно добавлен в корзину!');
+            return true;
+        }
+    }
+
     public function actionAdd($id)
     {
         if (!$product = $this->products->find($id)) {

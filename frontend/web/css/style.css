@@ -1085,6 +1085,30 @@ input {
   height: inherit;
   width: inherit;
 }
+
+.checkbox input {
+  height: inherit;
+  width:  inherit;
+  padding: inherit;
+  text-align: center;
+}
+.checkbox label{
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  min-width: 70px ;
+}
+.checkbox .qtybutton{
+  cursor: pointer;
+}
+.modification-plus-minus{
+  display: contents;
+}
+.modification-plus-minus div{
+  display: contents;
+}
+.modification-plus-minus input{
+  width: 40px;
+}
 .form-group.field-addtocartform-modification.required.has-error{
   color: red;
 }
