@@ -82,9 +82,9 @@ $reviews_count =$product->getActiveReviewCount($reviews);
                             <span class="old"><?= PriceHelper::format($product->price_old) ?>&#8381;</span>
                         <?php endif;?>
                     </div>
-                    <div class="pro-details-rating-wrap">
-                        <span><a href="#">3 Отзыва</a></span>
-                    </div>
+<!--                    <div class="pro-details-rating-wrap">-->
+<!--                        <span><a href="#">3 Отзыва</a></span>-->
+<!--                    </div>-->
                     <div class="pro-details-meta">
                         <span>Артикул :</span>
                         <ul>
@@ -137,9 +137,9 @@ $reviews_count =$product->getActiveReviewCount($reviews);
                         </div>
                     <?php endif; ?>
                     <div class="pro-details-quality">
-                        <div class="cart-plus-minus">
-                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="0">
-                        </div>
+<!--                        <div class="cart-plus-minus">-->
+<!--                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="0">-->
+<!--                        </div>-->
                         <div class="pro-details-cart btn-hover">
                             <a id="add-to-cart" href="#">Добавить в <i class="pe-7s-cart"></i></a>
                         </div>
