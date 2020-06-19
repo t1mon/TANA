@@ -335,19 +335,24 @@ $script = <<<JS
          }else{
              isValid = true
          }
-        if (isValid){
+       
          var data = []
           $('.checkbox input:checked').each(function() {
               product_id = $product->id
               mod_id = $(this).attr('id')
-              val = $('#'+mod_id+'-qty').val()          
+              val = $('#'+mod_id+'-qty').val()
+              if (+val == 0){
+                  $.jGrowl(" Кол-во не должно равняться 0 ",{theme:'jgrowl danger',life:10000});
+                  isValid = false
+              }          
               data.push({'productId':product_id,'modId':mod_id,'val':val})
-          })   
-          data = JSON.stringify(data)
-          $.post('/shop/cart/add-ajax',data,function(dataserv) {
-              if (dataserv){ 
-                  window.location.reload()
-              }
+          })  
+           if (isValid){ 
+              data = JSON.stringify(data)
+              $.post('/shop/cart/add-ajax',data,function(dataserv) {
+                  if (dataserv){ 
+                      window.location.reload()
+                  }
             //console.log(dataserv)
           })
     }
