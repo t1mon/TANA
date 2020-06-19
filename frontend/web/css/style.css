@@ -1095,7 +1095,7 @@ input {
 .checkbox label{
   margin-right: 0.5rem;
   margin-left: 0.5rem;
-  min-width: 70px ;
+  min-width: 150px ;
 }
 .checkbox .qtybutton{
   cursor: pointer;

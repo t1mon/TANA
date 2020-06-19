@@ -120,7 +120,7 @@ $reviews_count =$product->getActiveReviewCount($reviews);
 
                     <?php if ($modifications = $cartForm->modificationsList1C()): ?>
                         <?php // $form->field($cartForm, 'modification')->checkboxList($modifications, ['class'=>''])->label('Модельный ряд (размер,цвет):') ?>
-                        <span>Размерный ряд:</span>
+                        <span>Размерный ряд (цвет):</span>
                         <div class="checkbox">
                             <ul>
                          <?php foreach ($modifications as $modification_id=>$modification): ?>

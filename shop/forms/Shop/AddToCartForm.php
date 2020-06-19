@@ -65,7 +65,7 @@ class AddToCartForm extends Model
         $result = [];
         foreach ($modArr as $item){
             foreach ($item as $key=>$value) {
-                    if ($value != '2 Цвет' && $value != '1 Размер') {$result [$key] = $value;}
+                    if ($key !== 1 && $key !== 4) {$result [$key] = $value;}
             }
         }
         return $result;
