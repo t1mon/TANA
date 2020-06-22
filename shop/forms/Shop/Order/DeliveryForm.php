@@ -28,8 +28,8 @@ class DeliveryForm extends Model
             [['method'], 'integer'],
             [['method'], 'required'],
             [['address'], 'required','when' => function($model) {
-                if ($model->method != 2) return true; }, 'whenClient' => 'function (attribute, value) {
-    if ($("#deliveryform-method").val() != 2) return true;
+                if ($model->method != 1) return true; }, 'whenClient' => 'function (attribute, value) {
+    if ($("#deliveryform-method").val() != 1) return true;
 }'
 
                 ],

@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                     </div>
                     <?= $form->field($model->delivery, 'index')->hiddenInput()->label(false) ?>
-                    <?= $form->field($model, 'note')->hiddenInput()->label(false) ?>
+                    <?= $form->field($model, 'note')->textarea()->label('Комментарий к заказу') ?>
                     <?php ActiveForm::end() ?>
                 </div>
             </div>
@@ -74,14 +74,14 @@ $this->params['breadcrumbs'][] = $this->title;
                                     $modification = $item->getModification();
                                     $url = Url::to(['/shop/catalog/product', 'id' => $product->id]);
                                     ?>
-                                    <li><span class="order-middle-left"><?= Html::encode($product->name) ?></span> <span class="order-price"><?= PriceHelper::format($item->getCost()) ?>&#8381;</span></li>
+                                    <li><span class="order-middle-left"><?= Html::encode($modification->name) ?></span> <span class="order-price"><?= PriceHelper::format($item->getCost()) ?>&#8381;</span></li>
                                     <?php endforeach;?>
                                 </ul>
                             </div>
                             <div class="your-order-bottom">
                                 <ul>
-                                    <li class="your-order-shipping">Shipping</li>
-                                    <li>Free shipping</li>
+                                    <li class="your-order-shipping">Доставка</li>
+                                    <li id="your-order-shipping"></li>
                                 </ul>
                             </div>
                             <?php $cost = $cart->getCost() ?>
@@ -94,11 +94,24 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                     </div>
                     <div class="Place-order mt-25">
-                        <a class="btn-hover" href="#">Place Order</a>
-                        <?= Html::submitButton('Оформить заказ', ['id'=>'submit-check' , 'class' => 'btn-hover','form' => 'order']) ?>
+                        <a id="submit-check-button" class="btn-hover" href="#">Оформить заказ</a>
+                        <?= Html::submitButton('Оформить заказ', ['id'=>'submit-check' , 'class' => 'btn-hover hidden','form' => 'order']) ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<?php
+$script = <<<JS
+  document.getElementById('submit-check-button').addEventListener('click',function(event) {
+      event.preventDefault()
+      document.getElementById('submit-check').click()
+  })
+  //смена доставки
+  
+JS;
+
+$this->registerJs($script,yii\web\View::POS_READY);
+?>
