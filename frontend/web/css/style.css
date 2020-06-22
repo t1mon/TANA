@@ -1879,7 +1879,9 @@ a.default-btn {
       position: absolute;
       right: 0;
       top: 190%;
-      width: 340px;
+      width: 640px;
+      height: 80vh;
+      overflow-y: scroll;
       z-index: 9999;
       -webkit-transform: rotateX(90deg);
       transform: rotateX(90deg);
