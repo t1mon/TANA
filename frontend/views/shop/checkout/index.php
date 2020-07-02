@@ -78,12 +78,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <?php endforeach;?>
                                 </ul>
                             </div>
-                            <div class="your-order-bottom">
-                                <ul>
-                                    <li class="your-order-shipping">Доставка</li>
-                                    <li id="your-order-shipping"></li>
-                                </ul>
-                            </div>
                             <?php $cost = $cart->getCost() ?>
                             <div class="your-order-total">
                                 <ul>

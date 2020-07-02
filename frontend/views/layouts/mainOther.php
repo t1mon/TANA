@@ -41,7 +41,7 @@ use yii\helpers\Url;
                                     <li><a href="<?=Url::to(['/catalog'])?>">Каталог</i></a></li>
                                     <li><a href="<?=Url::to(['site/to-partners'])?>">Партнерам</i></a></li>
                                     <li><a href="<?=Url::to(['site/about'])?>"> О нас</i> </a></li>
-                                    <li><a href="<?=Url::to(['site/info'])?>">Полезная информация</i></a></li>
+                                    <li><a href="<?=Url::to(['/info'])?>">Полезная информация</i></a></li>
                                     <li><a href="<?=Url::to(['contact/index'])?>">Контакты</a></li>
                                 </ul>
                             </nav>

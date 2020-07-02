@@ -12,6 +12,7 @@ use yii\web\NotFoundHttpException;
 class PageController extends Controller
 {
     private $pages;
+    public $layout = 'mainOther';
 
     public function __construct($id, $module, PageReadRepository $pages, $config = [])
     {

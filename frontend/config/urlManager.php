@@ -24,7 +24,7 @@ return [
         'about' => 'site/about',
         'to-partners' => 'site/to-partners',
         'suppliers' => 'site/suppliers',
-        'info' => 'site/info',
+        //'info' => 'site/info',
         /*Static*/
         ['pattern' => 'yandex-market', 'route' => 'market/index', 'suffix' => '.xml'],
 
@@ -51,14 +51,15 @@ return [
         ['class' => 'frontend\urls\CategoryUrlRule'],
         //'catalog/<id:\d+>' => 'shop/catalog/product',
 
-        //'<slug:[\w\-]+>' => 'page/view',
+        '<slug:[\w\-]+>' => 'page/view',
+        //['class' => 'frontend\urls\PageUrlRule'],
         'cabinet' => 'cabinet/default/index',
         'cabinet/<_c:[\w\-]+>' => 'cabinet/<_c>/index',
         'cabinet/<_c:[\w\-]+>/<id:\d+>' => 'cabinet/<_c>/view',
         'cabinet/<_c:[\w\-]+>/<_a:[\w-]+>' => 'cabinet/<_c>/<_a>',
         'cabinet/<_c:[\w\-]+>/<id:\d+>/<_a:[\w\-]+>' => 'cabinet/<_c>/<_a>',
 
-        //['class' => 'frontend\urls\PageUrlRule'],
+
 
         '<_c:[\w\-]+>' => '<_c>/index',
         '<_c:[\w\-]+>/<id:\d+>' => '<_c>/view',
