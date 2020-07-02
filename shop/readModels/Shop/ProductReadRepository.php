@@ -221,12 +221,13 @@ class ProductReadRepository
 //            $query = Product::find()->andWhere(['id' => 0]);
 //        }
 
-        return new SimpleActiveDataProvider([
+        /*return new SimpleActiveDataProvider([
             'query' => $query,
             'totalCount' => $query->count(),
             'pagination' => $pagination,
             'sort' => $sort,
-        ]);
+        ]);*/
+        return $this->getProvider($query);
     }
 
     public function getWishList($userId): ActiveDataProvider

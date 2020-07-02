@@ -1109,11 +1109,17 @@ input {
 .modification-plus-minus input{
   width: 40px;
 }
-.form-group.field-addtocartform-modification.required.has-error{
+.form-group.field-addtocartform-modification.required.has-error,
+.form-group.field-customerform-name.required.has-error,
+.form-group.field-customerform-phone.required.has-error
+{
   color: red;
 }
 
-.form-group.field-addtocartform-modification.required.has-error p{
+.form-group.field-addtocartform-modification.required.has-error p,
+.form-group.field-customerform-name.required.has-error p,
+.form-group.field-customerform-phone.required.has-error p
+{
   background-color: red;
   color: #fff;
   padding: 3px;
