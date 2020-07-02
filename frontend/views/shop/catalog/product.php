@@ -97,6 +97,12 @@ $reviews_count =$product->getActiveReviewCount($reviews);
                             <li><a href="<?=Url::to(['/shop/catalog/category', 'id' => $product->category->id])?>"><?=Html::encode($product->category->name)?></a></li>
                         </ul>
                     </div>
+                    <div class="pro-details-meta">
+                        <span>Торговая марка :</span>
+                        <ul>
+                            <li><a href="<?=Url::to(['/shop/catalog/brand', 'id' => $product->brand->id])?>"><?=Html::encode($product->brand->name)?></a></li>
+                        </ul>
+                    </div>
                     <p><?= Yii::$app->formatter->asHtml($product->description, [
                             'Attr.AllowedRel' => array('nofollow'),
                             'HTML.SafeObject' => true,
