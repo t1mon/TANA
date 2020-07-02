@@ -15,7 +15,7 @@ class PriceHelper
     {
         if (self::notNull($price))
             return self::NO_PRICE;
-        return number_format($price, 0, '.', ' ');
+        return number_format($price, 2, '.', ' ');
     }
 
     public static function percent ($new_price, $old_price) : string
