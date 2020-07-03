@@ -64,13 +64,17 @@ class ProductReadRepository
     }
 
 
-    public function getAllByCategory(Category $category): DataProviderInterface
+    public function getAllByCategory(Category $category,$param): DataProviderInterface
     {
         $query = Product::find()->alias('p')->active('p')->with('mainPhoto', 'category');
         $ids = ArrayHelper::merge([$category->id], $category->getDescendants()->select('id')->column());
         $query->joinWith(['categoryAssignments ca'], false);
         $query->andWhere(['or', ['p.category_id' => $ids], ['ca.category_id' => $ids]]);
         $query->groupBy('p.id');
+        foreach ($param as $item => $k){
+            if ($item == 'new' || $item == 'sale')
+                $query->andWhere(['p.'.$item => $k]);
+        }
         return $this->getProvider($query);
     }
 

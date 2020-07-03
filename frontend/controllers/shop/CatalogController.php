@@ -73,7 +73,7 @@ class CatalogController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
 
-        $dataProvider = $this->products->getAllByCategory($category);
+        $dataProvider = $this->products->getAllByCategory($category,\Yii::$app->request->queryParams);
 
         return $this->render('category', [
             'category' => $category,
