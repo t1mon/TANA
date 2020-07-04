@@ -55,7 +55,7 @@ class CartItem
         return $this->quantity;
     }
 
-    public function getPrice(): int
+    public function getPrice(): float
     {
         if ($this->modificationId) {
             return $this->product->getModificationPrice($this->modificationId);
@@ -68,7 +68,7 @@ class CartItem
         return $this->product->weight * $this->quantity;
     }
 
-    public function getCost(): int
+    public function getCost(): float
     {
         return $this->getPrice() * $this->quantity;
     }
