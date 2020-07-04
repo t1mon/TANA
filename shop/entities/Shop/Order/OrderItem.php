@@ -36,7 +36,7 @@ class OrderItem extends ActiveRecord
         return $item;
     }
 
-    public function getCost(): int
+    public function getCost(): float
     {
         return $this->price * $this->quantity;
     }

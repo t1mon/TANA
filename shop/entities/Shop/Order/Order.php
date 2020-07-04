@@ -22,7 +22,7 @@ use yii\helpers\Json;
  * @property string $delivery_method_name
  * @property int $delivery_cost
  * @property string $payment_method
- * @property int $cost
+ * @property float $cost
  * @property int $note
  * @property int $current_status
  * @property string $cancel_reason
@@ -103,7 +103,7 @@ class Order extends ActiveRecord
         $this->addStatus(Status::CANCELLED);
     }
 
-    public function getTotalCost(): int
+    public function getTotalCost(): float
     {
         return $this->cost + $this->delivery_cost;
     }
