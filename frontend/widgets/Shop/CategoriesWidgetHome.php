@@ -26,11 +26,11 @@ class CategoriesWidgetHome extends Widget
 
         $tree = Category::findOne(1)->tree();
         $menuHtml = $this->getMenuHtml($tree[0]['children']);
-        return $this->cache->getOrSet('widgetHome', function () use ($menuHtml) {
-
-             return $menuHtml;
-        });
-       // return $menuHtml;
+//        return $this->cache->getOrSet('widgetHome', function () use ($menuHtml) {
+//
+//             return $menuHtml;
+//        });
+        return $menuHtml;
     }
 
     protected function getMenuHtml($tree)
