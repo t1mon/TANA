@@ -260,7 +260,7 @@ $this->registerMetaTag([
                 <li><a href="<?=Url::home()?>">Главная</i></a></li>
                 <li><a href="<?=Url::to(['shop/catalog/index'])?>">Полный каталог</i></a></li>
                 <?php //if ($this->beginCache('category_widget_home', ['duration' => 0])) : ?>
-                <?=\frontend\widgets\Shop\CategoriesWidgetHome::widget()?>
+                <?//=\frontend\widgets\Shop\CategoriesWidgetHome::widget()?>
                 <?php //$this->endCache();?>
                 <?php //endif;?>
                 <li><a href="<?=Url::to(['site/to-partners'])?>">Партнерам</i></a></li>

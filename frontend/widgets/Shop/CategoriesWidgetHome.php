@@ -31,6 +31,7 @@ class CategoriesWidgetHome extends Widget
 //             return $menuHtml;
 //        });
         return $menuHtml;
+
     }
 
     protected function getMenuHtml($tree)
