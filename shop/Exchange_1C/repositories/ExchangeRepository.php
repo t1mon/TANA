@@ -55,7 +55,7 @@ class ExchangeRepository
     public function worksShop()
     {
 
-        $products = Product::find()->andWhere(['updated_at' => 1])->each();
+        $products = Product::find()->andWhere(['updated_at' => 0])->each();
         foreach ($products as $product){
             $this->updateRemnant($product);
             $this->insertOrUpdateProduct($product);
@@ -132,6 +132,7 @@ class ExchangeRepository
                     }
                     $p [] = $price['value'];
                     $modification->quantity = $offer->remnant;
+                    $modification->price = $price['value'];
                     $modification->save();
                 }
             }
