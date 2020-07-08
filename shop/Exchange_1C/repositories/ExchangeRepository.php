@@ -55,7 +55,7 @@ class ExchangeRepository
     public function worksShop()
     {
 
-        $products = Product::find()->andWhere(['updated_at' => 0])->each();
+        $products = Product::find()->andWhere(['updated_at' => 1])->each();
         foreach ($products as $product){
             $this->updateRemnant($product);
             $this->insertOrUpdateProduct($product);
