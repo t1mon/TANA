@@ -117,7 +117,7 @@ class ExchangeRepository
         if ($offers = $product->offers){
             foreach ($offers as $offer)
             {
-                if ($offer->remnant) {
+                //if ($offer->remnant) {
                     $priceId = PvOfferPriceModel::find()->andWhere(['offer_id' => $offer->id])->one()['price_id'];
                     $price = PriceModel::findOne(['id' => $priceId]);
                     if (!$modification = Modification::find()->andWhere(['code' => $offer->accounting_id])->one()) {
@@ -134,7 +134,7 @@ class ExchangeRepository
                     $modification->quantity = $offer->remnant;
                     $modification->price = $price['value'];
                     $modification->save();
-                }
+                //}
             }
         }
         $p = !empty($p) ?  min($p) : 0;
