@@ -47,7 +47,7 @@ use shop\helpers\ProductStingHelper;
                     <?=\shop\helpers\ProductStingHelper::fakeStar()?>
                 </div>
                 <div class="product-price">
-                 <span><?= PriceHelper::format($product->price_new) ?>&#8381;</span>
+                   <!-- <span><?//= PriceHelper::format($product->price_new) ?>&#8381;</span> -->
                     <?php if ($product->price_old): ?>
                         <span class="old"><?= PriceHelper::format($product->price_old) ?>&#8381;</span>
                     <?php endif;?>

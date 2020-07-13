@@ -41,7 +41,7 @@ $url = Url::to(['product', 'id' =>$product->id]);
         <div class="product-content text-center">
             <h3><a href="<?= Html::encode($url) ?>"><?= Html::encode(ProductStingHelper::cropName($product->name, 48)) ?></a></h3>
             <div class="product-price">
-                <span><?= PriceHelper::format($product->price_new) ?>&#8381;</span>
+               <!-- <span><?//= PriceHelper::format($product->price_new) ?>&#8381;</span> -->
                 <?php if ($product->price_old): ?>
                     <span class="old"><?= PriceHelper::format($product->price_old) ?>&#8381;</span>
                 <?php endif;?>
