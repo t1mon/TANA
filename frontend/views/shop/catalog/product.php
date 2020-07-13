@@ -77,7 +77,7 @@ $reviews_count =$product->getActiveReviewCount($reviews);
                 <div class="product-details-content">
                     <h2><?=mb_strtoupper(Html::encode($product->name))?></h2>
                     <div class="product-details-price">
-                        <!--<span><?//= PriceHelper::format($product->price_new) ?>&#8381;</span>-->
+                        <span><?= PriceHelper::format($product->price_new) ?>&#8381;</span>
                         <?php if (!empty($product->price_old)): ?>
                             <span class="old"><?= PriceHelper::format($product->price_old) ?>&#8381;</span>
                         <?php endif;?>
