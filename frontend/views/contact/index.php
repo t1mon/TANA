@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                         <div class="contact-info-dec">
                             <p>443070, г.Самара,</p>
-                            <p>ул.Партизанская, д. 17Д</p>
+                            <p>ул.Партизанская, д.17 литер Д</p>
                         </div>
                     </div>
                     <div class="contact-social text-center">
