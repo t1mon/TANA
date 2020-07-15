@@ -98,8 +98,8 @@ class SiteController extends Controller
             $priceId = PvOfferPriceModel::find()->andWhere(['offer_id' => $offer->id])->one()['price_id'];
             $price = PriceModel::findOne(['id' => $priceId]);
             $modification = Modification::find()->andWhere(['code' => $offer->accounting_id])->one();
-            echo $price['id']."<br>";
-            //echo $modification->name." ".$modification->price."<br>";
+            //echo $price['id']."<br>";
+            echo $modification->name." ".$modification->price."<br>";
         }
     }
 

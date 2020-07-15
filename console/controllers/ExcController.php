@@ -11,6 +11,7 @@ namespace console\controllers;
 use shop\entities\Shop\Brand;
 use shop\entities\Shop\Characteristic;
 use shop\entities\Shop\Product\Product;
+use shop\Exchange_1C\Model\PvOfferPriceModel;
 use shop\Exchange_1C\repositories\ExchangeRepository;
 use yii\console\Controller;
 
@@ -36,6 +37,11 @@ class ExcController extends Controller
         $this->stdout('WorkShop DONE'.PHP_EOL);
     }
 
+
+    public function actionPricePvDelete()
+    {
+        PvOfferPriceModel::deleteAll();
+    }
 
     public function actionDelete22()
     {
