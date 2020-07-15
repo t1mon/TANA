@@ -24,12 +24,12 @@ class Offer extends ActiveRecord implements OfferInterface
     {
         $priceType =  !PriceTypeModel::findOne(['accounting_id' => $price->getType()->id]) ?: null;
         $priceModel = PriceModel::createByMl($price, $this, $priceType);
-        if (!PvOfferPriceModel::findOne(['offer_id' => $this->id ])) {
+        if (!$PvOfferPrice = PvOfferPriceModel::findOne(['offer_id' => $this->id ])) {
             $PvOfferPrice = new PvOfferPriceModel();
             $PvOfferPrice->offer_id = $this->id;
-            $PvOfferPrice->price_id = $priceModel->id;
-            $PvOfferPrice->save();
         }
+        $PvOfferPrice->price_id = $priceModel->id;
+        $PvOfferPrice->save();
 
     }
 
