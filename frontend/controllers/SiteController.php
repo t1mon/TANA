@@ -1,10 +1,15 @@
 <?php
 namespace frontend\controllers;
 
+use shop\entities\Shop\Product\Modification;
 use shop\Exchange_1C\Category_Model;
+use shop\Exchange_1C\Model\PriceModel;
+use shop\Exchange_1C\Model\PvOfferPriceModel;
+use shop\Exchange_1C\Product;
 use shop\helpers\JgrowlMessageHelper;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 
 
@@ -81,6 +86,21 @@ class SiteController extends Controller
     public function actionInfo()
     {
         return $this->render('info');
+    }
+
+    public function actionTest()
+    {
+        $_productId = \shop\entities\Shop\Product\Product::find()->andWhere(['accounting_id' => 'a2183361-b78d-11ea-9036-049226d3fd07'])->one()->id;
+        $offers = Product::find()->andWhere(['accounting_id' => '2eb66bed-6a76-11ea-901f-049226d3fd07'])->one()->offers;
+        //VarDumper::dump($product_1c,3,true);
+        foreach ($offers as $offer)
+        {
+            $priceId = PvOfferPriceModel::find()->andWhere(['offer_id' => $offer->id])->one()['price_id'];
+            $price = PriceModel::findOne(['id' => $priceId]);
+            $modification = Modification::find()->andWhere(['code' => $offer->accounting_id])->one();
+            echo $price['id']."<br>";
+            //echo $modification->name." ".$modification->price."<br>";
+        }
     }
 
 
