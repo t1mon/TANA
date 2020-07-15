@@ -28,7 +28,7 @@ class Offer extends ActiveRecord implements OfferInterface
             $PvOfferPrice = new PvOfferPriceModel();
             $PvOfferPrice->offer_id = $this->id;
         }
-        file_put_contents(\Yii::getAlias('@frontend') . '/runtime/PvOfferPrice.log', $price->getType()->id . "\n", FILE_APPEND);
+        file_put_contents(\Yii::getAlias('@frontend') . '/runtime/PvOfferPrice.log', is_object(PriceTypeModel::findOne(['accounting_id' => $price->getType()->id])) . "\n", FILE_APPEND);
         $PvOfferPrice->price_id = $priceModel->id;
         $PvOfferPrice->save();
     }
