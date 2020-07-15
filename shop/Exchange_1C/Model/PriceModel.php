@@ -16,7 +16,8 @@ class PriceModel extends ActiveRecord
 {
     public static function createByMl($price, Offer $offer, $type)
     {
-        /*if (is_object($type)){
+        file_put_contents(\Yii::getAlias('@frontend') . '/runtime/PvOfferPrice.log', is_object($type) . "\n", FILE_APPEND);
+        if (is_object($type)){
             $typeId = $type->id;
             $priceModel = $offer->getPrices()->andWhere(['type_id' => $type->id])->one();
         }
@@ -35,17 +36,6 @@ class PriceModel extends ActiveRecord
         $priceModel->currency = $price->currency;
         $priceModel->rate = $price->rate;
         $priceModel->type_id = $typeId;
-        $priceModel->save();
-        return $priceModel; */
-
-        if (!$priceModel = $offer->getPrices()->andWhere(['type_id' => $type->id])->one()) {
-            $priceModel = new self();
-        }
-        $priceModel->value = $price->cost;
-        $priceModel->performance = $price->performance;
-        $priceModel->currency = $price->currency;
-        $priceModel->rate = $price->rate;
-        $priceModel->type_id = $type->id;
         $priceModel->save();
         return $priceModel;
     }
