@@ -16,7 +16,7 @@ class PriceModel extends ActiveRecord
 {
     public static function createByMl($price, Offer $offer, $type)
     {
-        if (is_object($type)){
+       /* if (is_object($type)){
             $typeId = $type->id;
             $priceModel = $offer->getPrices()->andWhere(['type_id' => $type->id])->one();
         }
@@ -27,6 +27,9 @@ class PriceModel extends ActiveRecord
         }
 
         if (!$priceModel) {
+            $priceModel = new self();
+        }*/
+        if (!$priceModel = $offer->getPrices()->andWhere(['type_id' => $type->id])->one()) {
             $priceModel = new self();
         }
         $priceModel->value = $price->cost;
