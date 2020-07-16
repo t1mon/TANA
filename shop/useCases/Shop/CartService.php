@@ -25,6 +25,8 @@ class CartService
     public function add($productId, $modificationId, $quantity): void
     {
         $product = $this->products->get($productId);
+        if (!$product->price_new)
+            throw new \ErrorException('Price is NULL');
         $modId = $modificationId ? $product->getModification($modificationId)->id : null;
         $this->cart->add(new CartItem($product, $modId, $quantity));
     }
