@@ -2931,7 +2931,7 @@ a.default-btn {
         .single-slider .slider-content h1 {
           line-height: 48px;
           font-size: 33px;
-          margin: 6px 0 20px; } }
+          margin: 0px; } }
       @media only screen and (min-width: 576px) and (max-width: 767px) {
         .single-slider .slider-content h1 {
           font-size: 30px;

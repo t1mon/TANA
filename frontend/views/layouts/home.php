@@ -25,12 +25,12 @@ $this->registerMetaTag([
     <header class="header-area sticky-bar header-padding-3 header-res-padding clearfix transparent-bar header-hm-7">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xl-5 col-lg-6 col-md-4 col-2">
+                <div class="col-xl-5 col-lg-6 col-md-4 col-4">
                     <div class="clickable-menu clickable-mainmenu-active">
                         <a href="#"><i class="pe-7s-menu"></i>МЕНЮ</a>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-2 col-md-4 col-5">
+                <div class="col-xl-2 col-lg-2 col-md-4 col-4">
                     <div class="logo text-center logo-hm5">
                         <a class="sticky-none" href="<?=Url::home()?>">
                             <img class="img-fluid" alt="" src="/img/logo/logo.png">
@@ -40,7 +40,7 @@ $this->registerMetaTag([
                         </a>
                     </div>
                 </div>
-                <div class="col-xl-5 col-lg-4 col-md-4 col-5">
+                <div class="col-xl-5 col-lg-4 col-md-4 col-4">
                     <div class="header-right-wrap header-right-wrap-white">
                         <div class="same-style header-search">
                             <a class="search-active" href="#"><i class="pe-7s-search"></i></a>
