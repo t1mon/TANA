@@ -564,7 +564,7 @@ class Product extends ActiveRecord implements AggregateRoot
 
     public function getModifications(): ActiveQuery
     {
-        return $this->hasMany(Modification::class, ['product_id' => 'id']);
+        return $this->hasMany(Modification::class, ['product_id' => 'id'])->andWhere(['>','quantity',0]);
     }
 
     public function getValues(): ActiveQuery
