@@ -230,7 +230,7 @@ class Product extends ActiveRecord implements AggregateRoot
         throw new \DomainException('Modification is not found.');
     }
 
-    public function getModificationPrice($id): float
+    public function getModificationPrice($id)
     {
         foreach ($this->modifications as $modification) {
             if ($modification->isIdEqualTo($id)) {
