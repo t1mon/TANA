@@ -2002,7 +2002,7 @@ a.default-btn {
     position: absolute;
     right: 0;
     top: 193%;
-    z-index: 99;
+    z-index: 100;
     display: none; }
     @media only screen and (min-width: 768px) and (max-width: 991px) {
       .header-right-wrap .same-style.header-search .search-content {
