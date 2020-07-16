@@ -25,6 +25,7 @@ class CategoriesWidgetHome extends Widget
     {
 
         $tree = Category::findOne(1)->tree();
+        //VarDumper::dump($tree[0]['children'][0]['children'][7]['children'],2,true);
         $menuHtml = $this->getMenuHtml($tree[0]['children']);
 //        return $this->cache->getOrSet('widgetHome', function () use ($menuHtml) {
 //
