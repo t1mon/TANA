@@ -23,16 +23,13 @@ class CategoriesWidgetHome extends Widget
 
     public function run(): string
     {
+        $tree = Category::findOne(1)->populateTree();
+        $menuHtml = $this->getMenuHtml($tree['children']);
+        return $this->cache->getOrSet('widgetHome', function () use ($menuHtml) {
 
-        $tree = Category::findOne(1)->tree();
-        //VarDumper::dump($tree[0]['children'][0]['children'][7]['children'],2,true);
-        $menuHtml = $this->getMenuHtml($tree[0]['children']);
-//        return $this->cache->getOrSet('widgetHome', function () use ($menuHtml) {
-//
-//             return $menuHtml;
-//        });
-        return $menuHtml;
-
+             return $menuHtml;
+        });
+        //return $menuHtml;
     }
 
     protected function getMenuHtml($tree)

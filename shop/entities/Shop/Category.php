@@ -71,7 +71,7 @@ class Category extends ActiveRecord
         return [
             MetaBehavior::className(),
             NestedSetsBehavior::className(),
-            NestedSetsTreeBehavior::className(),
+           // NestedSetsTreeBehavior::className(),
             'slug' => [
                 'class' => 'skeeks\yii2\slug\SlugBehavior',
                 'slugAttribute' => 'slug',                      //The attribute to be generated
