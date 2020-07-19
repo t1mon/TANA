@@ -21,7 +21,7 @@ $url = Url::to(['product', 'id' =>$product->id]);
                 <img class="hover-img" src="<?= Html::encode($product->photos[1]->getThumbFileUrl('file', 'catalog_list')) ?>" alt="">
             <?php endif;?>
             <?php else:?>
-                <img class="default-img" src="<?=Html::encode(Yii::getAlias('@static')."/photo-work/p-work-s.jpg")?>" alt="">
+                <img class="default-img" src="<?=Html::encode(Yii::getAlias('@web')."/img/photo-work/photo.jpg")?>" alt="">
             <?php endif; ?>
             </a>
             <?php if ($product->new) :?>

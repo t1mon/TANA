@@ -18,8 +18,8 @@ $url = Url::to(['product', 'id' =>$product->id]);
                             <img class="default-img" src="<?= Html::encode($product->mainPhoto->getThumbFileUrl('file', 'catalog_list')) ?>" alt="<?=Html::encode($product->name)?>">
                             <img class="hover-img" src="<?= Html::encode($product->mainPhoto->getThumbFileUrl('file', 'catalog_list')) ?>" alt="">
                         <?php else:?>
-                            <img class="default-img" src="<?=Html::encode(Yii::getAlias('@web')."/img/product/pro-1.jpg")?>" alt="">
-                            <img class="hover-img" src="<?=Html::encode(Yii::getAlias('@web')."/img/product/pro-1-1.jpg")?>" alt="">
+                            <img class="default-img" src="<?=Html::encode(Yii::getAlias('@web')."/img/photo-work/photo.jpg")?>" alt="">
+                            <img class="hover-img" src="<?=Html::encode(Yii::getAlias('@web')."/img/photo-work/photo.jpg")?>" alt="">
                         <?php endif; ?>
                     </a>
                     <?php if ($product->new) :?>

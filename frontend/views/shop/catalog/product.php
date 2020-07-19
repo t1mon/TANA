@@ -60,14 +60,14 @@ $reviews_count =$product->getActiveReviewCount($reviews);
                 </div>
                 <?php else:?>
                     <div class="product-details-img mr-20 product-details-tab">
-                        <div id="gallery" class="product-dec-slider-2">
-                            <a data-image="<?=Html::encode(Yii::getAlias('@web')."/img/product-details/product-detalis-l1.jpg") ?>" data-zoom-image="<?=Html::encode(Yii::getAlias('@web')."/img/product-details/product-detalis-bl1.jpg") ?>">
-                                <img src="<?=Html::encode(Yii::getAlias('@web')."/img/product-details/product-detalis-s6.jpg") ?>" alt="">
-                            </a>
-                        </div>
+<!--                        <div id="gallery" class="product-dec-slider-2">-->
+<!--                            <a data-image="--><?//=Html::encode(Yii::getAlias('@web')."/img/photo-work/photo.jpg") ?><!--" data-zoom-image="--><?//=Html::encode(Yii::getAlias('@web')."/img/photo-work/photo.jpg") ?><!--">-->
+<!--                                <img src="--><?//=Html::encode(Yii::getAlias('@web')."/img/photo-work/photo.jpg") ?><!--" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
                         <div class="zoompro-wrap zoompro-2 pl-20">
                             <div class="zoompro-border zoompro-span">
-                                <img class="zoompro" src="<?=Html::encode(Yii::getAlias('@web')."/img/product-details/product-detalis-l1.jpg") ?>" data-zoom-image="<?=Html::encode(Yii::getAlias('@web')."/img/product-details/product-detalis-bl1.jpg") ?> alt=""/>
+                                <img class="zoompro" src="<?=Html::encode(Yii::getAlias('@web')."/img/photo-work/photo.jpg") ?>" data-zoom-image="<?=Html::encode(Yii::getAlias('@web')."/img/photo-work/photo.jpg") ?> alt=""/>
                             </div>
                         </div>
                     </div>
