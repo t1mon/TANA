@@ -46,7 +46,7 @@ class SendEmailAdminNotificationListener
         $sent = $this->mailer
             ->compose()
             ->setTo($this->adminEmail)
-            ->setFrom(['gorin163@gmail.com' => 'ТАНА Робот'])
+            ->setFrom(['admin@trikotag63.ru' => 'ТАНА Робот'])
             ->setSubject('Поступил новый заказ')
             ->setTextBody('Поступил новый заказ для просмотра заказы перейдите по ссылке ниже '.$link)
             ->setHtmlBody($html)
