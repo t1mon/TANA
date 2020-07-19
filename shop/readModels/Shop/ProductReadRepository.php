@@ -141,7 +141,7 @@ class ProductReadRepository
             ],
             'pagination' => [
                 'pageSizeLimit' => [20, 100],
-                'defaultPageSize' => 20,
+                'defaultPageSize' => 21,
                 //'forcePageParam' => false,
                 //'pageSizeParam' => false,
             ]
