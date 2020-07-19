@@ -17,6 +17,7 @@ use shop\dispatchers\EventDispatcher;
 use shop\dispatchers\SimpleEventDispatcher;
 use shop\entities\behaviors\FlySystemImageUploadBehavior;
 use shop\entities\Shop\Order\events\OrderChangeStatus;
+use shop\entities\Shop\Order\events\SendEmailAdminNotification;
 use shop\entities\Shop\Product\events\ProductAppearedInStock;
 use shop\entities\Shop\Product\events\ProductDraft;
 use shop\Exchange_1C\LoadDataBaseShop\ProductLoad;
@@ -24,6 +25,7 @@ use shop\Exchange_1C\repositories\ExchangeRepository;
 use shop\jobs\AsyncEventJobHandler;
 use shop\listeners\Shop\Category\CategoryPersistenceListener;
 use shop\listeners\Shop\Order\OrderChangeStatusListener;
+use shop\listeners\Shop\Order\SendEmailAdminNotificationListener;
 use shop\listeners\Shop\Product\ProductAppearedInStockListener;
 use shop\listeners\Shop\Product\ProductDraftListener;
 use shop\listeners\Shop\Product\ProductSearchPersistListener;
@@ -127,6 +129,7 @@ class SetUp implements BootstrapInterface
                 OrderChangeStatus::class =>   [OrderChangeStatusListener::class],
                 ProductAppearedInStock::class => [ProductAppearedInStockListener::class],
                 ProductDraft::class => [ProductDraftListener::class],
+                SendEmailAdminNotification::class => [SendEmailAdminNotificationListener::class],
                 EntityPersisted::class => [
                     //ProductSearchPersistListener::class,
                    // CategoryPersistenceListener::class,

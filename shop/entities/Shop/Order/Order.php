@@ -6,6 +6,7 @@ use lhs\Yii2SaveRelationsBehavior\SaveRelationsBehavior;
 use shop\entities\EventTrait;
 use shop\entities\Shop\DeliveryMethod;
 use shop\entities\Shop\Order\events\OrderChangeStatus;
+use shop\entities\Shop\Order\events\SendEmailAdminNotification;
 use shop\entities\User\User;
 use shop\helpers\OrderHelper;
 use shop\services\sms\SmsRu;
@@ -145,6 +146,7 @@ class Order extends ActiveRecord
                 throw  new \DomainException('Выбранный вами статус заказа уже был создан ранее');
         }
         //$this->recordEvent(new OrderChangeStatus($this));
+        $this->recordEvent(new SendEmailAdminNotification($this));
         $this->statuses[] = new Status($value, time());
         $this->current_status = $value;
     }
