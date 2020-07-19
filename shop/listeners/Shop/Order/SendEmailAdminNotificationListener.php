@@ -19,7 +19,7 @@ class SendEmailAdminNotificationListener
 {
     private $mailer;
     private $errorHandler;
-    private $adminEmail = 'gorin163@gmail.com';
+    private $notificationEmail = 'tana-sklad@mail.ru';
 
     public function __construct( MailerInterface $mailer, ErrorHandler $errorHandler)
     {
@@ -45,14 +45,14 @@ class SendEmailAdminNotificationListener
         $html = "Поступил новый заказ, для просмотра содержимого перейдите по <a href='$link'>ссылке</a>";
         $sent = $this->mailer
             ->compose()
-            ->setTo($this->adminEmail)
+            ->setTo($this->notificationEmail)
             ->setFrom(['admin@trikotag63.ru' => 'ТАНА Робот'])
             ->setSubject('Поступил новый заказ')
             ->setTextBody('Поступил новый заказ для просмотра заказы перейдите по ссылке ниже '.$link)
             ->setHtmlBody($html)
             ->send();
         if (!$sent) {
-            throw new \RuntimeException('Email sending error to ' . $this->adminEmail);
+            throw new \RuntimeException('Email sending error to ' . $this->notificationEmail);
         }
     }
 
