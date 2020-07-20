@@ -27,6 +27,7 @@ AppAsset::register($this);
     <link href="<?= Html::encode(Url::canonical()) ?>" rel="canonical"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php Yii::$app->view->registerLinkTag(['rel' => 'shortcut icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/favicon.ico')]);?>
+    <?=$this->render('_counters')?>
     <?php $this->head() ?>
 </head>
 <body>
