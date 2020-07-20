@@ -10,5 +10,5 @@ Disallow: /shop/cart/index
 Disallow: /shop/checkout/index
 Disallow: /shop/cart/add
 
-Host: mebel-style.online
-Sitemap: https://mebel-style.online/sitemap.xml
+Host: trikotag63.ru
+Sitemap: https://trikotag63.ru/sitemap.xml
