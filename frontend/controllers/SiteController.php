@@ -73,6 +73,10 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+    public function actionThanks()
+    {
+        return $this->render('thanks');
+    }
     public function actionToPartners()
     {
         return $this->render('to-partners');

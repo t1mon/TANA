@@ -54,7 +54,8 @@ class CheckoutController extends Controller
                 $user = !Yii::$app->user->isGuest ? Yii::$app->user->id : null ;
                 $order = $this->service->checkout($user, $form);
                 Yii::$app->session->setFlash('success', 'Спасибо! Ваш заказ оформлен, в ближайшее время с вами свяжется наш оператор для подтверждения заказа');
-                return $this->redirect(['/cabinet/order/view', 'id' => $order->id]);
+                //return $this->redirect(['/cabinet/order/view', 'id' => $order->id]);
+                return $this->redirect(['/site/thanks']);
             } catch (\DomainException $e) {
                 Yii::$app->errorHandler->logException($e);
                 Yii::$app->session->setFlash('error', $e->getMessage());

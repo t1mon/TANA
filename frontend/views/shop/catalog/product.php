@@ -128,17 +128,16 @@ $reviews_count =$product->getActiveReviewCount($reviews);
                         <?php // $form->field($cartForm, 'modification')->checkboxList($modifications, ['class'=>''])->label('Модельный ряд (размер,цвет):') ?>
                         <span>Размерный ряд (цвет):</span>
                         <div class="checkbox">
-                            <ul>
+                            <ul class="modifications">
                          <?php foreach ($modifications as $modification_id=>$modification): ?>
                          <?php $priceModification = $cartForm->getModificationPrice($modification_id)?>
-                            <li>
-                                <input type="checkbox" id="<?=$modification_id?>" name="scales"><label for="<?=$modification_id?>"><?=$modification?><span class="mod-price">&nbsp;<?=PriceHelper::format($priceModification)?>&#8381;</span>
-                                </label>
+                            <li id="<?=$modification_id?>" >
                                 <div class="modification-plus-minus">
                                     <div class="dec qtybutton" data-id="<?=$modification_id?>">-</div>
                                     <input id="<?=$modification_id?>-qty" class="qty-input" data-qty="0" type="text" name="<?=$modification_id?>" value="0">
                                     <div class="inc qtybutton" data-id="<?=$modification_id?>">+</div>
                                 </div>
+                               <span id="<?=$modification_id?>-mod-price" class="mod-price" data-price="<?=$priceModification?>">&nbsp;<?=PriceHelper::format($priceModification)?>&#8381;</span><span><?=$modification?></span>
                             </li>
                         <?php endforeach;?>
                             </ul>
@@ -313,7 +312,17 @@ $reviews_count =$product->getActiveReviewCount($reviews);
 
 <?php
 $script = <<<JS
-
+    function recountPrice() {
+        var result = 0
+      $('.modifications li').each(function() {
+          mod_id = $(this).attr('id')
+          qty = $('#'+mod_id+'-qty').val()
+          price = $('#'+mod_id+'-mod-price').attr('data-price')
+          result +=  (qty*price)
+        
+      })
+      $('.product-details-price span').html(result.toFixed(2) + '&#8381;')
+    }
     function validQty(id) {
        if (+id.attr('data-qty') < +id.val() ){
            isValid = false
@@ -323,48 +332,39 @@ $script = <<<JS
            isValid = true
            id.css({'background-color':'inherit','color':'inherit'})
        }
-       
-       if (id.val() == 0 ){
-           isValid = false
-           $.jGrowl(" Кол-во не должно равняться 0 ",{theme:'jgrowl danger',life:10000});
-       }
-       
-       
     }
     var isValid = false
     // Отправка данных в корзину
     $('#add-to-cart').on('click',function(event) {
-         event.preventDefault()
-         if($('.checkbox input:checked').length == 0){
-             isValid = false
-             $.jGrowl("Не выбран размерный ряд",{theme:'jgrowl danger',life:10000});
-         }else{
-             isValid = true
-         }
-       
+         event.preventDefault()       
          var data = []
-          $('.checkbox input:checked').each(function() {
+         var valQty = 0
+         var isQty = true
+          $('.modifications li').each(function() {
               product_id = $product->id
               mod_id = $(this).attr('id')
               val = $('#'+mod_id+'-qty').val()
-              if (+val == 0){
-                  $.jGrowl(" Кол-во не должно равняться 0 ",{theme:'jgrowl danger',life:10000});
-                  isValid = false
-              }          
-              data.push({'productId':product_id,'modId':mod_id,'val':val})
-          })  
+              valQty += val                        
+              if (+val !== 0) data.push({'productId':product_id,'modId':mod_id,'val':val})
+              if (+valQty == 0) isQty = false
+         
+          })
+           if  (!isQty){
+               isValid = false
+               $.jGrowl("Кол-во не может быть равно 0 ",{theme:'jgrowl danger',life:10000});
+           }
            if (isValid){ 
               data = JSON.stringify(data)
               $.post('/shop/cart/add-ajax',data,function(dataserv) {
                   if (dataserv){ 
+                      ym(65755771,'reachGoal','cart_add')
                       window.location.reload()
                   }
-            //console.log(dataserv)
           })
     }
     })
     //Получение остатка  
-    $('.checkbox :checkbox').each(function() {
+    $('.modifications li').each(function() {
      
         var mod_id = $(this).attr('id')
         $.post('/shop/cart/qty-get',mod_id,function(dataserv) {
@@ -378,17 +378,21 @@ $script = <<<JS
     
     $('.qty-input').on('input', function() {
         $(this).val($(this).val().replace(/[A-Za-zА-Яа-яЁё.]/, ''))
+        recountPrice()
     });
     $('.qty-input').on('input',function() {
         validQty($(this))
+        recountPrice()
     })
     $('.dec').on('click',function() {
         id = $(this).attr('data-id')
         validQty($('#'+id+'-qty'))
+        recountPrice()
     })
      $('.inc').on('click',function() {
         id = $(this).attr('data-id')
         validQty($('#'+id+'-qty'))
+        recountPrice()
     })
 
 JS;
