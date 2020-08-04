@@ -76,3 +76,6 @@
 .dec.qtybutton, .inc.qtybutton{
     font-size: 1rem; !important;
 }
+#jGrowl, .jGrowl-notification.alert{
+    width: 100%;
+}
