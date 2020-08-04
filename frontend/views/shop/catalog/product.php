@@ -130,8 +130,9 @@ $reviews_count =$product->getActiveReviewCount($reviews);
                         <div class="checkbox">
                             <ul>
                          <?php foreach ($modifications as $modification_id=>$modification): ?>
+                         <?php $priceModification = $cartForm->getModificationPrice($modification_id)?>
                             <li>
-                                <input type="checkbox" id="<?=$modification_id?>" name="scales"><label for="<?=$modification_id?>"><?=$modification?>
+                                <input type="checkbox" id="<?=$modification_id?>" name="scales"><label for="<?=$modification_id?>"><?=$modification?><span class="mod-price">&nbsp;<?=PriceHelper::format($priceModification)?>&#8381;</span>
                                 </label>
                                 <div class="modification-plus-minus">
                                     <div class="dec qtybutton" data-id="<?=$modification_id?>">-</div>

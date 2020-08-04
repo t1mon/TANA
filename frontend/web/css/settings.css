@@ -60,3 +60,10 @@
 .modification .pro-details-quality .pro-details-cart a{
     padding: 12px 20px 12px;
 }
+.mod-price{
+    color: #fff;
+    background-color: #fe0101 ;
+    padding: 1px;
+    border: 1px solid #fe0101;
+    border-radius: 2px;
+}

@@ -83,6 +83,11 @@ class AddToCartForm extends Model
         });
     }
 
+    public function getModificationPrice($id)
+    {
+        return Modification::findOne($id)->price;
+    }
+
     private function indexSpecification()
     {
         $array = [];
