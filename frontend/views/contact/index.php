@@ -132,7 +132,7 @@ function init(){
     });
 
     myMap.controls.add(zoomControl);
-    myPlacemark = new ymaps.Placemark([53.190931, 50.166192], {}, settings);
+    myPlacemark = new ymaps.Placemark([53.190256, 50.168672], {}, settings);
     myMap.geoObjects.add(myPlacemark);
     myMap.behaviors.disable('scrollZoom');
 }
