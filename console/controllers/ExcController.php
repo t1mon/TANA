@@ -27,14 +27,16 @@ class ExcController extends Controller
 
     public function actionLoad()
     {
-        $this->repos->loadBrand();
-        $this->stdout('Brand Loaded DONE'.PHP_EOL);
+        if (!file_exists(\Yii::getAlias('@frontend') . '/runtime/work.log')) {
+            $this->repos->loadBrand();
+            $this->stdout('Brand Loaded DONE' . PHP_EOL);
 
-        $this->repos->loadCharacteristic();
-        $this->stdout('Characteristics Loaded DONE'.PHP_EOL);
+            $this->repos->loadCharacteristic();
+            $this->stdout('Characteristics Loaded DONE' . PHP_EOL);
 
-        $this->repos->worksShop();
-        $this->stdout('WorkShop DONE'.PHP_EOL);
+            $this->repos->worksShop();
+            $this->stdout('WorkShop DONE' . PHP_EOL);
+        }
     }
 
 
@@ -48,6 +50,15 @@ class ExcController extends Controller
         Product::deleteAll();
         Characteristic::deleteAll();
         Brand::deleteAll();
+    }
+
+    public function actionTest()
+    {
+        if (!file_exists(\Yii::getAlias('@frontend') . '/runtime/test.log')){
+            file_put_contents(\Yii::getAlias('@frontend') . '/runtime/no.log', "END - ".date("Y-m-d H:i:s") . "\n", FILE_APPEND);
+        }else{
+            file_put_contents(\Yii::getAlias('@frontend') . '/runtime/yes.log', "END - ".date("Y-m-d H:i:s") . "\n", FILE_APPEND);
+        }
     }
 
 }
