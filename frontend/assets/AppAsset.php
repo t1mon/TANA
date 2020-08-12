@@ -18,6 +18,7 @@ class AppAsset extends AssetBundle
         'css/settings.css',
     ];
     public $js = [
+        '//cdn.callibri.ru/callibri.js',
         'js/vendor/modernizr-2.8.3.min.js',
         'js/popper.min.js',
         'js/plugins.js',
