@@ -339,16 +339,17 @@ $script = <<<JS
          event.preventDefault()       
          var data = []
          var valQty = 0
-         var isQty = true
+         var isQty = false
           $('.modifications li').each(function() {
               product_id = $product->id
               mod_id = $(this).attr('id')
               val = $('#'+mod_id+'-qty').val()
-              valQty += val                        
+              valQty += +val                        
               if (+val !== 0) data.push({'productId':product_id,'modId':mod_id,'val':val})
-              if (+valQty == 0) isQty = false
+              if (valQty > 0)  isQty = true
          
           })
+          console.log(valQty)
            if  (!isQty){
                isValid = false
                $.jGrowl("Кол-во не может быть равно 0 ",{theme:'jgrowl danger',life:10000});
@@ -370,7 +371,7 @@ $script = <<<JS
         $.post('/shop/cart/qty-get',mod_id,function(dataserv) {
             if (dataserv['error'] != 'ERROR'){
                 $('#'+mod_id+'-qty').attr("data-qty", dataserv)
-                console.log(dataserv)
+                //console.log(dataserv)
             }
         })
     })
