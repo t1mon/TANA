@@ -36,7 +36,7 @@ class Modification extends ActiveRecord
     public function checkout($quantity): void
     {
         if ($quantity > $this->quantity) {
-            throw new \DomainException('Only ' . $this->quantity . ' items are available.');
+            throw new \DomainException($this->name.' доступно всего ' . $this->quantity . ' шт.');
         }
         $this->quantity -= $quantity;
     }

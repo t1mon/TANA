@@ -13,10 +13,11 @@ class CartItem
 
     public function __construct(Product $product, $modificationId, $quantity)
     {
-        if (!$product->canBeCheckout($modificationId, $quantity)) {
-            $count = $product->getModification($modificationId)->quantity;
-            throw new \DomainException("Вводимое количество превышает отстаток продукта. Доступно всего $count шт.");
-        }
+//        if (!$product->canBeCheckout($modificationId, $quantity)) {
+//            $count = $product->getModification($modificationId)->quantity;
+//            throw new \DomainException("Вводимое количество превышает отстаток продукта. Доступно всего $count шт.");
+//        }
+
         $this->product = $product;
         $this->modificationId = $modificationId;
         $this->quantity = $quantity;
@@ -45,6 +46,7 @@ class CartItem
     public function getModification(): ?Modification
     {
         if ($this->modificationId) {
+
             return $this->product->getModification($this->modificationId);
         }
         return null;
