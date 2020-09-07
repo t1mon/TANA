@@ -13,6 +13,6 @@ class BrandReadRepository
 
     public function getAll(): array
     {
-        return Brand::find()->asArray()->all();
+        return Brand::find()->orderBy(['name' => 'ASC'])->asArray()->all();
     }
 }
