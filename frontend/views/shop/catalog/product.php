@@ -150,6 +150,11 @@ $reviews_count =$product->getActiveReviewCount($reviews);
                         <div class="pro-details-cart btn-hover">
                             <a id="add-to-cart" href="#">Добавить в <i class="pe-7s-cart"></i></a>
                         </div>
+
+                            <div class="pro-details-cart btn-hover">
+                                <a id="add-to-cart" href="<?=Url::to(['/shop/cart/'])?>">В корзину</a>
+                            </div>
+
                     </div>
                     </form>
                     <?php endif;?>

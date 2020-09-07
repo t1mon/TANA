@@ -520,10 +520,10 @@
     $(".zoompro").elevateZoom({
         gallery: "gallery",
         galleryActiveClass: "active",
-        zoomWindowWidth: 300,
-        zoomWindowHeight: 100,
+        //zoomWindowWidth: 300,
+        //zoomWindowHeight: 100,
         scrollZoom: false,
-        zoomType: "inner",
+        //zoomType: "inner",
         cursor: "crosshair"
     });
 

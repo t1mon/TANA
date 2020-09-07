@@ -93,7 +93,7 @@ class SetUp implements BootstrapInterface
 
         $container->setSingleton(Cart::class, function () use ($app) {
             return new Cart(
-                new HybridStorage($app->get('user'), 'cart', 3600 * 24, $app->db),
+                new HybridStorage($app->get('user'), 'cart', 3600 * 24 * 30, $app->db),
                 new DynamicCost(new SimpleCost())
             );
         });
