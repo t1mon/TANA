@@ -9,12 +9,12 @@ use yii\helpers\Url;
 
 <div class="same-style cart-wrap">
     <?php $items = $cart->getItems()?>
-    <a  href="<?=Url::to(['/shop/cart/index'])?>" class="icon-cart">
-        <i class="pe-7s-shopbag"></i>
+    <button  onclick="location.href='<?=Url::to(["/shop/cart/index"])?>'" class="icon-cart">
+        <i class="pe-7s-cart"></i>
         <?php if ($count =count($items)):?>
             <span class="count-style"><?=$count?></span>
         <?php endif; ?>
-    </a>
+    </button>
     <div class="shopping-cart-content">
         <ul>
             <?php foreach ($items as $item): ?>

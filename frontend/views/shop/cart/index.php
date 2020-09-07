@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 </td>
                                 <td class="product-name">
                                     <?php if ($modification): ?>
-                                        <a href="<?=$url?>"><?= Html::encode($modification->name) ?></a>
+                                        <a href="<?=$url?>"><?= Html::encode($product->name) ?><br><small><?= $modificationName = str_replace(Html::encode($product->name),'',Html::encode($modification->name)) ?></small></a>
                                     <?php else:?>
                                         <a href="<?=$url?>"><?= Html::encode($product->name) ?></a>
                                     <?php endif; ?>

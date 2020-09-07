@@ -7590,10 +7590,10 @@ h3.cart-page-title {
       white-space: nowrap; }
       @media only screen and (min-width: 992px) and (max-width: 1199px) {
         .cart-table-content table thead > tr th {
-          padding: 21px 35px 22px; } }
+          padding: 21px 65px 22px; } }
       @media only screen and (max-width: 767px) {
         .cart-table-content table thead > tr th {
-          padding: 21px 20px 22px; } }
+          padding: 21px 60px 22px; } }
   .cart-table-content table tbody > tr {
     border-bottom: 1px solid #ebebeb; }
     .cart-table-content table tbody > tr td.product-thumbnail {
