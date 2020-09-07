@@ -17,8 +17,15 @@ class CartWidget extends Widget
 
     public function run(): string
     {
-        return $this->render('cart', [
-            'cart' => $this->cart,
-        ]);
+        try {
+            return $this->render('cart', [
+                'cart' => $this->cart,
+            ]);
+        }catch ( \DomainException $e){
+            $this->cart->clear();
+            \Yii::$app->errorHandler->logException($e);
+            \Yii::$app->session->setFlash('error', $e->getMessage());
+            return false;
+        }
     }
 }
