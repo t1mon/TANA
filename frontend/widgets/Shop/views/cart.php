@@ -6,13 +6,14 @@ use shop\helpers\PriceHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
-
+<?php $cost = $cart->getCost(); ?>
 <div class="same-style cart-wrap">
     <?php $items = $cart->getItems()?>
     <button  onclick="location.href='<?=Url::to(["/shop/cart/index"])?>'" class="icon-cart">
         <i class="pe-7s-cart"></i>
         <?php if ($count =count($items)):?>
             <span class="count-style"><?=$count?></span>
+            <div class="total-cart"><?= PriceHelper::format($cost->getTotal()) ?>&#8381;</div>
         <?php endif; ?>
     </button>
     <div class="shopping-cart-content">
@@ -46,7 +47,7 @@ use yii\helpers\Url;
             </li>
             <?php endforeach; ?>
         </ul>
-        <?php $cost = $cart->getCost(); ?>
+
         <?php foreach ($cost->getDiscounts() as $discount): ?>
             <tr>
                 <td class="text-right"><strong><?= Html::encode($discount->getName()) ?>:</strong></td>
