@@ -10,7 +10,7 @@
     /* Cart dropdown */
     var iconCart = $('.icon-cart');
     iconCart.on('click', function() {
-        $('.shopping-cart-content').toggleClass('cart-visible');
+        //$('.shopping-cart-content').toggleClass('cart-visible');
     })
 
     /* Slider active */
