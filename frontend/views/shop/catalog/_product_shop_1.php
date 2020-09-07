@@ -33,7 +33,7 @@ $url = Url::to(['product', 'id' =>$product->id]);
             <div class="product-action">
 
                 <div class="pro-same-action pro-cart">
-                    <a title="В корзину" href="<?=Html::encode(Url::to(['/shop/cart/add', 'id' => $product->id]))?>"><i class="pe-7s-cart"></i> В Корзину</a>
+                    <a title="В корзину" href="<?=Html::encode(Url::to(['product', 'id' => $product->id]))?>"> Подробнее</a>
                 </div>
 
             </div>

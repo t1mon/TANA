@@ -42,7 +42,7 @@ $url = Url::to(['product', 'id' =>$product->id]);
                 </div>
                 <p><?= Yii::$app->formatter->asHtml(ProductStingHelper::cropName($product->description,50)) ?></p>
                 <div class="shop-list-btn btn-hover">
-                    <a href="<?=Html::encode(Url::to(['/shop/cart/add', 'id' => $product->id]))?>">В корзину</a>
+                    <a href="<?=Html::encode(Url::to(['/shop/cart/add', 'id' => $product->id]))?>">Подробнее</a>
                 </div>
             </div>
         </div>
