@@ -36,44 +36,56 @@ $reviews_count =$product->getActiveReviewCount($reviews);
 <div class="shop-area pt-100 pb-100">
     <div class="container">
         <div class="row">
-            <div class="col-xl-7 col-lg-7 col-md-12">
+            <div class="col-lg-6 col-md-6">
                 <?php if ($product->mainPhoto): ?>
-                <div class="product-details-img mr-20 product-details-tab">
-                    <div id="gallery" class="product-dec-slider-2">
+                <div class="product-details-img">
+                    <div class="tab-content jump">
                         <?php foreach ($product->photos as $i => $photo): ?>
-                        <a data-image="<?= $photo->getThumbFileUrl('file', 'product_thumb-570-720') ?>" data-zoom-image="<?= $photo->getImageFileUrl('file') ?>">
-                            <img src="<?= $photo->getThumbFileUrl('file', 'product_thumb-90-100') ?>" alt="">
-                        </a>
-                        <?php endforeach; ?>
-                    </div>
-                    <div class="zoompro-wrap zoompro-2 pl-20">
-                        <div class="zoompro-border zoompro-span">
-                            <img class="zoompro" src="<?= $product->photos[0]->getThumbFileUrl('file', 'product_thumb-570-720') ?>" data-zoom-image="<?= $product->photos[0]->getImageFileUrl('file') ?>" alt=""/>
+                        <?php $classActive = $i==0 ? 'active' : ''?>
+                        <div id="productId-<?=$product->id?>-<?=$i?>" class="tab-pane <?=$classActive?> large-img-style">
+                            <img src="<?= $photo->getThumbFileUrl('file', 'product_thumb-570-720') ?>" alt="">
                             <?php if ($product->new) :?>
                                 <span class="new">Новинка</span>
                             <?php endif;?>
                             <?php if ($product->sale) :?>
                                 <span class="sale">Распродажа</span>
                             <?php endif;?>
+                            <div class="img-popup-wrap">
+                                <a class="img-popup" href="<?= $photo->getImageFileUrl('file') ?>"><i class="pe-7s-expand1"></i></a>
+                            </div>
                         </div>
+                        <?php endforeach; ?>
                     </div>
+                    <?php if(count($product->photos) > 1):?>
+                    <div class="shop-details-tab nav">
+                        <?php foreach ($product->photos as $i => $photo): ?>
+                        <a class="shop-details-overly" href="#productId-<?=$product->id?>-<?=$i?>" data-toggle="tab">
+                            <img src="<?= $photo->getThumbFileUrl('file', 'product_thumb-90-100') ?>" alt="">
+                        </a>
+                        <?php endforeach; ?>
+                    </div>
+                    <?php endif;?>
                 </div>
                 <?php else:?>
-                    <div class="product-details-img mr-20 product-details-tab">
-<!--                        <div id="gallery" class="product-dec-slider-2">-->
-<!--                            <a data-image="--><?//=Html::encode(Yii::getAlias('@web')."/img/photo-work/photo.jpg") ?><!--" data-zoom-image="--><?//=Html::encode(Yii::getAlias('@web')."/img/photo-work/photo.jpg") ?><!--">-->
-<!--                                <img src="--><?//=Html::encode(Yii::getAlias('@web')."/img/photo-work/photo.jpg") ?><!--" alt="">-->
-<!--                            </a>-->
-<!--                        </div>-->
-                        <div class="zoompro-wrap zoompro-2 pl-20">
-                            <div class="zoompro-border zoompro-span">
-                                <img class="zoompro" src="<?=Html::encode(Yii::getAlias('@web')."/img/photo-work/photo.jpg") ?>" data-zoom-image="<?=Html::encode(Yii::getAlias('@web')."/img/photo-work/photo.jpg") ?> alt=""/>
+                    <div class="product-details-img">
+                        <div class="tab-content jump">
+                            <div  class="tab-pane active large-img-style">
+                                <img src="<?=Html::encode(Yii::getAlias('@web')."/img/photo-work/photo.jpg") ?>" alt="">
+                                <?php if ($product->new) :?>
+                                    <span class="new">Новинка</span>
+                                <?php endif;?>
+                                <?php if ($product->sale) :?>
+                                    <span class="sale">Распродажа</span>
+                                <?php endif;?>
+                                <div class="img-popup-wrap">
+                                    <a class="img-popup" href="<?=Html::encode(Yii::getAlias('@web')."/img/photo-work/photo.jpg") ?>"><i class="pe-7s-expand1"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 <?php endif; ?>
             </div>
-            <div class="col-lg-5 col-lg-5 col-md-12">
+            <div class="col-lg-6 col-md-6">
                 <div class="product-details-content">
                     <h2><?=mb_strtoupper(Html::encode($product->name))?></h2>
                     <div class="product-details-price">
