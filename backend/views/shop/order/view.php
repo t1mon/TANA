@@ -121,7 +121,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <td class="text-left">
                                 <?= Html::encode($item->modification_name) ?><br>
                                 <?php if (!empty($item->comment)):?>
-                                <span><b>Комментарий: </b></span>><?= Html::encode($item->comment) ?>
+                                <span><b>Комментарий: </b></span><?= Html::encode($item->comment) ?>
                                 <?php endif;?>
                             </td>
                             <td class="text-left">

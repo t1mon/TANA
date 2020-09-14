@@ -140,7 +140,7 @@ $script = <<<JS
     $(".comment-cart").blur(function() {
       //alert($(this).attr('data-id'))
       const data = JSON.stringify({id:$(this).attr('data-item-id'),comment:$(this).val()})
-      $.post("shop/cart/set-comment-items", data)
+      $.post("/shop/cart/set-comment-items", data)
       .done(function(msg) {console.log(msg)})
       .fail(function(error) {console.log(error)})
     })
