@@ -9,6 +9,7 @@ use shop\readModels\Shop\ProductReadRepository;
 use shop\useCases\Shop\CartService;
 use Yii;
 use yii\filters\VerbFilter;
+use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -132,10 +133,10 @@ class CartController extends Controller
     public function actionSetCommentItems(){
         if (Yii::$app->request->isAjax){
             $data = json_decode(file_get_contents('php://input'),true);
-           return $this->service->setComment($data['id'],$data['comment']);
-            //return $data['id'];
+            $this->service->setComment(Html::encode($data['id']),Html::encode($data['comment']));
+            return $data['id'];
         }
-        return ['error' => 'ERROR'];
+        return ['error' => 'Error added comment!'];
 
     }
 

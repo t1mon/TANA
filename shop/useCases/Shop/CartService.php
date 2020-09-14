@@ -39,9 +39,9 @@ class CartService
         $this->cart->set($id, $quantity);
     }
 
-    public function setComment($id, $comment)
+    public function setComment($id, $comment): void
     {
-        return $this->cart->setComment($id, $comment);
+        $this->cart->setComment($id, $comment);
     }
 
     public function remove($id): void

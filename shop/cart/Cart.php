@@ -65,7 +65,7 @@ class Cart
         throw new \DomainException('Item is not found.');
     }
 
-    public function setComment($id, $comment)
+    public function setComment($id, $comment): void
     {
         $this->loadItems();
         foreach ($this->items as $i => $current) {
