@@ -65,6 +65,19 @@ class Cart
         throw new \DomainException('Item is not found.');
     }
 
+    public function setComment($id, $comment)
+    {
+        $this->loadItems();
+        foreach ($this->items as $i => $current) {
+            if ($current->getId() == $id) {
+                $this->items[$i] = $current->setComment($comment);
+                $this->saveItems();
+                return ;
+            }
+        }
+        throw new \DomainException('Item is not found.');
+    }
+
     public function remove($id): void
     {
         $this->loadItems();

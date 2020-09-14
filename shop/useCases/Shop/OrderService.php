@@ -55,7 +55,8 @@ class OrderService
                 $product,
                 $item->getModificationId(),
                 $item->getPrice(),
-                $item->getQuantity()
+                $item->getQuantity(),
+                $item->getComment()
             );
         }, $this->cart->getItems());
 

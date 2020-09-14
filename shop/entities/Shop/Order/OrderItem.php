@@ -16,10 +16,11 @@ use yii\db\ActiveRecord;
  * @property string $modification_code
  * @property int $price
  * @property int $quantity
+ * @property string $comment
  */
 class OrderItem extends ActiveRecord
 {
-    public static function create(Product $product, $modificationId, $price, $quantity)
+    public static function create(Product $product, $modificationId, $price, $quantity, $comment)
     {
         $item = new static();
         $item->product_id = $product->id;
@@ -31,6 +32,7 @@ class OrderItem extends ActiveRecord
             $item->modification_name = $modification->name;
             $item->modification_code = $modification->code;
         }
+        $item->comment = $comment;
         $item->price = $price;
         $item->quantity = $quantity;
         return $item;

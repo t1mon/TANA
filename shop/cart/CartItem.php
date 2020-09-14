@@ -10,8 +10,9 @@ class CartItem
     private $product;
     private $modificationId;
     private $quantity;
+    private $comment;
 
-    public function __construct(Product $product, $modificationId, $quantity)
+    public function __construct(Product $product, $modificationId, $quantity, $comment)
     {
 //        if (!$product->canBeCheckout($modificationId, $quantity)) {
 //            $count = $product->getModification($modificationId)->quantity;
@@ -21,6 +22,7 @@ class CartItem
         $this->product = $product;
         $this->modificationId = $modificationId;
         $this->quantity = $quantity;
+        $this->comment = $comment;
     }
 
     public function getId(): string
@@ -75,13 +77,23 @@ class CartItem
         return $this->getPrice() * $this->quantity;
     }
 
+    public function getComment(): string
+    {
+        return $this->comment;
+    }
+
     public function plus($quantity)
     {
-        return new static($this->product, $this->modificationId, $this->quantity + $quantity);
+        return new static($this->product, $this->modificationId, $this->quantity + $quantity, $this->comment);
     }
 
     public function changeQuantity($quantity)
     {
-        return new static($this->product, $this->modificationId, $quantity);
+        return new static($this->product, $this->modificationId, $quantity, $this->comment);
+    }
+
+    public function setComment($comment)
+    {
+        return new static($this->product, $this->modificationId, $this->quantity, $comment);
     }
 }

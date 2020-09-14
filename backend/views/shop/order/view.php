@@ -119,8 +119,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <?php echo Html::a(Html::encode($item->product_name), ['shop/product/view', 'id' => $item->product_id]);?>
                             </td>
                             <td class="text-left">
-                                <?= Html::encode($item->modification_code) ?><br />
-                                <?= Html::encode($item->modification_name) ?>
+                                <?= Html::encode($item->modification_name) ?><br>
+                                <?php if (!empty($item->comment)):?>
+                                <span><b>Комментарий: </b></span>><?= Html::encode($item->comment) ?>
+                                <?php endif;?>
                             </td>
                             <td class="text-left">
                                 <?= $item->quantity ?>

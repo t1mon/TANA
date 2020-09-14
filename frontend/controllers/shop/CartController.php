@@ -129,6 +129,17 @@ class CartController extends Controller
 //        ]);
     }
 
+    public function actionSetCommentItems(){
+        if (Yii::$app->request->isAjax){
+            $data = json_decode(file_get_contents('php://input'),true);
+           return $this->service->setComment($data['id'],$data['comment']);
+            //return $data['id'];
+        }
+        return ['error' => 'ERROR'];
+
+    }
+
+
     /**
      * @param $id
      * @return mixed

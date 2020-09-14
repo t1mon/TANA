@@ -5,6 +5,7 @@ namespace shop\useCases\Shop;
 use shop\cart\Cart;
 use shop\cart\CartItem;
 use shop\repositories\Shop\ProductRepository;
+use yii\helpers\StringHelper;
 
 class CartService
 {
@@ -28,7 +29,7 @@ class CartService
         if (!$product->price_new)
             throw new \ErrorException('Price is NULL');
         $modId = $modificationId ? $product->getModification($modificationId)->id : null;
-        $this->cart->add(new CartItem($product, $modId, $quantity));
+        $this->cart->add(new CartItem($product, $modId, $quantity,''));
     }
 
     public function set($id, $quantity): void
@@ -36,6 +37,11 @@ class CartService
         if(!$quantity)
             throw new \DomainException('<strong>Ошибка!</strong> Проверьте вводимое количество продукта');
         $this->cart->set($id, $quantity);
+    }
+
+    public function setComment($id, $comment)
+    {
+        return $this->cart->setComment($id, $comment);
     }
 
     public function remove($id): void

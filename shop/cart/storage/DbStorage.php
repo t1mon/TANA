@@ -30,7 +30,7 @@ class DbStorage implements StorageInterface
         return array_map(function (array $row) {
             /** @var Product $product */
             if ($product = Product::find()->active()->andWhere(['id' => $row['product_id']])->one()) {
-                return new CartItem($product, $row['modification_id'], $row['quantity']);
+                return new CartItem($product, $row['modification_id'], $row['quantity'],$row['comment']);
             }
 
             return false;
@@ -49,7 +49,8 @@ class DbStorage implements StorageInterface
                 'user_id',
                 'product_id',
                 'modification_id',
-                'quantity'
+                'quantity',
+                'comment'
             ],
             array_map(function (CartItem $item) {
                 return [
@@ -57,6 +58,7 @@ class DbStorage implements StorageInterface
                     'product_id' => $item->getProductId(),
                     'modification_id' => $item->getModificationId(),
                     'quantity' => $item->getQuantity(),
+                    'comment' => $item->getComment(),
                 ];
             }, $items)
         )->execute();
