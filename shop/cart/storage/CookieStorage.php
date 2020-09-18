@@ -25,7 +25,7 @@ class CookieStorage implements StorageInterface
             return array_filter(array_map(function (array $row) {
                 if (isset($row['p'], $row['q']) && $product = Product::find()->active()->andWhere(['id' => $row['p']])->one()) {
                     /** @var Product $product */
-                    return new CartItem($product, $row['m'] ?? null, $row['q'], $row['c']);
+                    return new CartItem($product, $row['m'] ?? null, $row['q'], $row['c'] ?? '');
                 }
                 return false;
             }, Json::decode($cookie->value)));
